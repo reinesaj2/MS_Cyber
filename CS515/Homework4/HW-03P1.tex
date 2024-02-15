@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+
+% Define theorem, definition, and proof environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+% Set up the page margins
+\geometry{left=0.5in,right=0.5in,top=0.5in,bottom=0.75in}
+
+\begin{document}
+\doublespacing
+
+\title{HW-03 Part ONE}
+\author{Abraham J. Reines}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+The document will explore two distinct areas of logical analysis. First, it delves into a series of propositions set in Tarski's World, a tableau where objects with varied shapes and colors are arranged in a two-dimensional grid. Here, the focus is on ascertaining the veracity or fallacy of each proposition, with special attention given to the "Above\((x, y)\)" relation, which signifies object \(x\) is located above object \(y\).
+
+Subsequently, the document addresses the topic of program translation in computer science. The aim is to rephrase a specific statement about the absence of error messages during this process. The goal is to omit the terms "necessary" and "sufficient" from the original statement while preserving its core meaning.
+
+\section{Statements and Analysis 3.1.27}
+
+\subsection{Statement (c): \( \exists y \) : \( \text{Square}(y) \land \text{Above}(y, d) \)}
+This statement suggests there exists at least one square \( y \) positioned above \( d \). However, upon examination, we find although squares \( e \), \( h \), and \( j \) are present, none is positioned above \( d \). Consequently, the statement is \textbf{false}.
+
+\subsection{Statement (d): \( \exists z \) : \( \text{Triangle}(z) \land \text{Above}(f, z) \)}
+Finally, the proposition avers the existence of a triangle \( z \) over which \( f \) is positioned. Our examination identifies object \( g \), a triangle is indeed positioned below \( f \). The statement, therefore, is \textbf{true}.
+
+\section{Statements and Analysis 3.2.47}
+
+\subsection{Original Statement}
+The original statement is as follows:
+\begin{quote}
+During translation of a computer program, the absence of error messages is a necessary and not a sufficient condition for reasonable program correctness.
+\end{quote}
+
+\subsection{Rewritten Statement}
+We can recast this statement to eliminate the specified terms while maintaining the original intent. The reformulated statement is:
+\begin{quote}
+During translation of a computer program, the absence of error messages indicates a step toward reasonable program correctness but does not guarantee it.
+\end{quote}
+
+\subsection{Predicate Symbols and Domains}
+
+To rephrase the statement using predicate symbols without the terms "necessary" or "sufficient," we can introduce the following predicates:
+
+- \( T(p) \): The computer program \( p \) is being translated.\par
+- \( E(p) \): The computer program \( p \) produces error messages during translation.\par
+- \( C(p) \): The computer program \( p \) is reasonably correct.\par
+
+The domain for \( p \) is the set of all computer programs.
+
+The original statement: "The absence of error messages during translation of a computer program is only a necessary but not a sufficient condition for reasonable [program] correctness," can be translated into:
+
+\[
+T(p) \land \lnot E(p) \rightarrow C(p)
+\]
+and
+\[
+C(p) \nrightarrow \lnot E(p)
+\]
+
+The first expression \( T(p) \land \lnot E(p) \rightarrow C(p) \) indicates if a program \( p \) is being translated and does not produce error messages (\( \lnot E(p) \)), then it might be reasonably correct (\( C(p) \)), but doesn't guarantee it.
+
+The second expression \( C(p) \nrightarrow \lnot E(p) \) emphasizes just because a program \( p \) is reasonably correct (\( C(p) \)), it does not mean it will necessarily lack error messages (\( \lnot E(p) \)) during translation.
+
+Together, these expressions capture the essence of the original statement without using the terms "necessary" or "sufficient."
+
+\section{Conclusion}
+After rigorous logical analysis, we have successfully determined the truth values of each statement within the framework of Tarski's World.
+
+By avoiding the terms "necessary" and "sufficient," we have successfully rewritten the statement to convey the same meaning. The absence of error messages during program translation is an indicator of progress toward program correctness, although it does not assure it.
+
+\end{document}

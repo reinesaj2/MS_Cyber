@@ -1,0 +1,215 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+
+% Define theorem, definition, and proof environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+% Set up the page margins
+\geometry{left=0.5in,right=0.5in,top=0.5in,bottom=0.75in}
+
+\begin{document}
+\doublespacing
+
+\title{Homework 2 Part 2}
+\author{Abraham J. Reines}
+\date{\today}
+\maketitle
+
+\section*{Introduction}
+In this document, we will break down the logical form of a given statement step by step, determining its validity and identifying the rule of inference which guarantees its validity.
+
+\section*{Given Statement 2.2.33}
+
+The given statement is as follows:
+\begin{quote}
+"This integer is even if, and only if, it equals twice some integer."
+\end{quote}
+
+\subsection*{Symbolization}
+To dissect this statement, we first assign propositional variables to the components of the statement:
+\begin{itemize}
+    \item \( P \): "This integer is even"
+    \item \( Q \): "This integer equals twice some integer"
+\end{itemize}
+
+The statement "p if, and only if, Q" is logically symbolized as \( P \iff Q \), which represents a biconditional proposition (pg. 12 of 2.2 Conditional Statements lecture notes).
+
+\subsection*{Biconditional Breakdown}
+The biconditional statement \( P \iff Q \) can be decomposed into two conditional statements, thus it is equivalent to \( (P \rightarrow Q) \land (Q \rightarrow P) \). This encompasses both the conditions "if P then Q" and "if Q then p", providing a detailed analysis of the logical structure of the statement (pg. 14 of 2.2 Conditional Statements lecture notes).
+
+To illustrate, let us delineate the conjunction of the two conditional statements for the given statement as:
+\begin{enumerate}
+    \item "If this integer is even (\( P \)), then it equals twice some integer (\( Q \))", symbolized as \( P \rightarrow Q \).
+    \item "If this integer equals twice some integer (\( Q \)), then it is even (\( P \))", symbolized as \( Q \rightarrow P \).
+\end{enumerate}
+
+\subsection*{Proof through Contraposition}
+To further substantiate the validity of this statement, one can employ a proof by contraposition for each conditional statement. Contraposition asserts \( P \rightarrow Q \) is equivalent to \( \sim Q \rightarrow \sim P \), which means:
+\begin{enumerate}
+    \item "If this integer does not equal twice some integer (\( \sim Q \)), then it is not even (\( \sim P \))".
+    \item "If this integer is not even (\( \sim P \)), then it does not equal twice some integer (\( \sim Q \))".
+\end{enumerate}
+
+\subsection*{Conclusion}
+This analysis unequivocally demonstrates the {\bf{validity}} of the statement (pg. 8 of 2.2 Conditional Statements lecture notes), adhering to the equivalence rule of inference. This rule facilitates the breakdown of a biconditional statement into two separate conditional statements, enhancing our comprehension of the logical implications entailed in the original statement. Moreover, the proof by contraposition offers a robust substantiation of the statement's validity, underpinning the foundational principles of discrete mathematics.
+
+\section*{Given Statement 2.2.43}
+The task at hand involves dissecting the statement below, and rephrasing it into contrapositive if-then forms while elucidating its logical structure and validity:
+
+\begin{quote}
+“Doing homework regularly is a necessary condition for Jim to pass the course.”
+\end{quote}
+
+\section*{Statement in If-Then Form}
+First, we attribute propositional variables to the components of the statement:
+\begin{itemize}
+    \item \( P \): "Jim passes the course"
+    \item \( Q \): "Jim does homework regularly"
+\end{itemize}
+
+The statement essentially means:
+
+\[
+\text{“If Jim passes the course (P), then he has been doing homework regularly (Q).”}
+\]
+
+Symbolically, this is represented as \( P \rightarrow Q \).
+
+\section*{Symbolization}
+We can now symbolically represent the original statement and its contrapositive as follows:
+\begin{align*}
+& P \rightarrow Q \, (\text{Original Statement}) \\ \\
+& \sim Q \rightarrow \sim P \, (\text{Contrapositive}) 
+\end{align*}
+
+\section*{Contrapositive Statements}
+The contrapositive of a statement, denoted as \( P \rightarrow Q \), is given by \( \sim Q \rightarrow \sim P \) (pg. 8 of 2.2 Conditional Statements lecture notes). Applying this, we can delineate the contrapositive of the original statement as:
+
+\[
+\text{“If Jim has not been doing homework regularly (\( \sim Q \)), then Jim will not pass the course (\( \sim P \)).”}
+\]
+
+It is important to clarify articulating the original statement again, such as:
+
+\[
+\text{“If Jim passes the course (P), then Jim does homework regularly (Q).”}
+\]
+
+does not constitute a distinct form of the contrapositive statement, but merely reiterates the initial conditional statement.
+
+\section*{Conclusion}
+To conclude, both the initial and contrapositive statements are logically {\bf{valid}}, adhering to well-established principles of inference in logic. They succinctly and accurately depict the relationship between regular homework completion and course success for Jim.
+
+\section*{Given Statement 2.3.29}
+The goal here is to symbolically rewrite the given argument and ascertain its validity using rules of inference and truth tables. If found to be invalid, we will pinpoint the specific error involved, whether it's a converse or inverse mistake.
+
+\section*{Original Argument}
+\begin{quote}
+“If at least one of these two numbers is divisible by 6, then the product of these two numbers is divisible by 6.
+
+Neither of these two numbers is divisible by 6.
+
+Therefore, the product of these two numbers is not divisible by 6.”
+\end{quote}
+
+\section*{Symbolization}
+To initiate, we shall represent the argument statements with the following symbols:
+\begin{itemize}
+    \item \( P \): At least one of these two numbers is divisible by 6.
+    \item \( Q \): The product of these two numbers is divisible by 6.
+\end{itemize}
+
+This allows us to rewrite the argument in symbolic form as:
+\[
+\begin{aligned}
+& P \rightarrow Q \, (\text{Hypothesis}) \\ \\
+& \sim P \, (\text{Given fact}) \\ \\
+& \therefore \ \sim Q \, (\text{Conclusion}) \\ 
+\end{aligned}
+\]
+
+\section*{Truth Table}
+To analyze the validity, we construct a truth table reflecting the potential combinations of truth values for \( P \) and \( Q \), and subsequently determine the outcomes for \( P \rightarrow Q \), \( \sim P \), and \( \sim Q \) (pg. 10 of 2.2 Conditional Statements lecture notes). We observe from the truth table the argument is {\bf{invalid}}.
+
+\[
+\begin{array}{|c|c|c|c|c|}
+\hline
+P & Q & P \rightarrow Q & \sim P & \sim Q \\
+\hline
+T & T & T & F & F \\
+\color{red}{F} & \color{red}{T} & \color{red}{T} & \color{red}{T} & \color{red}{F} \\
+T & F & F & F & T \\
+F & F & T & T & T \\
+\hline
+\end{array}
+\]
+
+\section*{Analytical Discussion}
+Upon scrutinizing the truth table, we discern the conclusion (\( \sim Q \)) does not necessarily follow from the premises (\( P \rightarrow Q \) and \( \sim P \)). In the second row of the truth table, where \( P \) is false and \( Q \) is true, the premises are true but the conclusion is false, indicating an invalid argument (pg. 11 of 2.2 Conditional Statements lecture notes).
+
+In essence, the error stems from assuming the inverse of the hypothesis (\( \sim P \rightarrow \sim Q \)) holds true. This is characterized as an inverse error, a common pitfall in logical reasoning.
+
+\section*{Conclusion}
+By examining the truth table and the nature of the error in reasoning, we can assert the argument contains an {\bf{inverse}} error, indicating a flaw in the logical structure of the argument. 
+
+\section*{Given Statement 2.3.32}
+The objective here is to scrutinize the validity of the ensuing argument, identifying the specific rule of inference confirms its validity.
+
+\begin{quote}
+If I get a Christmas bonus, I’ll buy a stereo.
+
+If I sell my motorcycle, I’ll buy a stereo.
+
+Therefore, if I get a Christmas bonus or I sell my motorcycle, then I’ll buy a stereo.
+\end{quote}
+
+\section*{Symbolization}
+First, we allocate symbols to the statements in the argument as follows:
+\begin{itemize}
+    \item \( P \): I get a Christmas bonus
+    \item \( Q \): I sell my motorcycle
+    \item \( S \): I’ll buy a stereo
+\end{itemize}
+
+With these symbols in place, we can represent the argument symbolically as:
+\[
+\begin{aligned}
+& P \rightarrow S \, (\text{If I get a Christmas bonus, then I'll buy a stereo}) \\ \\
+& Q \rightarrow S \, (\text{If I sell my motorcycle, then I'll buy a stereo}) \\ \\
+& \therefore \ (P \lor Q) \rightarrow S \, (\text{If I get a Christmas bonus or sell my motorcycle, then I'll buy a stereo})
+\end{aligned}
+\]
+
+\section*{Rule of Inference}
+To validate the argument, we refer to the rule of inference known as proof by division of cases (pg. 5 of 2.2 Conditional Statements lecture notes), which states:
+\[
+\begin{aligned}
+& P \lor Q \, (\text{Proposition}) \\ \\
+& P \rightarrow S \, (\text{First case}) \\ \\
+& Q \rightarrow S \, (\text{Second case}) \\ \\
+& \therefore \ S \, (\text{Conclusion})
+\end{aligned}
+\]
+
+This rule signifies if either \( P \) or \( Q \) is true, and both \( P \) and \( Q \) imply \( S \), then \( S \) must be true.
+
+\section*{Analytical Commentary}
+In this context, the conclusion \( (P \lor Q) \rightarrow S \) can be seen as a natural extension of the proof by cases rule. The argument essentially states whether \( P \) or \( Q \) occurs, the outcome \( S \) is the same, thereby implying the occurrence of either \( P \) or \( Q \) would result in \( S \).
+
+\section*{Conclusion}
+Upon evaluating the argument through the lens of the proof by cases rule of inference, we can affirm the argument is indeed {\bf{valid}}. It succinctly portrays a scenario where two different conditions lead to the same outcome, establishing a logical coherence in the presented argument. This assessment, thus, underscores the importance of structured logical reasoning in validating arguments.
+
+\end{document}

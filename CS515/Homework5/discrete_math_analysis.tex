@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+
+% Define theorem, definition, and proof environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+% Set up the page margins
+\geometry{left=0.5in,right=0.5in,top=0.5in,bottom=0.75in}
+
+\begin{document}
+\doublespacing
+
+\title{HW-03 Part TWO}
+\author{Abraham J. Reines}
+\date{\today}
+\maketitle
+
+\section{3.3.50}
+\subsection{Part a: Evaluating the Proposition}
+We are tasked with evaluating the veracity of the proposition:
+\[
+\text{``For every object \( x \), there exists an object \( y \) such that if \( x \neq y \), then \( x \) and \( y \) have different colors.''}
+\]
+Given the objects are confined to the colors blue, grey, or black, and for each object, there are at least two objects of a different color, the proposition holds as \textbf{True}.
+
+\subsection{Part b: Logical Formalism}
+To formally represent the statement in question, we can employ predicate logic. The logical expression becomes:
+\[
+\forall x \left( \exists y \left( x \neq y \rightarrow \sim (\text{TheSameColor}(x, y)) \right) \right)
+\]
+Here, \(\text{TheSameColor}(x, y)\) denotes ``\( x \) has the same color as \( y \)''.
+
+\subsection{Part c: Negation in Logical Notation}
+
+\begin{enumerate}
+    \item[  ] The objective is to negate the logical statement initially presented in Part b. Starting with the negation of the original logical expression, we have:
+    
+    \begin{align*}
+        \sim (\forall x (\exists y (x \neq y \rightarrow \sim \text{TheSameColor}(x,y)))) &\equiv \exists x (\sim (\exists y (x \neq y \rightarrow \sim \text{TheSameColor}(x,y)))) && {\bf{...(1)}} \\[2em]
+        &\equiv \exists x (\forall y (\sim (x \neq y \rightarrow \sim \text{TheSameColor}(x,y)))) &&  {\bf{...(2)}} \\[2em]
+        &\equiv \exists x (\forall y (x \neq y \land \sim (\sim \text{TheSameColor}(x,y)))) &&  {\bf{...(3)}} \\[2em]
+        &\equiv \exists x (\forall y (\sim (x \neq y \land \text{TheSameColor}(x,y)))) &&  {\bf{...(4)}}
+    \end{align*}
+    
+    We see  {\bf{(1) \& (2)}} are Negation statements. {\bf{(3)}} \( \sim (P \rightarrow Q) \equiv P \land \sim Q\). Finally, {\bf{(4)}} is Negation Law twice. Therefore, the negation of the statement in logical form is \(\exists x (\forall y (x \neq y \land \text{TheSameColor}(x,y)))\).
+\end{enumerate}
+
+\section{Logical Argument and Reordered Premises 3.4.32}
+
+The original argument presents the following premises:
+
+\begin{enumerate}
+    \item When I work a logic example without grumbling, you may be sure it is one I understood.
+    \item The arguments in these examples are not arranged in regular order like the ones I am used to.
+    \item No easy example makes my headache.
+    \item I can't understand examples if the arguments are not arranged in regular order like the ones I am used to.
+    \item I never grumble at an example unless it gives me a headache.
+\end{enumerate}
+
+The conclusion drawn is: ``These examples are not easy.''
+
+\subsection{Objective}
+
+The objective is to reorder the premises in the above argument to demonstrate the conclusion is valid.
+
+\subsection{Rewriting the Premises}
+
+We rewrite the premises in an if-then form:
+
+\begin{enumerate}
+    \item If I can't understand any logic example, I grumble.
+    \item If an argument belongs to these examples, then the arguments are not arranged in regular order like the ones I am used to.
+    \item If I get a headache, then the example is not easy.
+    \item If the arguments are not arranged in regular order like the ones I am used to, then I can't understand.
+    \item If I grumble at any example, then it gives me a headache.
+\end{enumerate}
+
+\subsection{Reordered Premises}
+
+Upon reordering, the premises are as follows:
+
+\begin{enumerate}
+    \setcounter{enumi}{1}
+    \item If an argument belongs to these examples, then the arguments are not arranged in regular order like the ones I am used to.
+    \setcounter{enumi}{3}
+    \item If the arguments are not arranged in regular order like the ones I am used to, then I can't understand.
+    \setcounter{enumi}{0}
+    \item If I can't understand any logic example, I grumble.
+    \setcounter{enumi}{4}
+    \item If I grumble at any example, then it gives me a headache.
+    \setcounter{enumi}{2}
+    \item If I get a headache, then the example is not easy.
+\end{enumerate}
+
+\subsection{Conclusion}
+
+By logically chaining premises 2 and 3, we arrive at the same conclusion: ``These examples are not easy.''
+
+Therefore, the reordered premises validate the conclusion.
+
+\end{document}

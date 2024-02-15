@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc} % for Unicode input
+\usepackage[T1]{fontenc} % for font encoding
+\usepackage{lmodern} % Latin Modern font that supports the T1 encoding
+\usepackage{textcomp} % for additional symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{enumitem}
+
+% Define colors for code listing
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Style for code
+\lstset{
+    language=bash,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+% Adjust margins as needed
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+\title{PSMonitor Script Documentation}
+\author{Abraham Reines}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Script Requirements}
+The script \texttt{psmonitor.sh} is designed to scan the system process table and display all processes running in the system at specified intervals for a specified number of iterations. It takes two optional command-line arguments to customize the time between scans and the number of scans.
+
+\section{Usage}
+The script is invoked with the following syntax:
+\begin{lstlisting}[language=bash]
+./psmonitor.sh [-t tseconds] [-n count]
+\end{lstlisting}
+where \texttt{-t tseconds} specifies the time interval between each scan, and \texttt{-n count} specifies the number of times the scan is performed.
+
+\section{Sample Output}
+A sample output of the script includes the current date and time followed by the list of current processes. The output concludes with an attribution to the script's author and a statement of honor code compliance.
+
+\section{Error Checking}
+The script includes error checking for invalid options, missing argument values, and non-numeric input for time intervals and count.
+
+\section{Handling Interrupts}
+Interrupts, such as Ctrl-C, are gracefully handled by the script to provide a user-friendly exit message.
+
+\section{Script Listing}
+\lstinputlisting[language=bash]{psmonitor.sh}
+
+\section{Executing the Script}
+To execute the script, first ensure it has the appropriate permissions set:
+\begin{lstlisting}[language=bash]
+chmod +x psmonitor.sh
+\end{lstlisting}
+Then run the script by providing the desired arguments for time interval and count, e.g.:
+\begin{lstlisting}[language=bash]
+./psmonitor.sh -t 1 -n 10
+\end{lstlisting}
+ or use the default values by not providing any arguments.
+
+\end{document}

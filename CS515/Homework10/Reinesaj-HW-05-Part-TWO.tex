@@ -1,0 +1,148 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+% Define theorem, definition, and proof environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+% Set up the page margins
+\geometry{left=0.5in,right=0.5in,top=0.5in,bottom=0.75in}
+
+\begin{document}
+\doublespacing % Use this command for double spacing
+
+\title{HW-05 Part TWO}
+\author{Abraham J. Reines}
+\date{\today}
+\maketitle
+
+\section{Preliminaries 5.6.12}
+
+\begin{definition}
+A sequence \( s_0, s_1, s_2, \ldots \) \( \{ s_n \} \) is defined as follows:
+\[
+s_n = \frac{{(-1)^n}}{{n!}}, \quad \text{for all integers } n \geq 0 \hspace{1cm} \textbf{\ldots(1)}
+\]
+\end{definition}
+
+\section{Main Result}
+
+\begin{theorem}
+The sequence \( \{ s_n \} \) satisfies the recurrence relation:
+\[
+s_k = \frac{{-s_{k-1}}}{{k}}, \quad \text{for all integers } k \geq 1
+\]
+\end{theorem}
+
+\section{Proof of Theorem}
+
+Let \( k \) be an arbitrary integer such that \( k \geq 1 \).
+
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{Initialization}: We begin by substituting \( n = k - 1 \) into Equation (1) to acquire a base expression for \( s_{k-1} \):
+    \[
+    s_{k-1} = \frac{{(-1)^{k-1}}}{{(k-1)!}} \hspace{1cm} \textbf{\ldots(2)}
+    \]
+    
+    \item \textbf{Recursion Step}: Next, we substitute \( n = k \) into Equation (1) to acquire an expression for \( s_k \):
+    \[
+    s_k = \frac{{(-1)^k}}{{k!}}
+    \]
+    
+    \item \textbf{Manipulation}: Utilizing the property \( n! = n \cdot (n-1)! \) and the laws of exponents \( a^m \cdot a^n = a^{m+n} \), we rewrite \( s_k \):
+    \[
+    s_k = \frac{{(-1)^k}}{{k \cdot (k-1)!}} = \frac{{-1}}{{k}} \cdot \frac{{(-1)^{k-1}}}{{(k-1)!}}
+    \]
+    
+    \item \textbf{Substitution}: Using Equation (2), we rewrite \( s_k \) in terms of \( s_{k-1} \):
+    \[
+    s_k = \frac{{-1}}{{k}} \cdot s_{k-1}
+    \]
+\end{enumerate}
+Hence, \( s_k = \frac{{-s_{k-1}}}{{k}} \), for all integers \( k \geq 1 \). This confirms the sequence \( s_0, s_1, s_2, \ldots \) \( \{ s_n \} \) satisfies the stated recurrence relation for \( k \geq 1 \), thereby completing the proof.
+
+\section{Remarks}
+\begin{remark}
+This proof elucidates the mathematical structure underlying the sequence \( s_0, s_1, s_2, \ldots \) \( \{ s_n \} \), providing insights into its behavior as \( n \) varies. Such analyses are crucial in the broader context of discrete mathematics and its applications.
+\end{remark}
+
+\section{Preliminaries 5.6.29}
+
+\begin{theorem}
+For all integers \( k \ge 1 \), the following identity holds:
+\[ F_{k+1}^2 - F_k^2 = F_{k-1} \cdot F_{k+2} \]
+\end{theorem}
+
+\begin{proof}
+Consider the Fibonacci sequence \( \{F_n\}_{n=0}^\infty \) defined by the recurrence relation \( F_n = F_{n-1} + F_{n-2} \) for \( n \ge 2 \), with initial conditions \( F_0 = 0 \) and \( F_1 = 1 \).
+
+We will prove the given identity by expanding the left-hand side using the algebraic identity \( x^2 - y^2 = (x - y)(x + y) \):
+
+\[ F_{k+1}^2 - F_k^2 = (F_{k+1} + F_k)(F_{k+1} - F_k) \tag{1} \]
+
+From the recurrence relation of the Fibonacci sequence, we have:
+
+\[ F_{k+1} = F_k + F_{k-1} \tag{2} \]
+
+and
+
+\[ F_{k+2} = F_{k+1} + F_k \tag{3} \]
+
+Substituting the value from equation (2) into the expression \( F_{k+1} - F_k \), we obtain:
+
+\[ F_{k+1} - F_k = F_k + F_{k-1} - F_k = F_{k-1} \tag{4} \]
+
+--
+
+Equation \( (4) \) is derived from the fundamental recurrence relation which defines the Fibonacci sequence:
+
+\[ F_{n} = F_{n-1} + F_{n-2} \]
+
+This relation tells us each term in the sequence is the sum of the two preceding terms, starting with \( F_0 = 0 \) and \( F_1 = 1 \).
+
+For equation \( (4) \), we focus on the terms \( F_{k+1} \) and \( F_k \). The recurrence relation for \( F_{k+1} \) is:
+
+\[ F_{k+1} = F_k + F_{k-1} \]
+
+Now, to express \( F_{k+1} - F_k \), we simply subtract \( F_k \) from both sides of this equation:
+
+\[
+\begin{aligned}
+F_{k+1} - F_k &= (F_k + F_{k-1}) - F_k \\
+&= F_k - F_k + F_{k-1} \\
+&= 0 + F_{k-1} \\
+&= F_{k-1}
+\end{aligned}
+\]
+
+The result of this manipulation is the difference between the consecutive Fibonacci numbers \( F_{k+1} \) and \( F_k \) is the prior Fibonacci number \( F_{k-1} \). This is what equation \( (4) \) represents:
+
+\[ F_{k+1} - F_k = F_{k-1} \]
+
+--
+
+Substituting the expressions from equations (3) and (4) into equation (1), we get:
+
+\[ (F_{k+1} + F_k)(F_{k+1} - F_k) = F_{k-1} \cdot F_{k+2} \]
+
+This simplifies to the identity we set out to prove:
+
+\[ F_{k+1}^2 - F_k^2 = F_{k-1} \cdot F_{k+2} \]
+
+Therefore, by direct application of the properties of the Fibonacci sequence and algebraic manipulation, the theorem is proven without the need for mathematical induction.
+\end{proof}
+
+\end{document}

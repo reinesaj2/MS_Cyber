@@ -1,0 +1,82 @@
+
+\documentclass[12pt]{article}
+\title{Technical Analysis of Postfix Translator and Evaluator Script}
+\author{Abraham J. Reines}
+\date{October 12, 2023}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section{Overview}
+The script under analysis serves as a comprehensive tool for evaluating mathematical expressions. 
+It is robustly implemented to respect operator precedence, permit variable assignments, and gracefully handle errors. 
+This document aims to elaborate on the various components and functionalities embedded within the script.
+
+\section{Program Utility and Academic Relevance}
+In simple terms, this script serves as a calculator for complex mathematical expressions. It can handle variables, perform calculations based on rules of operator precedence, and even catch errors in the input. But it's not just any calculator; it's built on strong computer science principles like data structures and algorithms, making it a highly efficient tool.
+
+From an academic perspective, this script could be invaluable for studying compiler design, data structures, and algorithms. It demonstrates how to translate infix expressions to postfix notation—a critical aspect of compiler design. It also offers insights into managing records through custom data structures and emphasizes algorithmic efficiency, which are key areas of focus in computer science education.
+
+\section{Header and Meta Information}
+The script initiates with a shebang line for Unix-like system compatibility. 
+It also includes metadata like encoding and creation date, followed by an overarching summary outlining the program's purpose.
+
+\section{Import Statements}
+The script imports Python's regular expression module, \texttt{re}, to conduct regex operations.
+
+\section{OrderedRecordArray Class}
+A custom class designed for ordered record storage.
+
+\subsection{Methods within OrderedRecordArray Class}
+\begin{itemize}
+    \item \texttt{\_\_init\_\_}: Initializes an empty array for record storage.
+    \item \texttt{\_\_len\_\_}: Returns the length of the record array.
+    \item \texttt{add\_record}: Adds a new record while maintaining the order.
+    \item \texttt{remove\_record}: Removes a specific record.
+    \item \texttt{get\_record}: Fetches a record based on a key.
+    \item \texttt{get\_all\_keys}: Returns all keys present in the array.
+\end{itemize}
+
+\section{Token Class}
+A class focused on token management within mathematical expressions.
+
+\subsection{Methods within Token Class}
+\begin{itemize}
+    \item \texttt{\_\_init\_\_}: Initializes the token with its type and value.
+    \item \texttt{\_\_str\_\_}: Offers the string representation of the token.
+\end{itemize}
+
+\section{Expression Class}
+A class for representing and evaluating mathematical expressions.
+
+\subsection{Methods within Expression Class}
+\begin{itemize}
+    \item \texttt{\_\_init\_\_}: Initializes the expression and its token list.
+    \item \texttt{\_\_str\_\_}: Provides the string representation of the expression.
+    \item \texttt{add\_token}: Adds a token to the expression.
+    \item \texttt{get\_postfix}: Translates the expression into postfix notation.
+    \item \texttt{evaluate}: Evaluates the expression based on the provided variable assignments.
+\end{itemize}
+
+\section{Error Handling}
+The script is equipped with mechanisms for graceful error handling, specifically designed to manage invalid expressions and undefined variables.
+
+\section{Time Complexity}
+A focus on algorithmic efficiency is evident, ensuring the script's computational effectiveness.
+
+\section{Test Function}
+The script includes a dedicated test function to validate its functionalities. 
+This function serves as a unit testing mechanism, invoking various scenarios to ensure that the classes and methods operate as expected. 
+It checks for common edge cases and validates the output, providing a robust framework for quality assurance.
+
+\section{Main Program Logic}
+The script incorporates logic to parse user input for expressions and variable assignments. 
+It utilizes instances of the aforementioned classes to conduct expression evaluations.
+
+\section{Authorship and Documentation}
+The code is well-documented with ample comments, adhering to established programming practices. 
+The author and creation date are clearly mentioned, adding a layer of accountability to the script.
+
+\end{document}

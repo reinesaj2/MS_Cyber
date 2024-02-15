@@ -1,0 +1,163 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{endnotes}
+
+% Custom colors for code highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Style for Python code
+\lstset{
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+% Define theorem, definition, and proof environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+% Set up the page margins
+\geometry{left=0.5in,right=0.5in,top=0.5in,bottom=0.75in}
+
+\begin{document}
+\doublespacing % Use this command for double spacing
+
+\title{HW-07}
+\author{Abraham J. Reines}
+\date{\today}
+\maketitle
+
+\section*{7.1.49}
+
+\begin{theorem}
+Let \( F: X \to Y \) be a function, and let \( C \) be a subset of \( Y \). Then the following relation holds:
+\[ F(F^{-1}(C)) \subseteq C \]
+\end{theorem}
+
+\subsection*{Definitions:}
+\begin{itemize}
+    \item Let \( F: X \rightarrow Y \) be a function.
+    \item Define the inverse image of \( C \) under \( F \), \( F^{-1}(C) = \{ x \in X \mid F(x) \in C \} \).
+\end{itemize}
+
+\begin{proof}
+\subsection*{ \( F(F^{-1}(C)) \subseteq C \):}
+\begin{enumerate}
+    \item 
+    \[
+    \text{Let } y \in F(F^{-1}(C)).
+    \]
+    \textit{(Start with an arbitrary element \( y \) in \( F(F^{-1}(C)) \)}
+    
+    \item 
+    \[
+    \text{Then } \exists x \in X \text{ such that } x \in F^{-1}(C) \text{ and } F(x) = y.
+    \]
+    \textit{(This follows from the definition of \( F(F^{-1}(C)) \), which includes all \( y \in Y \) such that \( y = F(x) \) for some \( x \in F^{-1}(C) \))}
+  
+    \item 
+    \[
+    \text{Since } x \in F^{-1}(C), \text{ then } F(x) \in C \text{ and } y \in C.
+    \]
+    \textit{(By definition of the inverse image, \( F^{-1}(C) \))}
+    
+    \item 
+    \[
+    \therefore y = F(x) \in C.
+    \]
+    \textit{(From the previous step, since \( F(x) = y \), it logically follows \( y \) is an element of \( C \))}
+    
+    \item 
+    \[
+    \text{Hence, } F(F^{-1}(C)) \subseteq C.
+    \]
+    \textit{(This conclusion is drawn by showing every \( y \), which is a result of the function \( F \) applied to any element in \( F^{-1}(C) \), is contained within \( C \), thereby establishing the subset relationship)} 
+\end{enumerate}
+
+\subsection*{Conclusion:}
+This proof meticulously demonstrates \( F(F^{-1}(C)) \) is a subset of \( C \) for a function \( F: X \to Y \) and a subset \( C \subseteq Y \). The argument is anchored in the fundamental principles of function composition and inverse images in set theory, elucidating these essential concepts in the realm of discrete mathematics.
+
+The last step concludes since every element \( y \) of \( F(F^{-1}(C)) \) is shown to be in \( C \), it follows the entire set \( F(F^{-1}(C)) \) is contained within \( C \). In set-theoretic terms, this means \( F(F^{-1}(C)) \subseteq C \). This is a subset relationship, where every element of the first set is also an element of the second set.
+
+\end{proof}
+
+\section*{7.2.18}
+Consider the function \( f \) defined by \( f(x) = \frac{x+1}{x-1} \), where \( x \in \mathbb{R} \setminus \{1\} \). This section aims to determine whether \( f \) is injective and to derive its inverse function, if it exists.
+
+\section*{Preliminaries}
+\begin{definition}
+A function \( f: A \to B \) is \textit{injective} (or one-to-one) if different elements in \( A \) map to different elements in \( B \), formally \( \forall a, b \in A, f(a) = f(b) \implies a = b \).
+\end{definition}
+
+\begin{theorem}
+The function \( f(x) = \frac{x+1}{x-1} \) is injective.
+\end{theorem}
+
+\begin{proof}
+Assume \( f(a) = f(b) \) for some \( a, b \in \mathbb{R} \setminus \{1\} \). Then
+\begin{align*}
+    \frac{a+1}{a-1} &= \frac{b+1}{b-1} \\
+    (a+1)(b-1) &= (b+1)(a-1) \\
+    ab - a + b - 1 &= ab + a - b - 1 \\
+    -a + b &= a - b \\
+    2b &= 2a \\
+    a &= b.
+\end{align*}
+     Therefore,  \( f \) is injective.
+\end{proof}
+
+\subsection*{Inverse:}
+\begin{enumerate}
+    \item Let \( y = f(x) = \frac{x + 1}{x - 1} \).
+    \item To find \( f^{-1}(x) \), solve the equation \( y = \frac{x + 1}{x - 1} \) for \( x \) in terms of \( y \).
+    \item Cross-multiplying gives:
+    \[ y(x - 1) = x + 1 \]
+    \item Distributing and rearranging:
+    \[ yx - y = x + 1 \]
+    \[ yx - x = y + 1 \]
+    \[ x(y - 1) = y + 1 \]
+    \[ x = \frac{y + 1}{y - 1} \]
+    \item Thus, the inverse function is:
+    \[ f^{-1}(y) = \frac{y + 1}{y - 1} \] when \( y \neq 1 \).
+\end{enumerate}
+
+\subsection*{Conclusion}
+The function \( f: \mathbb{R} \setminus \{1\} \to \mathbb{R} \), given by \( f(x) = \frac{x + 1}{x - 1} \), is shown to be a one-to-one correspondence within its domain. This characterization is affirmed through a demonstration where \( f(a) = f(b) \) for any \( a, b \) in the domain of \( f \), excluding the point \( x = 1 \), compellingly implies \( a = b \). The function's undefined status at \( x = 1 \) does not impinge on its injectivity across the remainder of the real number line. The exclusion of \( x = 1 \) from the domain is pivotal for maintaining the one-to-one nature of the function.
+
+Furthermore, the one-to-one nature of \( f \) within its domain permits the determination of its inverse function. The inverse, denoted as \( f^{-1} \), can be derived by solving the equation \( y = \frac{x + 1}{x - 1} \) for \( x \) in terms of \( y \). This procedure yields \( f^{-1}(y) = \frac{y + 1}{y - 1} \), which is defined for \( y \neq 1 \). Just as \( f \) is undefined at \( x = 1 \), its inverse is undefined at the corresponding \( y \) value that maps to \( x = 1 \) under \( f \), reinforcing the symmetry in the behavior of a function and its inverse.
+
+\end{document}

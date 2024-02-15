@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+
+% Define theorem, definition, and proof environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+% Set up the page margins
+\geometry{left=0.5in,right=0.5in,top=0.5in,bottom=0.75in}
+
+\begin{document}
+\doublespacing
+
+\title{HW-04 Part One}
+\author{Abraham J. Reines}
+\date{\today}
+\maketitle
+
+\section{4.2.22: Parity of \( x^2 + x \) for Odd \( x \)}
+
+\textbf{Objective:} The purpose of this examination is to delve into the arithmetic properties of integers, specifically odd integers, and to ascertain the veracity of the following conjecture:
+\[
+\text{If \( x \) is an odd integer, then \( x^2 + x \) is even?}
+\]
+
+\textbf{Theorem:}
+
+Let \( x \) be an arbitrary odd integer.
+
+\textbf{Proof:}
+
+We begin our proof by using a basic property of integer arithmetic: the product of any two odd integers is odd (Property 3). From this property, it follows \( x^2 \) is an odd integer, assuming \( x \) itself is odd.
+
+Next, we note \( x \) is given as an odd integer for this proof.
+
+Using another integer arithmetic property—namely the sum of two odd integers is even (Property 2)—we can safely conclude \( x^2 + x \) is even.
+
+Thus, we confirm our initial statement is true: for any odd integer \( x \), \( x^2 + x \) is indeed even.
+
+\section{4.2.28: Rational Solutions for \( \frac{ax+b}{cx+d} = 1 \)}
+
+\textbf{Objective:} Given integers \( a, b, c, \) and \( d \) with the constraint \( a \neq c \), must \( x \) be rational? If so, express \( x \) as a ratio of two integers when it satisfies the equation:
+\[
+\frac{ax+b}{cx+d} = 1
+\]
+
+\textbf{Theorem:}
+
+In the context of the equation above, \( x \) must be a ratio of two integers.
+
+\textbf{Proof:}
+
+We start by applying cross-multiplication to the equation, resulting in:
+\[
+ax + b = cx + d
+\]
+Further simplification yields:
+\[
+ax - cx = d - b
+\]
+\[
+x(a - c) = d - b
+\]
+\[
+x = \frac{d - b}{a - c}, \quad a \neq c
+\]
+
+Let \( n = d - b \) and \( m = a - c \). Both \( n \) and \( m \) are integers, as the difference between any two integers is also an integer. Additionally, \( m \neq 0 \) because \( a \neq c \).
+
+Therefore, \( x = \frac{n}{m} \) for integers \( n \) and \( m \) where \( m \neq 0 \).
+
+This confirms \( x \) is a ratio of two integers, satisfying our initial objective and proving our theorem.
+
+\textbf{Conclusion:}
+
+Based on the proof, \( x \) is expressible as a ratio of two integers \( \frac{n}{m} \) where \( m \neq 0 \). This makes \( x \) a rational number.
+
+\end{document}

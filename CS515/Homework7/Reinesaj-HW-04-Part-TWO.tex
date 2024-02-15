@@ -1,0 +1,196 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+% Define theorem, definition, and proof environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+% Set up the page margins
+\geometry{left=0.5in,right=0.5in,top=0.5in,bottom=0.75in}
+
+\begin{document}
+\doublespacing % Use this command for double spacing
+%\setstretch{3} % Use this command for triple spacing
+
+\title{HW-04 Part TWO}
+\author{Abraham J. Reines}
+\date{\today}
+\maketitle
+
+\section{4.3.39}
+
+\subsection{Part a: Standard Factored Form for \( a^3 \)}
+Given a number \( a \) in its standard factored form:
+\[
+a = p_1^{e_1} \cdot p_2^{e_2} \cdot \ldots \cdot p_k^{e_k}
+\]
+The standard factored form for \( a^3 \) can be obtained by raising each factor in \( a \) to the third power.
+\[
+a^3 = (p_1^{e_1} \cdot p_2^{e_2} \cdot \ldots \cdot p_k^{e_k})^3 = p_1^{3e_1} \cdot p_2^{3e_2} \cdot \ldots \cdot p_k^{3e_k}
+\]
+
+\subsection{Part b: Least Positive Integer \( k \) for a Perfect Cube}
+A number qualifies as a \textit{perfect cube} if and only if it can be expressed in the form \(a^3\), where \(a \in \mathbb{Z}\). Put simply, a number is a perfect cube if its cube root belongs to the set of integers.
+
+\newpage
+
+Let's scrutinize the expression \(2^4 \cdot 3^5 \cdot 7 \cdot 11^2 \cdot k\):
+
+\begin{enumerate}[itemsep=3em, topsep=3em, partopsep=3em]
+    \item The prime factor 2 manifests with an exponent of 4. To conform this factor to our perfect cube condition, the exponent should be raised to the nearest multiple of 3 greater than 4, which is 6. Consequently, \(k\) must incorporate an additional \(2^2 = 4\).
+    \item The prime factor 3 is raised to the exponent 5. Following the same logic, we identify the nearest multiple of 3 greater than 5 to be 6. This necessitates the inclusion of \(3^1 = 3\) in \(k\).
+    \item The prime factor 7 appears with an exponent of 1. To meet the criteria for a perfect cube, \(k\) must be supplemented with \(7^2 = 49\).
+    \item The prime factor 11 is presented with an exponent of 2. The closest multiple of 3 greater than this exponent is 3, thus requiring an additional \(11^1 = 11\) in \(k\).
+\end{enumerate}
+
+To compute \(k\), we multiply these additional factors:
+\[
+k = 2^2 \cdot 3^1 \cdot 7^2 \cdot 11^1 = 4 \times 3 \times 49 \times 11 = 6468
+\]
+
+Therefore, multiplication of the original expression by 6468 yields a perfect cube. This elegant outcome emanates from the intrinsic properties of exponents in concert with the unique prime factorization of integers.
+
+\newpage
+
+\section{4.4.30}
+
+\subsection{Part a: The Quotient-Remainder Theorem}
+
+For any given integer \( n \) and any positive integer \( d \), there exist unique integers \( q \) and \( r \) such that:
+
+\[
+n = dq + r \quad \text{and} \quad 0 \leq r < d
+\]
+
+\subsection{Special Case: \( d = 4 \)}
+
+Given \( d = 4 \) and any integer \( n \), the Quotient-Remainder Theorem allows us to express \( n \) in one of the following four forms:
+
+\[
+n = 4q \quad \text{or} \quad n = 4q + 1 \quad \text{or} \quad n = 4q + 2 \quad \text{or} \quad n = 4q + 3
+\]
+
+for some integer \( q \).
+
+\subsection{Scenario 1: \( n = 4q \)}
+
+In this scenario, the product of two consecutive integers can be expressed as:
+
+\[
+n(n + 1) = (4q)(4q + 1) = 16q^2 + 4q = 4k
+\]
+
+where \( k = 4q^2 + q \).
+
+Given that \( q \) is an integer, it is evident that \( k = 4q^2 + q \) will also be an integer.
+
+\subsection{Scenario 2: \( n = 4q + 1 \)}
+
+In this case, the product of two consecutive integers can be written as:
+
+\[
+n(n + 1) = (4q + 1)(4q + 2) = 16q^2 + 12q + 2 = 4k + 2
+\]
+
+where \( k = 4q^2 + 3q \).
+
+Again, given that \( q \) is an integer, \( k = 4q^2 + 3q \) must also be an integer.
+
+\subsection{Scenario 3: \( n = 4q + 2 \)}
+
+For this case, the product of two consecutive integers can be represented as:
+
+\[
+n(n + 1) = (4q + 2)(4q + 3) = 16q^2 + 20q + 6 = 4k + 2
+\]
+
+where \( k = 4q^2 + 5q + 1 \).
+
+Since \( k \) is a sum of integers, it is necessarily an integer.
+
+\subsection{Scenario 4: \( n = 4q + 3 \)}
+
+In this case, the product of two consecutive integers can be written as:
+
+\[
+n(n + 1) = (4q + 3)(4q + 4) = 16q^2 + 28q + 12 = 4k
+\]
+
+where \( k = 4q^2 + 7q + 3 \).
+
+Since \( k \) is a sum of integers, it is necessarily an integer.
+
+\subsection{Conclusion}
+
+In summary, the product of any two consecutive integers will have one of the forms \( 4k \) or \( 4k + 2 \), thereby demonstrating the power and utility of the Quotient-Remainder Theorem when \( d = 4 \).
+
+\section{Part b: Using Mod Notation}
+For any integer \( n \) and positive integer \( d \), \( n \) can be expressed as:
+
+\[
+n \equiv r \mod{d}
+\]
+
+where \( 0 \leq r < d \).
+
+\newpage
+
+\subsection{Special Case for \( d = 4 \)}
+
+When \( d = 4 \), any integer \( n \) can be represented as one of the following forms:
+
+\[
+n \equiv 0 \mod{4} \quad \text{or} \quad n \equiv 1 \mod{4} \quad \text{or} \quad n \equiv 2 \mod{4} \quad \text{or} \quad n \equiv 3 \mod{4}
+\]
+
+\subsection{Scenario 1: \( n \equiv 0 \mod{4} \)}
+
+The product of two consecutive integers can be expressed as:
+
+\[
+n(n+1) \equiv 0 \mod{4}
+\]
+
+\subsection{Scenario 2: \( n \equiv 1 \mod{4} \)}
+
+The product of two consecutive integers can be expressed as:
+
+\[
+n(n+1) \equiv 2 \mod{4}
+\]
+
+\subsection{Scenario 3: \( n \equiv 2 \mod{4} \)}
+
+The product of two consecutive integers can be expressed as:
+
+\[
+n(n+1) \equiv 2 \mod{4}
+\]
+
+\subsection{Scenario 4: \( n \equiv 3 \mod{4} \)}
+
+The product of two consecutive integers can be expressed as:
+
+\[
+n(n+1) \equiv 0 \mod{4}
+\]
+
+\subsection{Conclusion}
+
+In conclusion, the product of any two consecutive integers will either be congruent to \( 0 \) or \( 2 \) modulo \( 4 \), which aligns well with the Quotient-Remainder Theorem in a modular context.
+
+
+\end{document}

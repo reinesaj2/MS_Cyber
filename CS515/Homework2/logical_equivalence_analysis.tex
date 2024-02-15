@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{booktabs}
+
+\begin{document}
+\title{Homework 2 Part 1: Logical Equivalence Analysis}
+\author{Abraham J. Reines}
+\date{\today}
+\maketitle
+
+
+\section*{Detailed Solution}
+
+(a)
+Consider the statements,
+\[ B: \text{Bob is a double math and computer science major} \]
+\[ C: \text{Bob is a math major} \]
+\[ A: \text{Ann is a math major} \]
+\[ D: \text{Ann is a double math and computer science major} \]
+The goal is to ascertain if the assertions in both (a) and (b) hold logical equivalence.
+Bob majors in both mathematics and computer science, while Ann majors solely in mathematics.
+This assertion can be construed as:
+\[ (B \land A) \land \sim D \]
+
+(b) Consider the statement: Ann is pursuing a major in mathematics, while Bob is studying both mathematics and computer science. However, it cannot be said both Ann and Bob are double majors in mathematics and computer science. This statement can be written as:
+\[ \sim (B \land D) \land (A \land B) \]
+
+Logical equivalence of both the statements in (a) and (b):
+
+Using De Morgan’s law, we can rewrite the above statement 
+\[
+\sim (B \land D) \land (A \land B) 
+\]
+as
+\[
+\sim (B \land D) \land (A \land B) \equiv (\sim B \ \lor \sim D) \land (A \land B) \quad (\because \, \sim (A \land B) \equiv \sim A \ \lor \sim B)
+\] 
+
+Next, we apply the distributive law: 
+\[
+\equiv \{ \sim B \land (A \land B) \} \lor \{ \sim D \land (A \land B) \}
+\]
+
+Followed by the commutative law: 
+\[
+\equiv \{ \sim B \land (B \land A) \} \lor \{ \sim D \land (A \land B) \}
+\]
+
+Then, the associative law: 
+\[
+\equiv \{ (\sim B \land B) \land A \} \lor \{ \sim D \land (A \land B) \}
+\]
+
+Utilizing the negation law, we have: 
+\[
+\equiv \{ c \land A \} \lor \{ \sim D \land (A \land B) \} \quad (\because \, \sim B \land B = c)
+\]
+
+Next, we employ the universal bound law: 
+\[
+\equiv c \lor \{ \sim D \land (A \land B)\} \equiv 0 \lor \{ \sim D \land (A \land B)\} \quad (\because {c \land A} = c = 0)\}
+\]
+
+Using the universal bound law again: 
+\[
+\equiv \sim D \land (A \land B) \quad (\because c \lor X = X)
+\]
+
+Finally, we apply the commutative law: 
+\[
+\equiv (A \land B) \ \land \sim D \equiv (B \land A) \ \land \sim D
+\]
+
+Hence, 
+\[
+\sim (B \land D) \land (A \land B) \equiv (B \land A) \ \land \sim D
+\]
+
+This is nothing but the statement in (a).
+Therefore, the statements (a) and (b) are equivalent.
+
+\end{document}

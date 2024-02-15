@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+% Define theorem, definition, and proof environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+% Set up the page margins
+\geometry{left=0.5in,right=0.5in,top=0.5in,bottom=0.75in}
+
+\begin{document}
+\doublespacing % Use this command for double spacing
+%\setstretch{3} % Use this command for triple spacing
+
+\title{HW-04 Part TWO}
+\author{Abraham J. Reines}
+\date{\today}
+\maketitle
+
+\section*{4.5.21: Proposition}
+
+Let \( n \) be an odd integer. It follows \( \lceil \frac{n}{2} \rceil = \frac{n+1}{2} \).
+
+\section*{Proof}
+
+\begin{enumerate}
+
+\item \textbf{Representation of Odd Integer \( n \):}
+
+Given \( n \) is an odd integer, we can express it as \( n = 2m + 1 \) for some integer \( m \).
+
+\item \textbf{Evaluation of \( \lceil \frac{n}{2} \rceil \):}
+
+Consider \( \lceil \frac{n}{2} \rceil \).
+
+\[
+\lceil \frac{2m + 1}{2} \rceil
+= \lceil \frac{2m}{2} + \frac{1}{2} \rceil
+= \lceil m + \frac{1}{2} \rceil
+= m + 1
+\]
+
+Here, we utilize the definition and properties of the ceiling function.
+
+\item \textbf{Expression for \( n + 1 \):}
+
+Since \( n = 2m + 1 \), we have:
+
+\[
+n + 1 = 2m + 2 = 2(m + 1)
+\]
+
+This implies \( m + 1 = \frac{n + 1}{2} \).
+
+\item \textbf{Final Conclusion:}
+
+Combining these results, we find \( \lceil \frac{n}{2} \rceil = m + 1 = \frac{n + 1}{2} \).
+
+\end{enumerate}
+
+Thus, the proposition is proven.
+
+\section*{4.6.22: Statement}
+
+For any real number \( r \), if \( r^2 \) is irrational, then \( r \) is also irrational.
+
+\section*{Proof by Contradiction}
+
+In the contradiction, there exists a real number \( r \) such that \( r^2 \) is irrational but \( r \) is rational. We assume our premise is true: \( n \) is true and \( m \) is false.
+
+Let \( n \) and \( m \) be integers.
+
+Using the definition of rational numbers, \( r = \frac{n}{m} \) where \( m \neq 0 \).
+
+Squaring both sides, we get:
+
+\[
+(r)^2 = \left( \frac{n}{m} \right)^2 \quad \Rightarrow \quad r^2 = \frac{n^2}{m^2}
+\]
+
+As products of integers, \( n^2 \) and \( m^2 \) are integers. Moreover, \( m^2 \) is non-zero.
+
+Thus, by definition, \( \frac{n^2}{m^2} \) is rational, implying \( r^2 \) is rational. 
+
+This contradicts the initial statement \( r^2 \) is irrational. Hence, we conclude that if \( r^2 \) is irrational, then \( r \) must also be irrational. Therefore, the statement is a contradiction.
+
+The contradiction demonstrates our original statement is true. Thus, the proof is complete.
+
+\newpage
+\section*{Proof by Contraposition}
+
+Let \( r \) be a real number such that \( r \) is not irrational, i.e., \( r \) is rational. Let \( n \) and \( m \) be integers. The original statement is of the form "If \( P \) then \( Q \)", where \( P \) is "\( r^2 \) is irrational" and \( Q \) is "\( r \) is irrational". The contrapositive of this statement is "If not \( Q \) then not \( P \)", which translates to "If \( r \) is not irrational (i.e., \( r \) is rational), then \( r^2 \) is not irrational (i.e., \( r^2 \) is rational)".
+
+Using the definition of rational numbers, \( r = \frac{n}{m} \) where \( m \neq 0 \).  Squaring both sides, we get:
+
+\[
+(r)^2 = \left( \frac{n}{m} \right)^2 \quad \Rightarrow \quad r^2 = \frac{n^2}{m^2}
+\]
+
+Since \( n^2 \) and \( m^2 \) are both products of integers, they are integers. Moreover, \( m^2 \) is non-zero. Thus, by definition, \( \frac{n^2}{m^2} \) is rational, implying \( r^2 \) is rational, not irrational, which proves the contrapositive.
+
+Therefore, the original statement "For every real number \( r \), if \( r^2 \) is irrational then \( r \) is irrational" must also be true. The proof by contraposition is thus complete.
+
+\end{document}

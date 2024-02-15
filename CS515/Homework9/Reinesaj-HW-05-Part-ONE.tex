@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+% Define theorem, definition, and proof environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+% Set up the page margins
+\geometry{left=0.5in,right=0.5in,top=0.5in,bottom=0.75in}
+
+\begin{document}
+\doublespacing % Use this command for double spacing
+%\setstretch{3} % Use this command for triple spacing
+
+\title{HW-05 Part ONE}
+\author{Abraham J. Reines}
+\date{\today}
+\maketitle
+
+\section*{Statement 5.1.39}
+We are given the summation
+\[
+\sum_{m=1}^{n+1} m(m+1)
+\]
+and tasked with rewriting this expression by separating off the final term. The focus is to employ the recursive definition of summation to accomplish this.
+
+\section{Recursive Definition of Summation}
+The recursive definition of summation can be mathematically expressed as:
+
+\begin{align*}
+    1. \quad \sum_{k=m}^{m} a_k &= a_m, \\
+    2. \quad \sum_{k=m}^{n} a_k &= \sum_{k=m}^{n-1} a_k + a_n
+\end{align*}
+
+This holds for all integers \( n > m \).
+
+\newpage
+  \section{Separating the Final Term}
+Using the recursive definition of summation, we can rewrite the original summation as:
+
+\[
+\sum_{m=1}^{n+1} m(m+1) = \left( \sum_{m=1}^{n} m(m+1) \right) + [(n+1)((n+1)+1)]
+\]
+
+Upon simplification, this becomes:
+
+\[
+\sum_{m=1}^{n+1} m(m+1) = \left( \sum_{m=1}^{n} m(m+1) \right) + [(n+1)(n+1+1)]
+\]
+
+Further simplifying, we get:
+
+\[
+\sum_{m=1}^{n+1} m(m+1) = \left( \sum_{m=1}^{n} m(m+1) \right) + [(n+1)(n+2)]
+\]
+
+\section{Conclusion}
+The original summation \(\sum_{m=1}^{n+1} m(m+1)\) can be rewritten by separating off the final term \( (n+1)(n+2) \), while the remaining part of the sum goes from \( m = 1 \) to \( n \). This separated form adheres to the recursive definition of summation.
+
+\section*{Problem Statement 5.2.16}
+
+Prove the following statement by mathematical induction:
+
+For all integers \( n \geq 2 \),
+
+\[
+(1-\frac{1}{2^2})(1-\frac{1}{3^2}) \ldots (1-\frac{1}{n^2}) = \frac{n+1}{2n}
+\]
+
+\newpage
+  \section{Base Case: \( n = 2 \)}
+
+First, let's verify the base case, where \( n = 2 \):
+
+\[
+\text{Left-hand side} = (1-\frac{1}{2^2}) = \frac{3}{4}
+\]
+\[
+\text{Right-hand side} = \frac{2+1}{2 \times 2} = \frac{3}{4}
+\]
+
+Both sides are equal, so the base case holds.
+
+\section{Inductive Step}
+
+Assume \( k \) is an integer \(  \geq 0 \) such that  \( P(k) \) is true for some arbitrary \( n = k \):
+
+\[
+(1-\frac{1}{2^2})(1-\frac{1}{3^2}) \ldots (1-\frac{1}{k^2}) = \frac{k+1}{2k}
+\]
+
+We need to show \( P(k+1) \) is true for \( n = k+1 \):
+
+\[
+(1-\frac{1}{2^2})(1-\frac{1}{3^2}) \ldots (1-\frac{1}{(k+1)^2}) = \frac{(k+1)+1}{2(k+1)}
+\]
+
+\subsection{Proving the Inductive Step}
+
+Starting with the left-hand side of the expression for \( n = k+1 \):
+
+\[
+\left( (1-\frac{1}{2^2})(1-\frac{1}{3^2}) \ldots (1-\frac{1}{k^2}) \right) (1-\frac{1}{(k+1)^2})
+\]
+
+Substitute the inductive hypothesis \( \frac{k+1}{2k} \):
+
+\[
+= \frac{k+1}{2k} \times (1 - \frac{1}{(k+1)^2})
+\]
+\[
+= \frac{k+1}{2k} \times \frac{(k+1)^2 - 1}{(k+1)^2}
+\]
+\[
+= \frac{k+1}{2k} \times \frac{k^2 + 2k}{(k+1)^2}
+\]
+\[
+= \frac{(k+1) \times (k^2 + 2k)}{2k \times (k+1)^2}
+\]
+\[
+= \frac{(k+1) \times k \times (k+2)}{2k \times (k+1)^2}
+\]
+\[
+= \frac{(k+2)}{2(k+1)}
+\]
+
+This proves the left-hand side equals the right-hand side for \( n = k+1 \):
+
+\[
+L.H.S = \frac{(k+1)+1}{2(k+1)} = \frac{k+2}{2(k+1)} = R.H.S
+\]
+
+\section{Conclusion}
+
+By mathematical induction, the statement
+
+\[
+(1-\frac{1}{2^2})(1-\frac{1}{3^2}) \ldots (1-\frac{1}{n^2}) = \frac{n+1}{2n}
+\]
+
+is true for all integers \( n \geq 2 \).
+
+\end{document}
