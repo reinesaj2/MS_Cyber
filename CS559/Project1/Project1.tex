@@ -1,0 +1,149 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+
+
+% Adjust margins as needed
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+\title{CS559 Lab Setup Project Report}
+\author{Abraham J. Reines}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This document reports on the setup of the required virtual environments for the CS559 course. The environments include a virtualization software, and both Kali and Ubuntu virtual machines (VMs).
+
+\section{Virtualization Software Setup}
+The virtualization software was successfully installed and configured as per the guidelines provided in Section 1.2.2 of the project instructions.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-20 at 9.00.27 AM.png}
+    \caption{Running virtualization software}
+\end{figure}
+
+\newpage
+\section{Kali VM Setup}
+Following the steps in Section 1.2.3, the Kali VM has been set up. Below is the screenshot of the running Kali VM.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-18 at 11.19.28 AM.png}
+    \caption{Running Kali VM}
+\end{figure}
+
+\subsection{A better view of Kali license:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{Screenshot 2024-01-18 at 5.18.43 PM.png}
+    \caption{Verification of Credentials for Kali VM set up}
+\end{figure}
+
+\subsection{Processor and Memory Configuration:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-20 at 10.34.22 AM.png}
+    \caption{Assigned 4 processor cores and 4GB of memory to the Debian VM.*}
+\end{figure}
+
+\textit{*Please note "Debian 12.x 64-bit Arm" label is indeed the Kali VM. This label was automatically assigned during the setup process due to my M1 MacBook Arm architecture.}
+
+\subsection{Network Adapter Configuration:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-20 at 10.37.11 AM.png}
+    \caption{The network adapter configuration is set for sharing with the Mac, which implies it's using NAT (Network Address Translation).*}
+\end{figure}
+
+\textit{*Please note "Debian 12.x 64-bit Arm" label is indeed the Kali VM. This label was automatically assigned during the setup process due to my M1 MacBook Arm architecture.}
+
+\subsection{Update Process:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-20 at 10.40.02 AM.png}
+    \caption{Shows the terminal window where we've run "sudo apt-get update" on the Kali VM, which is part of the update process.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{Screenshot 2024-01-20 at 10.40.20 AM.png}
+    \caption{Shows the terminal window where we've run "sudo apt-get upgrade" on the Kali VM, which is part of the upgrade process.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-20 at 10.40.41 AM.png}
+    \caption{Shows the terminal window where we've run "sudo apt-get upgrade" on the Kali VM, which is part of the upgrade process. We can see "11\%" upgraged in bottom left hand corner of screenshot.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{Screenshot 2024-01-20 at 10.50.06 AM.png}
+    \caption{Shows the terminal window where we've run "sudo apt-get upgrade" on the Kali VM, which is part of the upgrade process. We can see the upgrade process has successfully completed.}
+\end{figure}
+
+\newpage
+\section{Ubuntu VM Setup}
+The setup of the Ubuntu VM was completed in accordance with Section 1.2.4. A screenshot of the running Ubuntu VM is provided below.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-18 at 11.18.22 AM.png}
+    \caption{Running Ubuntu VM}
+\end{figure}
+
+\subsection{A better View of Ubuntu license:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-18 at 5.18.32 PM.png}
+    \caption{Verification of Credentials for Ubuntu VM set up}
+\end{figure}
+
+\subsection{Processor and Memory Configuration:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-20 at 10.49.46 AM.png}
+    \caption{Assigned 4 processor cores and 4GB of memory to the Ubuntu VM.}
+\end{figure}
+
+\subsection{Network Adapter Configuration:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-20 at 10.51.25 AM.png}
+    \caption{The network adapter configuration is set for sharing with the Mac, which implies it's using NAT (Network Address Translation).}
+\end{figure}
+
+\subsection{Update Process:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-20 at 11.23.10 AM.png}
+    \caption{Shows the terminal window where we've run "sudo apt-get update" on the Ubuntu VM, which is part of the update process.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-01-20 at 11.24.17 AM.png}
+    \caption{Shows the terminal window where we've run "sudo apt-get upgrade" on the Ubuntu VM, which is part of the upgrade process.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{Screenshot 2024-01-20 at 11.25.29 AM.png}
+    \caption{Shows the terminal window where we've run "sudo apt-get upgrade" on the Ubuntu VM, which is part of the upgrade process. We can see the upgrade process has successfully completed.}
+\end{figure}
+
+\section{Conclusion}
+All tasks assigned for the lab setup project were completed successfully. The virtualization software, Kali VM, and Ubuntu VM are all running and have been configured correctly.
+
+\section*{Academic Integrity Pledge}
+{\color{red}\textit{“This work complies with the JMU honor code. I did not give or receive unauthorized help on this assignment.”}}
+
+\end{document}

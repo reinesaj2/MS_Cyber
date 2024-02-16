@@ -1,0 +1,459 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc} % for Unicode input
+\usepackage[T1]{fontenc} % for font encoding
+\usepackage{lmodern} % Latin Modern font that supports the T1 encoding
+\usepackage{textcomp} % for additional symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{listings} % For code listing
+
+% Custom colors for code highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Style for code
+\lstset{
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+% Adjust margins as needed
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+\title{PROJECT 2. ENTITY AUTHENTICATION}
+\author{Abraham J. Reines}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{PVD File Study}
+
+This report is a detailed analysis of entries for Password Value Data (PVD) files for: Windows 7, Windows 2003, and Ubuntu/Linux systems. The uniqueness and security of the password hashes is the focus. 
+
+\subsection{Windows 7 PVD Analysis | Non-Empty Fields}
+\begin{itemize}
+    \item Username: Morpheus 
+    \item User ID (RID): 1002
+    \item LM Hash: aad3b435b51404eeaad3b435b51404ee (Placeholder)
+    \item NT Hash: d5d630da69ebd8ab040d77be7bb046dd
+\end{itemize}
+
+\subsection{Security Implications}
+
+LM is a placeholder, indicating there is no LM hash used. This is a good security measure. LM hashes are less secure. The NT Hash is the value actually used for password storage. This needs to be unique and the only password hash value present. 
+
+\subsection{Windows 2003 PVD Analysis | Non-Empty Fields}
+\begin{itemize}
+    \item Username: Morpheus
+    \item User ID (RID): 1010
+    \item LM Hash: B902F044A44585DF93E28745B8BF4BA6
+    \item NT Hash: D5D630DA69EBD8AB040D77BE7BB046DD
+\end{itemize}
+
+\subsection{Security Implications}
+
+LM hash presence indicates compatibility with old systems and poses a security risk. NT hash being used is identical to the Windows 7 PVD suggesting the same password was used across the systems. This is a vulnerability which could lead to catastrophic security weaknesses. 
+
+\subsection{Linux PVD Analysis | Non-Empty Fields}
+\begin{itemize}
+    \item Username: Morpheus
+    \item Password Hash: SHA-512 with salt ykumbyCz
+    \item UID/GID: 1001
+    \item Home Directory: /home/morpheus
+    \item Shell: /bin/sh
+\end{itemize}
+
+\subsection{Security Implications}
+The SHA-512 hash usage with a unique salt ykumbyCz suggests a secure practice. This makes sure the password is secure and difficult to crack. 
+
+\subsection{Conclusion for PVD File Study}
+
+PVD entries for Morpheus in these systems exemplify the necessity for unique hashing in security mechanisms. The reuse of passwords across systems is a notable security concern which should be addressed to maintain system integrity.
+
+\vspace{-0.35cm}
+\section*{Explanation of Wordlists}
+Created a custom wordlist for this assignment, concatenating several wordlists derived from data breaches, available on GitHub.  Also employed a variational algorithm of the known passwords cracked using hybrid attack strategies. Catching onto the trend, developing the code to produce the permutations for common substitutions and capitilizations was straight forward. Systematic permutations of the passwords: "DENTURES," "DEPENDS," "MODELT," "OLDFOGY," "KANDW," "CORNBREAD," "SUSPENDERS," and "WHITE\_RABB1T." This was instrumental, especially for Linux SHA-512 crackings.
+
+\subsection*{Sources of Wordlists:}
+\begin{enumerate}
+    \item \texttt{kkrypt0nn/wordlists}
+    \item \texttt{gmelodie/awesome-wordlists}
+    \item \texttt{berzerk0/Probable-Wordlists}
+    \item \texttt{assetnote/wordlists}
+\end{enumerate}
+
+\subsection*{Commands for Concatenation:}
+\begin{enumerate}
+    \item \texttt{cat password\_variations.txt wordlist1.txt wordlist2.txt > comprehensive\_wordlist.txt}
+    \item \texttt{sort -u comprehensive\_wordlist.txt -o comprehensive\_wordlist.txt}
+\end{enumerate}
+
+\subsection*{Python Code:}
+\lstinputlisting[language=Python]{CaseVariationsGenerator.py}
+
+\section{Off-line dictionary attack: crack Windows 7 password authentication}
+This section documents the process and outcomes of a dictionary attack to crack Windows 7 password authentication for a set of user accounts. 
+
+\subsection{Methodology}
+To conduct the offline dictionary attack, the following steps were taken:
+\begin{enumerate}
+    \item Preparation of a comprehensive dictionary of potential passwords. This included a custom 'comprehensive\_wordlist.txt' file, including all wordlist provided by Hashcat. See the 'Explanation of Wordlists' section above.
+    \item Utilization of password cracking software to match dictionary entries with the extracted hashes. We utilized hybrid attacks, combining brute force methodology with the wordlist.
+
+\end{enumerate}
+
+\subsection{Tools and Commands}
+A combination of advanced password recovery tools was employed to orchestrate the dictionary attack. The specific software and command sequences executed are detailed below:
+
+\begin{itemize}
+    \item \textbf{Tool:} \textit{Hashcat} -- a robust password recovery utility renowned for its speed and versatility.
+    \item \textbf{Command(s):} 
+    \begin{itemize}
+        \item Using the wordlist:
+        \begin{verbatim}
+        hashcat -m 1000 -a 0 2024Spring-PVDwindows7.txt comprehensive_wordlist.txt
+        \end{verbatim}
+        \item To initiate the attack with lowercase alphabetic character assumptions:
+        \begin{verbatim}
+        hashcat -m 1000 -a 3 -i --increment-min=4 --increment-max=10
+        -1 ?l 2024Spring-PVDwindows7.txt ?1?1?1?1?1?1?1?1?1?1
+        -o cracked_passwords_windows7.txt
+        \end{verbatim}
+        \item To incorporate numeric characters into the attack vector:
+        \begin{verbatim}
+        hashcat -m 1000 -a 3 -i --increment-min=4 --increment-max=10
+        -1 ?d 2024Spring-PVDwindows7.txt ?1?1?1?1?1?1?1?1?1?1
+        -o cracked_passwords_windows7.txt
+        \end{verbatim}
+    \end{itemize}
+    \item \textbf{Tool:} \textit{John the Ripper} -- an open-source password security auditing and password recovery tool used for detecting weak passwords.
+    \item \textbf{Command(s):} 
+    \begin{itemize}
+        \item To initialize a brute force attack using john.
+        \begin{verbatim}
+        john --incremental 2024Spring-PVDwindows7.txt
+        \end{verbatim}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Results}
+The following table lists the cracked passwords for each user account:
+
+\begin{longtable}[c]{@{}lccc@{}}
+\caption{Cracked passwords for Windows 7 user accounts along with crack time and attempt count.}
+\label{table:linux_user_accounts_crack_details}\\
+\toprule
+\textbf{User Account} & \textbf{Cracked Password} & \textbf{Time to Crack} & \textbf{Attempt Count} \\* \midrule
+\endfirsthead
+%
+\multicolumn{4}{c}%
+{{\bfseries Table \thetable\ continued from previous page}} \\
+\toprule
+\textbf{User Account} & \textbf{Cracked Password} & \textbf{Time to Crack} & \textbf{Attempt Count} \\* \midrule
+\endhead
+%
+Morpheus & \texttt{dentures} & $<$ 10 mins & 1 \\
+Neo & \texttt{cornbread} & $<$ 10 mins & 1 \\
+Trinity & \texttt{KandW} & $>$ 12 hrs & 2 \\
+Cypher & \texttt{Depends} & $>$ 1 hr & 2 \\
+Smith & \texttt{modelT} & $>$ 1 hr & 2 \\
+Cobb & \texttt{oldfogy} & $<$ 20 mins & 1 \\
+Arthur & \texttt{suspenders} & $<$ 10 mins & 1 \\
+\end{longtable}
+
+\subsection{Computing Environment}
+The password cracking process was executed within a controlled and secure virtualized setting, leveraging the following specifications:
+
+\begin{itemize}
+    \item \textbf{Hardware:}
+    \begin{itemize}
+        \item Processor Cores: 4
+        \item Memory: 4008 MB
+        \item Network Interface: Virtualized within the hypervisor
+        \item Hard Disk: 2.6 MB used for the operation snapshots (dynamic allocation)
+    \end{itemize}
+    \item \textbf{Software:}
+    \begin{itemize}
+        \item Operating System: Kali Linux, version 6.5.0-kali3-arm64
+        \item Hypervisor: Identified as a virtual machine within a hypervisor environment.
+        \item Penetration Testing Tools: Hashcat 6.2.6, John the Ripper 1.9.0
+    \end{itemize}
+\end{itemize}
+
+This setup was deliberately chosen for its balance of performance and isolation, providing a secure sandbox for password recovery simulations.
+
+\subsection{Discussion}
+
+We cracked the passwords required. The cracking process for this PVD file was moderately difficult. 
+
+\subsection{Conclusion}
+
+The dictionary attack was successful in identifying the passwords for all user accounts in the PVD file. The details of the computing environment and the tools used were instrumental in the process.
+
+%\newpage
+  \section{Off-line dictionary attack: crack Windows 2003 password authentication}
+
+This section is a review of the results of a off-line dictionary attack for cracking the Windows 2003 authentication for specified user account passwords. 
+
+\subsection{Cracked Passwords | User Accounts}
+The passwords for user accounts have been successfully cracked and are presented:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{Cracked passwords for user accounts.}
+\label{table:user_accounts}\\
+\toprule
+\textbf{Account Name} & \textbf{Cracked Password} \\* \midrule
+\endfirsthead
+%
+\multicolumn{2}{c}%
+{{\bfseries Table \thetable\ continued from previous page}} \\
+\toprule
+\textbf{Account Name} & \textbf{Cracked Password} \\* \midrule
+\endhead
+%
+Administrator & mskitty666 \\
+Morpheus & dentures \\
+Neo & cornbread \\
+Trinity & KandW \\
+Cypher & Depends \\
+Smith & modelT \\
+Cobb & oldfogy \\
+Arthur & suspenders \\* \bottomrule
+\end{longtable}
+
+\subsection{Cracked Passwords | Service Accounts}
+The passwords for service accounts have been successfully cracked and are presented:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{Cracked passwords for service accounts.}
+\label{table:service_accounts}\\
+\toprule
+\textbf{Service Account Name} & \textbf{Cracked Password} \\* \midrule
+\endfirsthead
+%
+\multicolumn{2}{c}%
+{{\bfseries Table \thetable\ continued from previous page}} \\
+\toprule
+\textbf{Service Account Name} & \textbf{Cracked Password} \\* \midrule
+\endhead
+%
+ASPNET & \texttt{><0,K)ND5912K8} \\
+IUSR\_JAMES-BFCF5F2D5 & \texttt{;3PZ\#PA(A\{|W62} \\
+IWAM\_JAMES-BFCF5F2D5 & \texttt{\textbackslash 5e9K)K\}MGNKW\&} \\
+System32 & \texttt{WHITE\_RABB1T} \\
+SYS\_32 & \texttt{WHITE\_RABB1T} \\* \bottomrule
+\end{longtable}
+
+\subsection{Methodology | Tools and Commands}
+The tools and commands used to perform the dictionary attacks are as follows:
+
+\begin{itemize}
+    \item \textbf{Tool:} \textit{Hashcat} -- a robust password recovery utility renowned for its speed and versatility.
+    \item \textbf{Command(s):} 
+    \begin{itemize}
+        \item Using the wordlist:
+        \begin{verbatim}
+        hashcat -m 1000 -a 0 2024Spring-PVDwindows2k3.txt comprehensive_wordlist.txt
+        \end{verbatim}
+    \end{itemize}
+%\newpage
+    \item \textbf{Tool:} \textit{John the Ripper} -- an open-source password security auditing and password recovery tool used for detecting weak passwords.
+    \item \textbf{Command(s):} 
+    \begin{itemize}
+        \item To initialize a brute force attack using john.
+        \begin{verbatim}
+        john --incremental 2024Spring-PVDwindows2k3.txt
+        \end{verbatim}
+    \end{itemize}
+        \item To use a customized comprehensive\_wordlist.txt file. 
+        \begin{verbatim}
+        john 2024Spring-PVDwindows2k3.txt comprehensive_wordlist.txt
+        \end{verbatim}
+\end{itemize}
+
+\subsection{Time Taken}
+The time taken to find the passwords for the accounts is as follows:
+
+\begin{itemize}
+    \item Administrator: $<$ 5 mins
+    \item Morpheus: $<$ 5 mins
+    \item Neo: $<$ 5 mins
+    \item Trinity: $<$ 5 mins
+    \item Cypher: $<$ 5 mins
+    \item Smith: $<$ 5 mins
+    \item Cobb: $<$ 5 mins
+    \item Arthur: $<$ 5 mins
+    
+    \item Service accounts: $>$ 12 hrs (some brute-force was necessary)
+\end{itemize}
+
+\subsection{Computing Environment}
+The details of the computing environment used to crack the passwords are:
+
+\begin{itemize}
+    \item \textbf{Hardware:}
+    \begin{itemize}
+        \item Processor Cores: 4
+        \item Memory: 4008 MB
+        \item Network Interface: Virtualized within the hypervisor
+        \item Hard Disk: 2.6 MB used for the operation snapshots (dynamic allocation)
+    \end{itemize}
+    \item \textbf{Software:}
+    \begin{itemize}
+        \item Operating System: Kali Linux, version 6.5.0-kali3-arm64
+        \item Hypervisor: Identified as a virtual machine within a hypervisor environment.
+        \item Penetration Testing Tools: Hashcat 6.2.6, John the Ripper 1.9.0
+    \end{itemize}
+\end{itemize}
+
+\subsection{Conclusion}
+
+This section successfully details the cracking of passwords of user and service accounts in a Windows 2003 system using hybrid attacks. The specific passwords cracked, the tools and commands utilized, the time required for each account, and the computing environment setup comply with the assignments requiements. The cracking process for this PVD file was not difficult. 
+
+\section{Off-line Dictionary Attack: Linux Password Authentication}
+
+\subsection{Introduction}
+This section reports the outcome of the off-line dictionary attack to ascertain passwords for Linux user accounts as specified. A significant milestone was achieved by identifying the password for the root account, which has been highlighted.
+
+\subsection{Cracked Passwords}
+The passwords for the Linux user accounts were successfully retrieved and are tabulated separately to maintain clarity and prevent any amalgamation with other tasks within this project.
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{Cracked passwords for Linux user accounts.}
+\label{table:linux_user_accounts}\\
+\toprule
+\textbf{Account Name} & \textbf{Cracked Password} \\* \midrule
+\endfirsthead
+%
+\multicolumn{2}{c}%
+{{\bfseries Table \thetable\ continued from previous page}} \\
+\toprule
+\textbf{Account Name} & \textbf{Cracked Password} \\* \midrule
+\endhead
+%
+Morpheus & \texttt{dentures} \\
+Neo & \texttt{cornbread} \\
+Trinity & \texttt{KandW} \\
+Cypher & \texttt{Depends} \\
+Smith & \texttt{modelT} \\
+Cobb & \texttt{oldfogy} \\
+Arthur & \texttt{suspenders} \\
+\end{longtable}
+
+\subsection{Methodology | Tools and Commands}
+The tools and commands used to perform the dictionary attacks are as follows:
+
+\begin{itemize}
+    \item \textbf{Tool:} \textit{Hashcat} -- a robust password recovery utility renowned for its speed and versatility.
+    \item \textbf{Command(s):} 
+    \begin{itemize}
+        \item Using the wordlist:
+        \begin{verbatim}
+        hashcat -m 1800 -a 0 2024Spring-PVDlinux.txt comprehensive_wordlist.txt
+        \end{verbatim}
+    \end{itemize}
+%\newpage
+    \item \textbf{Tool:} \textit{John the Ripper} -- an open-source password security auditing and password recovery tool used for detecting weak passwords.
+    \item \textbf{Command(s):} 
+    \begin{itemize}
+        \item To initialize a brute force attack using john.
+        \begin{verbatim}
+        john --incremental 2024Spring-PVDlinux.txt
+        \end{verbatim}
+    \end{itemize}
+        \item To use a customized comprehensive\_wordlist.txt file. 
+        \begin{verbatim}
+        john 2024Spring-PVDlinux.txt comprehensive_wordlist.txt
+        \end{verbatim}
+\end{itemize}
+
+\subsection{Timeframe}
+The duration taken to retrieve the passwords is documented, and the computing environment details are provided hereunder:
+
+\begin{itemize}
+    \item Administrator: $<$ 5 mins
+    \item Morpheus: $<$ 5 mins
+    \item Neo: $<$ 5 mins
+    \item Trinity: $<$ 5 mins
+    \item Cypher: $<$ 5 mins
+    \item Smith: $<$ 5 mins
+    \item Cobb: $<$ 5 mins
+    \item Arthur: $<$ 5 mins
+\end{itemize}
+
+\subsection{Computing Environment}
+The details of the computing environment used to crack the passwords are:
+
+\begin{itemize}
+    \item \textbf{Hardware:}
+    \begin{itemize}
+        \item Processor Cores: 4
+        \item Memory: 4008 MB
+        \item Network Interface: Virtualized within the hypervisor
+        \item Hard Disk: 2.6 MB used for the operation snapshots (dynamic allocation)
+    \end{itemize}
+    \item \textbf{Software:}
+    \begin{itemize}
+        \item Operating System: Kali Linux, version 6.5.0-kali3-arm64
+        \item Hypervisor: Identified as a virtual machine within a hypervisor environment.
+        \item Penetration Testing Tools: Hashcat 6.2.6, John the Ripper 1.9.0
+    \end{itemize}
+\end{itemize}
+
+\subsection{Free Lunch Achievement}
+Unfortunately, the 8th password for 'root' was not cracked. Very interested to learn how this can be done! 
+
+\subsection{Conclusion}
+In summary, this section encapsulates the successful application of an off-line dictionary attack to crack passwords for Linux user accounts. The process, tools, and commands used, time taken, and computing environment specifics are comprehensively documented herein. The cracking process for this PVD file would be highly difficult without application of comprehensive\_wordlist.txt. 
+
+\section{Comparison of Three PVD Cracking}
+
+\subsection{Hashing Algorithms and Their Efficacy}
+In Windows 7, the NTLM hash function is utilized. This is an improvement over the LM hash function used in older Windows versions like Windows 2003. The LM hash, case insensitive and split into two parts, is less secure. Ubuntu uses the SHA-512 hashing algorithm, which proved to be more secure, with unique salts, improving security during hash collision attacks.
+
+\subsection{The Role of Salt in Password Security}
+When we include a unique/random data string to a password before hashing occurs, we call this salt. Windows 7 \& 2003 do not use salt. Instead, NTLM hashes were easily cracked with hybrid attacks. Ubuntu/Linux's use of SHA-512 hashes proved to be troublesome when utilizing pre-computed rainbow table attacks. Noteably, SHA-512 also ensures identical passwords generate different hashes.
+
+\subsection{Iteration Count as a Deterrent to Brute-Force Attacks}
+When we apply the hashing function a number of times during password hashing, we call this iteration count. Windows 7 \& 2003 systems do not employ iteration count in hashing. Ubuntu uses iterated hashing of 5000, which proved difficult to crack and required copious computation power.
+
+\subsection{Conclusion}
+Ubuntu/Linux PVD is the most difficult to crack. This is due to the use of a modern hashing algorithm, the addition of salt, and a high iteration count. The Windows systems proved to be less secure due to the lack of these security measures. This analysis underscores the critical importance of employing advanced hashing strategies, including the use of salt and high iteration counts, to bolster system security.
+\vfill 
+  \section*{Academic Integrity Pledge}
+   {\color{red}\textit{“This work complies with the JMU honor code. I did not give or receive unauthorized help on this assignment.”}}
+
+\end{document}\

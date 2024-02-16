@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc} % for Unicode input
+\usepackage[T1]{fontenc} % for font encoding
+\usepackage{lmodern} % Latin Modern font that supports the T1 encoding
+\usepackage{textcomp} % for additional symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{listings} % For code listing
+
+% Custom colors for code highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Style for code
+\lstset{
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+% Adjust margins as needed
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+\title{Linux File Permissions}
+\author{Abraham J. Reines}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Understanding Linux file permissions}
+
+\begin{enumerate}
+    \item \textbf{Can Alice read Bob's file \texttt{data.txt}? Why?}\\
+    Yes, because the permissions for \texttt{data.txt} are \texttt{-rw-r--r--}. The file is readable by others, which includes Alice.
+    
+    \item \textbf{Can Alice remove Bob's file \texttt{data.txt}? Why?}\\
+    No, because Alice does not have write permission on the parent directory \texttt{/cs/home/stu/bob}, which is necessary to remove a file.
+    
+    \item \textbf{Can Alice read Bob's file \texttt{secret.txt}? Why?}\\
+    No, because the permissions for \texttt{secret.txt} are \texttt{-rw-r------}. The file is only readable and writable by the owner, who is Bob.
+    
+    \item \textbf{Can Alice remove Bob's file \texttt{secret.txt}? Why?}\\
+    No, for the same reason as \texttt{data.txt}. Without write permissions on the containing directory, she cannot remove files within it.
+    
+    \item \textbf{When Bob creates a new file with command \texttt{echo “My Super Secret is b7d5d78shes” > mysecret.txt}, what are the full permissions of this file?}\\
+    The permissions would be \texttt{-rw-r--r--} because the umask defaults to \texttt{0022}, which subtracts write permissions for group and others from the default permissions of \texttt{666} for files.
+\end{enumerate}
+
+\section*{Setting Linux file permissions}
+
+\begin{enumerate}
+    \item \textbf{Can Bob change the permissions so that all other students in \texttt{csmajor} can read \texttt{data.txt}, but any other users who are not in \texttt{csmajor} cannot?}\\
+    Yes, Bob can execute \texttt{chmod 640 /cs/home/stu/bob/data.txt}. This sets read and write permissions for the owner, read for the group, and no permissions for others.
+    
+    \item \textbf{If Bob wants to set the default permission of his new files to be readable/writable by himself and the group, and readable by others, what commands should he use? Hint: use umask.}\\
+    Bob should use \texttt{umask 002}. This umask value will create files with permissions \texttt{664} (\texttt{rw-rw-r--}) and directories with permissions \texttt{775} (\texttt{rwxrwxr-x}).
+\end{enumerate}
+
+\section*{A more complex case}
+
+Alice needs to perform the following steps to set the correct file permissions for \texttt{treasure.txt}:
+
+\begin{enumerate}
+    \item Create a group named \texttt{treasure\_group} and add Bob to it.
+    \item Change the group ownership of \texttt{treasure.txt} to \texttt{treasure\_group}.
+    \item Set the file permissions so the owner and group have read and write permissions, but not execute permissions.
+    \item Utilize Access Control Lists (ACLs) to grant Charlie read permissions without granting him write permissions.
+    \item Ensure all other users have no permissions to \texttt{treasure.txt}.
+\end{enumerate}
+
+The following LaTeX listing provides the exact Linux commands Alice should execute:
+
+\begin{lstlisting}[language=bash]
+# Create a group for the treasure file and add Alice and Bob
+sudo groupadd treasure_group
+sudo usermod -a -G treasure_group alice
+sudo usermod -a -G treasure_group bob
+
+# Change group ownership of the file to treasure_group
+chgrp treasure_group treasure.txt
+
+# Set read and write permissions for the owner and group, and no permissions for others
+chmod 660 treasure.txt
+
+# If ACLs are enabled on the filesystem, set an ACL for Charlie to read
+setfacl -m u:charlie:r-- treasure.txt
+
+# Verify the ACL settings
+getfacl treasure.txt
+
+# Ensure the file is not executable by anyone
+chmod a-x treasure.txt
+\end{lstlisting}
+
+Alice should test these commands in her Linux environment to ensure they work as intended. If she encounters any issues, such as not having the required permissions or ACLs not being enabled, she will need to contact the system administrator for assistance.
+
+\end{document}

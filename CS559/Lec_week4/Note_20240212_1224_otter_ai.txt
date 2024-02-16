@@ -1,0 +1,469 @@
+Unknown Speaker  0:05  
+Okay, let's get started.
+
+Unknown Speaker  0:08  
+In this unit, we're going to talk about access control.
+
+Unknown Speaker  0:13  
+We will start with access control in general
+
+Unknown Speaker  0:24  
+we talk about OCD patient earlier.
+
+Unknown Speaker  0:27  
+There are two fundamental building blocks for system security. The first one is integral syndication after an NDA is also authenticated. The next one is authorization.
+
+Unknown Speaker  0:41  
+So the idea can be described in this slide. So here you have a piece of digital data. You want to protect it, how to protect the
+
+Unknown Speaker  0:53  
+you build a system run around that piece of data.
+
+Unknown Speaker  0:58  
+So anybody who want to access this piece of data, they have to pass the entity authentication chip by the system.
+
+Unknown Speaker  1:13  
+Of course, nothing is really perfect. NT two authentication is not perfectly yet.
+
+Unknown Speaker  1:19  
+In some situations, a bad guy may manage to get into the system and pass the authentication.
+
+Unknown Speaker  1:29  
+So in this case, you want some in depth protection, you do not want the bad guy to access all piece of information inside your system.
+
+Unknown Speaker  1:40  
+So here, you only enforce a certain line of defense authorization. So until authentication, is it the first line of defense authorization, it's the second line of defense
+
+Unknown Speaker  1:59  
+the access control problem is actually everywhere.
+
+Unknown Speaker  2:05  
+Indeed, almost all security problems can be reduced to access control.
+
+Unknown Speaker  2:14  
+So for example, an operating system level you may have an exclusive and release file this is operating system level access control.
+
+Unknown Speaker  2:27  
+For database management systems, we have very similar questions can pop read this database table? This is called the database related access control. We will study database related access control in a later unit.
+
+Unknown Speaker  2:47  
+For web application, we have very similar questions can Chani access to this web page? This is a web page web based access control.
+
+Unknown Speaker  2:58  
+So here we have very similar problem, just different format in different applications.
+
+Unknown Speaker  3:15  
+So as I said earlier, almost all security problems can be reduced access control.
+
+Unknown Speaker  3:21  
+You have read access control, which is about data confidentiality. You have rightly access control, which is about their integrity.
+
+Unknown Speaker  3:31  
+You have timely access control lists about availability.
+
+Unknown Speaker  3:39  
+So how to enforce access control on a single piece of data.
+
+Unknown Speaker  3:46  
+Now before we jump in to the details I want to emphasize this one.
+
+Unknown Speaker  3:54  
+So in general, how to protect a piece of data.
+
+Unknown Speaker  4:03  
+The way that we protect that piece of data depends on what platform or system exists around that piece of data.
+
+Unknown Speaker  4:14  
+If you didn't want to have a system around that piece of data, then the only way that you can protect that piece of data is through encryption.
+
+Unknown Speaker  4:27  
+Or contacts, data integrity mechanisms.
+
+Unknown Speaker  4:30  
+So for example, when you transfer a piece of data over a public channel to allow the user
+
+Unknown Speaker  4:39  
+the only way that you can protect another piece of data is Sukta. Coffee
+
+Unknown Speaker  4:45  
+is hot.
+
+Unknown Speaker  4:50  
+A certain situation if you do have a system around large piece of data, then the protection of another piece of data is relatively easier. Because here you can enforce entity authentication, you can enforce access control and run this piece of data in the system.
+
+Unknown Speaker  5:13  
+So for system security, this is how we protect that piece of data. So all concern in this unit in the access control unit is about how to use a system to protect a piece of data.
+
+Unknown Speaker  5:31  
+For Computer Security, the access control problem was first a study in 1970s when people build the Unix system
+
+Unknown Speaker  5:44  
+so back then, people try to answer the questions can answer read this file and print a file to this specific printer can answer read in this record of this database table.
+
+Unknown Speaker  5:57  
+So they study access control. In the context of operating system security and the database.
+
+Unknown Speaker  6:05  
+This is a bigger problem. For this problem. You can find many formats. To solve this problem. We want to generalize the problem so what's the generalization of access control problem?
+
+Unknown Speaker  6:21  
+First, we have a set of entities, this set of entities they want to access a set of subjects objects. So here the entries are called subjects. Subjects can be a person can also be a computer process.
+
+Unknown Speaker  6:41  
+We have resources resources are called Object resource include files, directories, and our resources such as memory and printers.
+
+Unknown Speaker  6:53  
+And we have to define access operations including reading, writing, appending, executing.
+
+Unknown Speaker  7:04  
+And we want to define rules to govern how entities access objects.
+
+Unknown Speaker  7:13  
+So at high level, these slides on the left hand side it shows the subjects on the right hand side shows objects, you can not allow subjects to access an object directory because otherwise it will cause big mess in the system. You need some entities sitting in the middle and they will mediate the access control.
+
+Unknown Speaker  7:40  
+So in general, we have multiple servers, we have a set of subjects we have set of objects served access operations, we have a set of rules.
+
+Unknown Speaker  7:54  
+And these concepts are being implemented an operating system windows by Unix
+
+Unknown Speaker  8:05  
+now there is a big question here.
+
+Unknown Speaker  8:08  
+Who set of rules to govern the way that subjects access objects
+
+Unknown Speaker  8:20  
+if the rules are set by the resource owner, then this type of access control is for discretionary access control. This one is kind of intuitive. I mean I own object. I should be able to set a rule who can access this object
+
+Unknown Speaker  8:41  
+so here for example, and this may create a file called finest dot txt. She can give Bob permission to ready.
+
+Unknown Speaker  8:51  
+So most commonly seen, access control flow rooms are in this category. discretionary access control.
+
+Unknown Speaker  9:01  
+So the basic idea here is that you created you only you can share it. It's up to you. It's up to the owner.
+
+Unknown Speaker  9:11  
+So most Windows systems, most earnings seasons, they adopt this model, discretionary access control, d a c.
+
+Unknown Speaker  9:24  
+Now, there's a second type of access control.
+
+Unknown Speaker  9:28  
+This one is kind of counterintuitive. So here the owner does not have the privilege to set the rules. It's the system who sets the rules. So because of this, this type of access control is for the mandatory access control.
+
+Unknown Speaker  9:49  
+AC
+
+Unknown Speaker  9:52  
+so here an example isn't it and it's me create a file finance dot txt.
+
+Unknown Speaker  10:00  
+But Ennis does not have privilege to share who can access this file. The system will set the security level for this file, the system will assign clearance for subjects.
+
+Unknown Speaker  10:13  
+So here, Bob will not be able to read a file. If his clearance is not high enough.
+
+Unknown Speaker  10:21  
+Bob gets his clearance from the system. The system says rules.
+
+Unknown Speaker  10:26  
+So here, it doesn't really matter what n is was even add is create a file and it's cannot assign read access to Bob.
+
+Unknown Speaker  10:37  
+This is not uncommon. Your daily life usually means that you create it. You don't own it. You cannot hear you. The system makes the decision.
+
+Unknown Speaker  10:51  
+Only a few versions of Windows a few versions needs adopt this policy. So usually for government information system for military information systems, they adopt this model.
+
+Unknown Speaker  11:06  
+So we just talked about
+
+Unknown Speaker  11:10  
+set of subjects, set of objects, set of access control operations, and how to implement these concepts in software.
+
+Unknown Speaker  11:20  
+What kind of data structures should be used in the implementation?
+
+Unknown Speaker  11:28  
+We have started the concept set is C as 515 in or any discrete mathematics course. So here we're talking about a sets, set of subjects, set of objects and set of access operations.
+
+Unknown Speaker  11:48  
+So from the data structure perspective
+
+Unknown Speaker  11:54  
+we can use two types of data structures to implement concepts The first one is called access control matrix. The second one is called Access Control Nice.
+
+Unknown Speaker  12:09  
+Example of access control matrix is just like this slide.
+
+Unknown Speaker  12:14  
+So here, you have set of subjects. So here each row is one subject, we have Alice, we have Bob of Chani. They have subjects.
+
+Unknown Speaker  12:28  
+We also have objects, resources, including files here. We have two objects stellarator TOC and word dot exe.
+
+Unknown Speaker  12:42  
+The sales of the table define permissions.
+
+Unknown Speaker  12:50  
+So for example, here in this specific example, and is can read and write salary dot DLC, and is can execute the word dot exe.
+
+Unknown Speaker  13:03  
+Bob can read the Salvatore DLC. Bob can also ask you what dot exe Chani on the other hand, does not have permissions on either of them.
+
+Unknown Speaker  13:17  
+So in this solution, this idea of access control matrix is straightforward. It's just table
+
+Unknown Speaker  13:27  
+and each cell in this table defines covered in this.
+
+Unknown Speaker  13:34  
+So where is this table stored?
+
+Unknown Speaker  13:37  
+By the operating system by the operating system?
+
+Unknown Speaker  13:41  
+So let's do an example. So here, my computer has 250,316 landfills and my computer has 10 users.
+
+Unknown Speaker  13:54  
+How many entries does an access control matrix have in this case?
+
+Unknown Speaker  14:01  
+Yes, number of rows times number of columns. So in this case, the number of rows is 10. The number of columns is 250,769.
+
+Unknown Speaker  14:13  
+This is a big, if you multiply them together, you have roughly 2.5 million cells in the table. So the access control matrix can go very big sometimes.
+
+Unknown Speaker  14:30  
+So can we improve it?
+
+Unknown Speaker  14:33  
+Sometimes yes, we can.
+
+Unknown Speaker  14:36  
+In some situations, the access control matrix table is actually kind of sparse. So for example here on this slide, we have 123456 subjects. And it's Bob Chani, Dave, Eve and Frank. We have two objects, salary dot voc, and a word dot exe.
+
+Unknown Speaker  15:01  
+In this specific application, only answering Bob they have permissions on these two objects.
+
+Unknown Speaker  15:08  
+The rest of
+
+Unknown Speaker  15:12  
+the table, the sales, they're just empty.
+
+Unknown Speaker  15:17  
+So here, we have tough entries the table, but only four have values.
+
+Unknown Speaker  15:26  
+So we can actually improve the efficiency of this matrix is staffed instead of storing the whole data structure as an access control matrix, we can store as NIST access control lists.
+
+Unknown Speaker  15:46  
+So here, we only store permission with the object. So for example, here for efficiency reasons, we stop permission on salary dot DLC, wastes, the file itself, was found within that and is has a written row permission and above only has written permission. Everybody else they don't have permission are salaried or DLC.
+
+Unknown Speaker  16:11  
+For what the DLC, we do the same thing which store permission here and is has asking permission. Pop has extra permission after else they don't have permission, or the exe.
+
+Unknown Speaker  16:26  
+This will save some storage space.
+
+Unknown Speaker  16:29  
+So this only works when the access control matrix is very sparse.
+
+Unknown Speaker  16:36  
+Now, so windows they use access control list
+
+Unknown Speaker  16:44  
+sometimes, sometimes it's very tedious to assign permissions to each individual user.
+
+Unknown Speaker  16:52  
+And it's error prone. Because if versus administrator, if you have to do this kind of permission signing all the time, you may make mistakes, to simplify things. Sometimes you can group users into groups. Then you signed permissions, not to individual users, but to group only users in the group, they will automatically have the permissions assigned to the group. So this was simplify the permission management support group based access control.
+
+Unknown Speaker  17:26  
+If you know, if you haven't run a Knicks boss before.
+
+Unknown Speaker  17:46  
+So for example, if you log into st or CS 30. Jimbo. Edu, you will load his net org computer science students. They are in group called CS major.
+
+Unknown Speaker  17:59  
+Then you can assign permissions to the CSBG group and all students will automatically get permission. So this was simplified for permission management and nilipie.
+
+Unknown Speaker  18:11  
+That's all I can say about access control in general.
+
+Unknown Speaker  18:45  
+Okay, let's get started.
+
+Unknown Speaker  18:47  
+Last time, we talked about the general concept about assess control. Before we move to the security models, we need to discuss more since about a month access control. So let's go further they
+
+Unknown Speaker  19:08  
+still, remember the concept of mandatory access control? What is it?
+
+Unknown Speaker  19:14  
+How is different from the discretion access control
+
+Unknown Speaker  19:22  
+for discretionary access control, the resource owner decide who can access the object Emanuela assessment. On the other hand, the system makes a decision. The system makes its decision based on labels.
+
+Unknown Speaker  19:39  
+So it gave all subjects a secure enable. It also gave all object security label.
+
+Unknown Speaker  19:47  
+So here, the ownership doesn't matter none of much.
+
+Unknown Speaker  19:53  
+Mandatory Access Control is widely used by military and government information system. I think many of you are in that category. So you may have already seen this kind of access control.
+
+Unknown Speaker  20:10  
+Mandatory Access Control requires information classification and clearance. So for subject, it has to give subject clearance for objects it has to categorize objects and assign classification
+
+Unknown Speaker  20:35  
+now the rationale behind information classification is not easy to demonstrate your commitment to security protection, you have know your assets.
+
+Unknown Speaker  20:45  
+Not all digital assets are the same. You have to characterize them you have to understand better
+
+Unknown Speaker  20:53  
+this will help you find the most critical, most sensitive information.
+
+Unknown Speaker  21:01  
+So for example, US government documents.
+
+Unknown Speaker  21:05  
+They're in different categories, including Unclassified, Sensitive, but unclassified. Confidential, secret and top secret.
+
+Unknown Speaker  21:19  
+So in this example of US government classified document, it was classified, but for political reasons, the White House declassified so you can see declassified and approved for release in 2004.
+
+Unknown Speaker  21:36  
+And in this declassification, not everything was released.
+
+Unknown Speaker  21:43  
+Some items are black cloud.
+
+Unknown Speaker  21:48  
+Now, question for you can you recover the blacked out words?
+
+Unknown Speaker  22:04  
+can recover them.
+
+Unknown Speaker  22:06  
+This will be good exercise.
+
+Unknown Speaker  22:13  
+Not so private industry information classification. It's not common because usually, there are only two types of documents for public use and for internal use.
+
+Unknown Speaker  22:36  
+Evil machine can be classified in terms of many criteria such as value, age, and personal association that kind of stuff. Have you ever watched a movie in the audience? The first one or the end of the movie? There's a scene shown here on the slide.
+
+Unknown Speaker  22:59  
+So here they are. Of course it's about government bureaucracy. So according to the movie, there are tons of tons of government secrets declassify classified.
+
+Unknown Speaker  23:13  
+And the story in a secret phrase. So there is a joke about a nice so GM officers, they tend to classify everything.
+
+Unknown Speaker  23:25  
+Why is that?
+
+Unknown Speaker  23:28  
+Because if they wrongfully class for anything, they do not have to pay any price. But if they declassified something in the wrong manner they will take the blame.
+
+Unknown Speaker  23:41  
+So they tend to classify everything
+
+Unknown Speaker  23:48  
+so how do you classify information and subjects?
+
+Unknown Speaker  24:03  
+A basic idea to classify subjects and objects isn't that to give them different security levels.
+
+Unknown Speaker  24:11  
+So skill levels are security attributes used to label subjects and objects as a basis for expressing security policies.
+
+Unknown Speaker  24:24  
+So security, denotes degree of sensitivity usually, security levels are in hierarchy.
+
+Unknown Speaker  24:39  
+So for example, the lowest level is classified above it is confidential. Above it again, is secret, then the most sensitive one is top secret.
+
+Unknown Speaker  24:58  
+So for classification
+
+Unknown Speaker  25:06  
+we have objects for clearance, we have subjects, this example of classification of subjects, objects, or objects. So here at the bottom is unclassified, then sensitive but unclassified, confidential Secret, Top secret.
+
+Unknown Speaker  25:32  
+Then for people for subjects, we give them clearance. So typical clearance is included Confidential, Secret, and top secret.
+
+Unknown Speaker  25:44  
+So for example, here and has top secret clearance, Bob and Charlie have secret clearance, and they've had confidential clearance.
+
+Unknown Speaker  25:58  
+Then we decide the system defined rules to decide what a subject can access an object or not.
+
+Unknown Speaker  26:12  
+It's a spring the idea was a concrete example.
+
+Unknown Speaker  26:17  
+So here
+
+Unknown Speaker  26:21  
+there are three document documents. Both of them carry the secret classification. One belongs to the finance department, the other belongs to the development department.
+
+Unknown Speaker  26:35  
+So the blue one is the finance department document that the red one is it a development department?
+
+Unknown Speaker  26:45  
+Document.
+
+Unknown Speaker  26:47  
+We'll have Bob. Bob is a financial analyst.
+
+Unknown Speaker  26:52  
+Bob has secret clearance. Channy is a developer Charlie has secret clearance to question for you.
+
+Unknown Speaker  27:03  
+Can Bob access the secret level? Financial document intuitively should Ababa be allowed to access this one?
+
+Unknown Speaker  27:18  
+Because above is a financial enemies purpose seeking nearness. So intuitively, Bob shouldn't be allowed to access the sacred level finance determine
+
+Unknown Speaker  27:31  
+a second question does it share with the system allow Bob to access the development document?
+
+Unknown Speaker  27:41  
+Bob has a secret clearance.
+
+Unknown Speaker  27:45  
+It's the same level as if document should the system allow Bob to access the development department document
+
+Unknown Speaker  27:59  
+if you only check a secured Nevel Yes, well shouldn't be allowed to read both The finest document and the development document, but is not a good idea.
+
+Unknown Speaker  28:15  
+If it's not a good idea, then what should we do about it?
+
+Unknown Speaker  28:21  
+I mean, Bob shouldn't be allowed to access the finest document that's reasonable because Bob needs to finish his job. But as Phil above, we love to read the development department. Bob has no business there. Bob is not a developer. So Bob, in theory, Bob should not be allowed to access the development document. But if you only check the second level, this one bubble will still be able to access the development document. So we need something else. So in addition to security level, we need something else that is something else is called a security category.
+
+Unknown Speaker  29:00  
+So we didn't only check the security level, we'll also check the security category.
+
+Unknown Speaker  29:08  
+So a security category is a long hierarchy grouping of entities to denote the degree of sensitivity. So for example, in addition to the non confidential confidential top secret notes, secured levels will also define categories in the same level such as development department, finance department.
+
+Unknown Speaker  29:37  
+So now you should document will have both a security level and a security category.
+
+Unknown Speaker  29:46  
+In a very similar manner, the security canines sign into the subject they have to attribute security level and security category.
+
+Unknown Speaker  29:58  
+So here to guarantee that in principle, we do not the system does not only check the security level, it also check the security category.
+
+Transcribed by https://otter.ai

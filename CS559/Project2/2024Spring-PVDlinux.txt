@@ -1,0 +1,40 @@
+root:$6$lhiUnAov$ao2OdiKQ/BmcD1VKHmFZq/W/lwHGJ6je/3u8fpeULStm57NE9GZKmIj4LmKmZwEaAtxdAVpjoUM1nSBG6wph31:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+bin:x:2:2:bin:/bin:/bin/sh
+sys:x:3:3:sys:/dev:/bin/sh
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/bin/sh
+man:x:6:12:man:/var/cache/man:/bin/sh
+lp:x:7:7:lp:/var/spool/lpd:/bin/sh
+mail:x:8:8:mail:/var/mail:/bin/sh
+news:x:9:9:news:/var/spool/news:/bin/sh
+uucp:x:10:10:uucp:/var/spool/uucp:/bin/sh
+proxy:x:13:13:proxy:/bin:/bin/sh
+www-data:x:33:33:www-data:/var/www:/bin/sh
+backup:x:34:34:backup:/var/backups:/bin/sh
+list:x:38:38:Mailing List Manager:/var/list:/bin/sh
+irc:x:39:39:ircd:/var/run/ircd:/bin/sh
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh
+libuuid:x:100:101::/var/lib/libuuid:/bin/sh
+syslog:x:101:103::/home/syslog:/bin/false
+sshd:x:102:65534::/var/run/sshd:/usr/sbin/nologin
+landscape:x:103:108::/var/lib/landscape:/bin/false
+messagebus:x:104:112::/var/run/dbus:/bin/false
+nobody:x:65534:65534:nobody:/nonexistent:/bin/sh
+mysql:!:105:113::/var/lib/mysql:/bin/false
+avahi:*:106:114::/var/run/avahi-daemon:/bin/false
+snort:*:107:115:Snort IDS:/var/log/snort:/bin/false
+statd:*:108:65534::/var/lib/nfs:/bin/false
+usbmux:*:109:46::/home/usbmux:/bin/false
+pulse:*:110:116::/var/run/pulse:/bin/false
+rtkit:*:111:117::/proc:/bin/false
+festival:*:112:29::/home/festival:/bin/false
+postgres:!:1000:1000::/home/postgres:/bin/sh
+nx:*:113:121:FreeNX Server,,,:/var/lib/nxserver/home/:/usr/bin/nxserver
+Morpheus:$6$ykumbyCz$kb1zUhrB3wROIN1uoI94gfmAMjlTeeVhKkEtEZHYeIFIqD6CBiAQAlFB9uqYHHVO1doCNJbV56tC4gJi/L0ng0:1001:1001::/home/morpheus:/bin/sh
+Neo:$6$t3Gdu5x7$aEjw5vu.AGGVcB3zTbWjg.wPeSBhYesRfNks4ZibDnT/jmSF1IAMus/KUVkAztrSxOjgVSV4m33nn4yKSZddF/:1002:1002::/home/neo:/bin/sh
+Trinity:$6$sDGKAO2Z$AUxpvvzjr.kuGMxNJLHzmhWAKUG9cNRjPU3wE/KiAiQqzAmjDuC1FuCEpoqaxQ1HnENp/ybtrMBJgeiZjdRz70:1003:1003::/home/trinity:/bin/sh
+Cypher:$6$lpWsfATN$JXV/A0Fa9HbcUp4MDz59OexJ2gn2zs1l5RJissox84mi6QcTdEMEou3vIfDl90zbdPGHjW0Krc21uUrUtpAJ21:1004:1004::/home/cypher:/bin/sh
+Smith:$6$m91MbVFW$/yNeEMIE.TnElNSskvcoq36Jj4tltbHUwILmW5BEiyxHLLkEfJxhG.ahjxhNNd72lLfye2b9ngvlve1gAO84j.:1005:1005::/home/smith:/bin/sh
+Cobb:$6$bF01XX6V$cDrQNji8z0Lz.kSvc.HhbdU5BkczAjeWC6h4XK1Yaz6RBYFULwVdn405I0dDmDc4cg9b7OVXe6ykttqRXJAxd1:1006:1006::/home/cobb:/bin/sh
+Arthur:$6$xmDmBDQd$R40xXJR8g9bEZzCeaeeu3K3hrCimrgcBbd3rr.SdH9q1AtsTXdQylaJhOQAk7Re6haLTs0Ryeeh5udzi0MQom.:1007:1007::/home/arthur:/bin/sh
