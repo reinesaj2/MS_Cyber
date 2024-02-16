@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{changepage}
+
+% Custom colors for code highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Style for Python code
+\lstset{
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\begin{document}
+
+\title{Project 5: Pig Latin Translator}
+\author{Abraham Reines}
+\date{\today}
+
+\maketitle
+
+\section{Description}
+This script implements a Pig Latin translator. The goal is to translate an English sentence into Pig Latin. Pig Latin is a language game where words are altered by a set of rules. If a word starts with a vowel, "yay" is added to the end. If a word starts with a consonant, all the consonants before the first vowel are moved to the end of the word and "ay" is added. The script uses a function called \texttt{pig\_latin} to perform the translation for a single word. It then uses another function called \texttt{translate\_to\_pig\_latin} to translate an entire sentence by splitting it into words and applying the \texttt{pig\_latin} function to each word. The translated sentence is printed as the output. The script utilizes string manipulation, loops, conditionals, and functions.
+
+\section{Code}
+\begin{lstlisting}
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jun 22 08:46:21 2023
+Modified on Wed Jun 22 10:00:00 2023
+@author: abrahamreines
+"""
+
+def pig_latin(word):
+    vowels = 'aeiou'
+    if word[0] in vowels:
+        return word + 'yay'
+    elif word[0] == 'y':
+        return word[1:] + word[0] + 'ay'
+    else:
+        consonant_cluster = ''
+        for letter in word:
+            if letter not in vowels:
+                consonant_cluster += letter
+            else:
+                break
+        return word[len(consonant_cluster):] + consonant_cluster + 'ay'
+
+def translate_to_pig_latin(sentence):
+    words = sentence.split()
+    pig_latin_words = [pig_latin(word.lower()) for word in words]
+    return ' '.join(pig_latin_words)
+
+# Ask the user for input
+user_input = input("Enter an English sentence: ")
+pig_latin_sentence = translate_to_pig_latin(user_input)
+print("Pig Latin translation:", pig_latin_sentence)
+\end{lstlisting}
+
+\section{Example Output}
+
+\begin{adjustwidth}{-4cm}{}\begin{verbatim}
+Enter an English sentence: write a program named pig.py that translates a string input by the user from english
+to pig latin
+Pig Latin translation: itewray ayay ogrampray amednay ig.pypay atthay anslatestray ayay ingstray inputyay byay
+ethay useryay omfray englishyay otay igpay atinlay
+\end{verbatim}\end{adjustwidth}
+
+\section{Code Explanation}
+The script defines two functions: \texttt{pig\_latin} and \texttt{translate\_to\_pig\_latin}. The \texttt{pig\_latin} function takes a word as input and applies the rules of Pig Latin translation to convert it. It checks if the word starts with a vowel, and if so, adds "yay" to the end. If the word starts with a consonant or "y", it moves the consonant cluster or "y" to the end and adds "ay". The \texttt{translate\_to\_pig\_latin} function takes a sentence as input, splits it into words, applies the \texttt{pig\_latin} function to each word, and joins the translated words back into a sentence.
+
+The script then prompts the user to enter an English sentence and calls the \texttt{translate\_to\_pig\_latin} function to translate it. The translated sentence is printed as the output.
+
+The script uses string manipulation, loops, conditionals, and functions to implement the translation logic and provide a user-friendly interaction.
+
+\end{document}

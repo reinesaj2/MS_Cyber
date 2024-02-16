@@ -1,0 +1,391 @@
+Unknown Speaker  0:05  
+Okay, let's get started.
+
+Unknown Speaker  0:07  
+In this unit, we're going to talk about UNIX file permissions.
+
+Unknown Speaker  0:15  
+So on Unix system, including Unix, everything is a file.
+
+Unknown Speaker  0:22  
+So we have all our files.
+
+Unknown Speaker  0:25  
+We have nicks and dings I just like shortcuts on the Windows platform.
+
+Unknown Speaker  0:32  
+We have hard links, we have soft links also have directories, directories, a special type of files that are still felt.
+
+Unknown Speaker  0:43  
+And we have blocked devices such as storage devices. Those C's are treated as files too.
+
+Unknown Speaker  0:51  
+And we have kept the devices such as notes for serial communications for video capture and for audio devices.
+
+Unknown Speaker  1:01  
+Those copper devices are also treated as a files and Unix platform.
+
+Unknown Speaker  1:13  
+So on a UNIX platform, if you run ls hyphen L, L means long these it will give you a list of files in the current directory. See example. So here in this example, we have six ordinary Java files
+
+Unknown Speaker  1:39  
+so how are these files stored on Unix platform? You might be thinking, well, how hard can it be because you have file name, you have data. So we just simply store the file name and data throughout any that's not how the Unix systems store files actually, along with the file name, this bit, there is a number called ILO number. This ILO number pointed to the actual iLoad
+
+Unknown Speaker  2:16  
+What's he said ILO II said I allowed you can find a permission piece who can access this file then you can find the address of the actual file data.
+
+Unknown Speaker  2:29  
+So here together the permission piece and the data addresses they are called the ILO.
+
+Unknown Speaker  2:37  
+So now you can see inside Unix system this is how a file is stored.
+
+Unknown Speaker  2:47  
+Any questions so far?
+
+Unknown Speaker  2:50  
+So let's do a concrete example. So here, I have Java file, the file names lb to eval to Java inside the java file, you can find a Java class for a public class LP to UVL blah, blah, blah.
+
+Unknown Speaker  3:07  
+On the Unix platform, how is this file stored?
+
+Unknown Speaker  3:13  
+Along with the file name, there is a loader number. The ILO renumber points with the ILO the restructure
+
+Unknown Speaker  3:24  
+Eastside ILO data structure, you can find a permission so here is hyphen RW hyphen, R hyphen, hyphen, hyphen, hyphen.
+
+Unknown Speaker  3:35  
+You can also find the data address, the data address points to the real data.
+
+Unknown Speaker  3:41  
+So this example shows how a file is stored on a UNIX platform.
+
+Unknown Speaker  3:52  
+So what is the heart of Nick?
+
+Unknown Speaker  3:56  
+This slide we know how a file LP to EAL to the Java install.
+
+Unknown Speaker  4:03  
+How to Create a hunting three on a UNIX platform. Hardening is critical by command command is ln LP to UVA outdoor Java, then space then the new hardening claim here is called LP sui UVA outdoor Java
+
+Unknown Speaker  4:25  
+EE site niche Unix system actually you can find found them LPs, three ETL to the Java along with it is a new, it's the same I load a number. So same ILO number. So you point to the existing file. I load number LP to EV else.
+
+Unknown Speaker  4:49  
+I load a number. So here same I load but different found a different file name. So if you run ls hyphen, l you lose like a you have two files but actually, inside the system boasts file names. They share the same idle number. So if you remove one file then the hardening will not exist anymore.
+
+Unknown Speaker  5:22  
+So a hardening shares the same permission as an original file because they share the same iLoad you said the iLoad you can find permission piece. So this year, same permission
+
+Unknown Speaker  5:39  
+and Unix system there is a restriction are harmonic the hardening and the original file must exist on the same file system and the source file must exist. If you remove source file, then the hardening are not exist anymore.
+
+Unknown Speaker  6:00  
+And posting so far.
+
+Unknown Speaker  6:09  
+The next have have found is a softening.
+
+Unknown Speaker  6:14  
+So here we have regular file LP to UVA auto Java, what is a softening, softening?
+
+Unknown Speaker  6:23  
+How to Create a softening.
+
+Unknown Speaker  6:26  
+The way to create a softening is still run out in command. But here you specify an option argument hyphen S dash s.
+
+Unknown Speaker  6:38  
+With this command, you create a new file.
+
+Unknown Speaker  6:42  
+But this new file actually points to the same data. So here within this command, you create a file name LP for EAL to the Java. It has its own idol number, a different item number.
+
+Unknown Speaker  6:57  
+Each side is oh item number. It has its own permission bits.
+
+Unknown Speaker  7:04  
+It also has its own data address, but each side is data. It actually points to the existing file.
+
+Unknown Speaker  7:13  
+To know now you can see that the softening has its own set of iLoad its own self data. Of course the data points to is easily fall.
+
+Unknown Speaker  7:26  
+So that's the difference. Between softening and hardening. Hardening shears the same I load but a softening has its own permissions its own idle number.
+
+Unknown Speaker  7:41  
+If you compare a soft link a hardening your load is not a soft link use more storage spaces. Why is that? Because it has its own permission piece. It has his own data address, it has all access to data.
+
+Unknown Speaker  7:59  
+So for softening, if you remove the source file, the softening can't actually exist on its own. Of course, he has no data because he is data point to the source value of the source value removed has no data but the file itself is there the file name and permissions they are there
+
+Unknown Speaker  8:32  
+so for a Unix file, what kind of permissions are we talking about?
+
+Unknown Speaker  8:41  
+Of course, file, the most important part is data.
+
+Unknown Speaker  8:46  
+You want to be able to read the data, you want to be able to read through the data. So you have to read permission, you have to write permission. Sometimes, if the file is a problem, then you may have the executable permission what this file is executable or not.
+
+Unknown Speaker  9:08  
+So read, write and access the file.
+
+Unknown Speaker  9:14  
+There are three groups first, can only read a file can only write a file to own a SQL file. So you have one set of permissions for the owner.
+
+Unknown Speaker  9:24  
+You have a second set of permissions for group. So the group has read rarely ask permission to and the third set of permissions. There are about other users in the system.
+
+Unknown Speaker  9:41  
+So if you run command ls hyphen L.
+
+Unknown Speaker  9:45  
+You will find all these permissions. So here on this slide, the Files Owner is x one for the Faust group is the students duck students.
+
+Unknown Speaker  10:05  
+And needing hyphen means that this is a regular file then follows for following each other permission piece for the owner. So here the owner can read in a file the owner can write a file for the owner cannot ask you to file because the file is in regular Java source code file for all users Unigroup.
+
+Unknown Speaker  10:31  
+They can read a file, but they cannot write or ask you to file according to the permissions or our users in the same system. They can read the file but they cannot write a file they cannot ask you to the file
+
+Unknown Speaker  10:51  
+know for most Unix system you can actually change the ownership of file. This is done through a command called Change owner.
+
+Unknown Speaker  11:04  
+So here when you run command and you're gonna platform, you just run ch o tablet and then the new owner and the founder you should run this command and if the current owner of the file then the new owner will be set.
+
+Unknown Speaker  11:21  
+You can also change it group of file.
+
+Unknown Speaker  11:25  
+So what's the command? Change Group C H GRP. Then the new group lame then you could define it. If you'd run this command, the group of nerve cell will be changing.
+
+Unknown Speaker  11:43  
+So for each set of permissions on a UNIX platform, you have read permission. You have read permission, you have asked for permission.
+
+Unknown Speaker  11:52  
+For each single permission. You can either take the arm with head off, say two states 01.
+
+Unknown Speaker  12:01  
+As a result, for each set of permissions, we can represent repeats, repeat, repeat, and ask repeat. Each of these fields can be one or zero.
+
+Unknown Speaker  12:13  
+So if you see 00 jello means that the real permission is turned off the right permissions turned off. The permissions also turned off.
+
+Unknown Speaker  12:22  
+001 means that the SQL permission is 10 010 means the right permissions 10 011 means that the right permission and ask for permissions are turned on.
+
+Unknown Speaker  12:38  
+One gel gel means that only the RIP machine can continue.
+
+Unknown Speaker  12:43  
+So we have eight different types of combinations. 111 means that this file is readable and this file is writable this file is executable.
+
+Unknown Speaker  12:56  
+So firstly, this we can represent as a decimal number for seven. Seven is a 11117 means that these files are readable and these files are available in these files. So six, six is 110.
+
+Unknown Speaker  13:17  
+To six means that these files right readable writable but not as good as 505 Five, decimal five the spiral representation is 101.
+
+Unknown Speaker  13:32  
+So nice file is readable. This file is as good.
+
+Unknown Speaker  13:39  
+So far, so good.
+
+Unknown Speaker  13:41  
+So we'll talk about file pages, notes. These are straightforward.
+
+Unknown Speaker  13:47  
+Now let's move to the next topic is interrupted permissions.
+
+Unknown Speaker  13:52  
+Keep in mind that Unix platform directories are just special type of files.
+
+Unknown Speaker  14:01  
+So a directory is just a file container.
+
+Unknown Speaker  14:04  
+You can send lots of files
+
+Unknown Speaker  14:09  
+so in this example, the container has three files abc.
+
+Unknown Speaker  14:15  
+Now what I'm going to do which is container naturally how will you do list items inside container.
+
+Unknown Speaker  14:29  
+Of course, naturally, you may want to lease the items in the container.
+
+Unknown Speaker  14:36  
+This permission is called read permission.
+
+Unknown Speaker  14:42  
+So you want a nice, nice the content of file content directory. The files in this directory is ls l this is about the read permission of a directory.
+
+Unknown Speaker  14:53  
+Sometimes, you may want to add a new item to the directory. You may want to remove item from the pay you may want to rename files interrupts This is about via the permission of directory.
+
+Unknown Speaker  15:09  
+The third operation you may want to do which is to go into the directory this permission is called execute permission of therapy. So here we're redefining the directory asking permission for directory will run the execute permission which means that you can run command cd to go into the directory you can enter the directory
+
+Unknown Speaker  15:45  
+so here, let me summarize a little bit. The real permission our directory means that you can list files in a directory needs permission has nothing to do with the permissions on the files.
+
+Unknown Speaker  15:59  
+So you do not need to access the files ie Ultra nice the files in the directory.
+
+Unknown Speaker  16:26  
+Now also keep in mind the permissions of a directory are not inherited by his files or subtopics.
+
+Unknown Speaker  16:36  
+So this is very important.
+
+Unknown Speaker  16:39  
+Which means that directories permission can be very different from the permissions of its subdirectories.
+
+Unknown Speaker  16:47  
+Those are two things.
+
+Unknown Speaker  16:51  
+So in this example if it drops permissions, if directors permission is hyphen nabla x what does that mean?
+
+Unknown Speaker  17:05  
+Can you run ls hyphen l only directory because the real machine is turned off, which means that you cannot miss files in the directory.
+
+Unknown Speaker  17:18  
+On the other hand you have the right permissions on a directory
+
+Unknown Speaker  17:25  
+which means that if you know a file name, even though a file name you can actually remove the file from GOP if you do not know the file name, then you will not be able to do it. But if you do note the file name then you can remove it
+
+Unknown Speaker  17:50  
+so I want to remind you and Unison a nice platform to drop the permissions on your party from regular file permissions.
+
+Unknown Speaker  18:07  
+So the read permissions on delta means that you can access the names of the files in the directory you can lease them.
+
+Unknown Speaker  18:23  
+Extra permissions means that you can actually get the ILO number of the file. If you have either a number of the file you can actually find the file you can find located you can locate it. So the read permission of a directory means that you can get the file names you can miss them.
+
+Unknown Speaker  18:45  
+The extra permission to empty means that you can find iLoad a number of nodes files
+
+Unknown Speaker  19:02  
+on this slide, this directory directory has three descriptor HUD slave house ABC. But if you don't read the file a then you need to read permissions on a file or directory because here you have to access iLoad yourself.
+
+Unknown Speaker  19:24  
+If you want to write permission to file
+
+Unknown Speaker  19:31  
+if you want to read through the file that you need while on the file itself
+
+Unknown Speaker  19:41  
+so let me summarize it on this slide. You haven't found
+
+Unknown Speaker  19:49  
+it file has his file name has a lot of lumber has a lot of stata you don't get the file names. Then you need to read the permissions on the directory.
+
+Unknown Speaker  20:02  
+If you only find the inode number, number of file you need execute permissions on the directory.
+
+Unknown Speaker  20:12  
+Once you have the I know number then you can find iLoad
+
+Unknown Speaker  20:24  
+so this one shows you a concrete example.
+
+Unknown Speaker  20:28  
+So here you have five lb to Eve A L dot java.
+
+Unknown Speaker  20:33  
+If you won't find this file name in the directory, you need to read permissions on the directory
+
+Unknown Speaker  20:42  
+if you want to find the inode number of this file, you need to ask permissions and directory
+
+Unknown Speaker  20:52  
+only needs to perform you can change the file permissions, how to do that this command called change mode C H M od
+
+Unknown Speaker  21:04  
+because most Unix and Unix systems they're based on the discretion access control, only the owner can run this command.
+
+Unknown Speaker  21:15  
+So for example, you can run command C H M od 700 then the file name 700. Here represent permissions. Seven riffs in the permissions fourth owner. Zero means represent the permissions for the group the RS zero means represents the permissions for all our users. So servant is 111 so the owner can really can write it can execute a file. Zero means 000. So all other users in the group cannot read it. cannot write a cannot ask the artists elements jealous jealous jealous means all other users in the system cannot really cannot write it cannot as good.
+
+Unknown Speaker  22:05  
+Is that clear?
+
+Unknown Speaker  22:07  
+If it's too fast, then you can slow down a little bit. We watch the video then try to understand the sound example.
+
+Unknown Speaker  22:16  
+So how about it or not command changing mode 660 then the file name after you run this command, what's the permission of MS file
+
+Unknown Speaker  22:36  
+and the owner ready kind of users in the group already? Can all our users ready you should be able to answer the questions if you know what's going on here.
+
+Unknown Speaker  22:52  
+So here a third example is change.
+
+Unknown Speaker  22:58  
+Mode 750 my file names
+
+Unknown Speaker  23:04  
+Okay, so I'm Unix.
+
+Unknown Speaker  23:09  
+When you create a new file, what's the default permission to raise the default permission and the nice default permission can be modified
+
+Unknown Speaker  23:19  
+the command to modify the default permission is called you must use numbers.
+
+Unknown Speaker  23:26  
+So basically, you first define your default permission. Then you subtract seven from you subtract the default permission from seven you get the you mask the number to calculate the sample. You must so let's see you have you want the owner to read write and executed. So for the permission is 1117 for the same file, you want to look for members to read an ASCII ASCII code but not write it. So the permission will be 101 for group members.
+
+Unknown Speaker  24:12  
+101 is five for our users you want to read and ask for permission. So here again, for all our users, the permission is 101 which is five.
+
+Unknown Speaker  24:30  
+So how to get this kind of permissions for this file, which you must come up.
+
+Unknown Speaker  24:40  
+We know that for the owner you want the permission to be one on one. For all article comes. You want permission to be 101 for all artists in the system, you want to be 101.
+
+Unknown Speaker  24:58  
+So for ona permission is seven, seven minus seven, you get a zero, you get a deal for all our groups, the permissions five, seven minus five equals two.
+
+Unknown Speaker  25:15  
+for all users, you want permission to be 1110. Why is five, seven minus five?
+
+Unknown Speaker  25:23  
+So your umask number is zero to two. So when you run it, you must command. You just typing, you must space, zero to two.
+
+Unknown Speaker  25:36  
+Does that make sense. That's how you max is defined is defined this way, we just need to follow the rules to get what they want.
+
+Unknown Speaker  26:02  
+So yes, I'm Roy on the Unison news platform.
+
+Unknown Speaker  26:06  
+Nice commands are related to permissions. So the first one is a hyphen, least LS hyphen L.
+
+Unknown Speaker  26:15  
+The next one is changing mode.
+
+Unknown Speaker  26:19  
+The next one is changing owner ch o wn.
+
+Unknown Speaker  26:23  
+new owner, then the file name and change a group of file.
+
+Unknown Speaker  26:30  
+And this first one is called you must when you create a new file What's the default permissions on a new file?
+
+Unknown Speaker  26:44  
+Nice is set up by this command, you must.
+
+Transcribed by https://otter.ai
