@@ -29,7 +29,7 @@ git commit -m "Update .gitignore" || true # Proceed even if no changes
 # Check for any changes or new files
 if git status --porcelain | grep -q "^??\|^ M"; then
     # Add all new and changed files to the git index, respecting .gitignore rules
-    git add --all --verbose
+    git add . --verbose
     # Commit the changes with a current timestamp message
     COMMIT_MESSAGE="School Commit $(date '+%Y-%m-%d %H:%M:%S')"
     git commit -m "$COMMIT_MESSAGE"
