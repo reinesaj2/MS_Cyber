@@ -53,7 +53,7 @@
 \maketitle
 
 \begin{abstract}
-This report explains the process of executing a program intended to demonstrate the forking of processes in a UNIX environment. Running a C program to create multiple processes using the forking command and system calls facilitated an undertanding of differences between on-screen and redirect output to files with and without the use of \texttt{fflush(stdout)}. The findings demonstrate the technicalities of process managemetn in concurrent systems. This draws attention to the use of buffer management for output behavior. 
+This report explains the process of executing a program intended to demonstrate the forking of processes in a UNIX environment. Running a C program to create multiple processes using the forking command and system calls facilitated an undertanding of differences between on-screen and redirect output to files with and without the use of \texttt{fflush(stdout)}. The findings are the technicalities of process managemetn in concurrent systems. This is a good example of the use of buffer management in output behavior. 
 \end{abstract}
 
 \section{Introduction}
@@ -63,11 +63,11 @@ The process of forking is fundamental in UNIX and POSIX-compliant operating syst
 The C program is compiled and executed on a UNIX system. The output is observed on-screen, redirected to a file, and appended to another file to analyze the behavior of process output under different conditions.
 
 \section{Code Explanation}
-The provided C program\footnote{See next page for the full code listing.} utilizes the \texttt{fork()} system call, which is fundamental for creating child processes in UNIX. When \texttt{fork()} is called, the current process is duplicated, creating a child process with a new process ID. The child process receives a copy of the parent's memory, but as execution continues, their states may diverge. The \texttt{getpid()} and \texttt{getppid()} functions retrieve the process ID and parent process ID, respectively, which are used in the output to track process lineage. The use of \texttt{fflush(stdout)} ensures that the standard output buffer is flushed immediately, affecting the order and visibility of the output across different processes.
+The C program \footnote{See next page for the full code listing.} uses the \texttt{fork()} call. This is fundamental in craeting child processes in UNIX. \texttt{fork()} call results in the current process being duplicated. This creates a child process and a new process ID. The child process inherents a copy of the parent's memory. Their states may diverage as execution progresses. \texttt{getpid()} and \texttt{getppid()} functions find the process ID for parent and child processes, and place the IDs in the output so the process lineage can be tracked. \texttt{fflush(stdout)} makes sure the output buffer is flushed nice and fast, affecting the order and visibility of the output across different processes.
 
 \newpage
   \subsection{With fflush}
-The use of fflush(stdout) ensures that the output buffer is flushed after each print statement, which affects how often the output is written to the terminal or file. *See next page for code. 
+The use of fflush(stdout) ensures that the output buffer is flushed after each print statement, which affects how often the output is written to the terminal or file. 
 
 \lstinputlisting[language=C]{forking.c}
 
@@ -99,7 +99,7 @@ This section will include the screenshots of the terminal output and the content
 In output buffering, this compares terminal and file outputs with and without the use of \texttt{fflush}. \texttt{fflush} results in immediate output to the terminal, while without \text{fflush}, the output is buffered, leading to a non-deterministci order in terminal output. Buffered I/O may lead to race conditions. 
 
 \section{Conclusion}
-The experiment demonstrates the impact of the fork system call on process creation and management. It also highlights the role of output buffering in the visibility of print statements to the terminal and files.
+This excersize shows the impace of the fork system call on process craetion and managment. It also highlights the orole of output buffering int the visibilty of print statemtents to the terminal and files. 
 
 \vfill
   \section*{Academic Integrity Pledge}
