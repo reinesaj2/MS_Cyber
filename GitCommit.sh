@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Author: ByteMeXpert
-# Date: $(date '+%Y-%m-%d')
-
 # Ensure script execution halts on the first error
 set -e
 
@@ -30,7 +27,7 @@ git commit -m "Update .gitignore" || true # Proceed even if no changes
 find . -name '._*' -exec git rm -f {} \;
 
 # Commit the removal of '._*' files
-git commit -m "Remove all files starting with ._"
+git commit -m "Removing files starting with ._ $(date '+%Y-%m-%d %H:%M:%S')"
 
 # Check for any changes or new files
 if git status --porcelain | grep -q "^??\|^ M"; then
