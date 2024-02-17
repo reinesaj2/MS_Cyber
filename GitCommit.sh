@@ -29,12 +29,6 @@ fi
 # Commit the .gitignore changes if there are any
 #it diff-index --quiet HEAD || git commit -m "Update .gitignore $DATE" --author "$AUTHOR"
 
-# Find and remove all files that start with '._' and stage the removal
-find . -name '._*' -exec git rm --cached {} \;
-
-# Stage all changes forcibly, including untracked and ignored files
-git add --force .
-
 # Commit the removal of '._*' files if there are any
 git diff-index --quiet HEAD || git commit -m "Removing files starting with ._ $DATE"
 
@@ -59,6 +53,15 @@ if ! git rev-parse --verify main > /dev/null 2>&1; then
 fi
 git fetch origin main
 git branch --set-upstream-to=origin/main main
+
+# Push the changes to the remote repository
+git push -u origin main
+
+# Find and remove all files that start with '._' and stage the removal
+find . -name '._*' -exec git rm --cached {} \;
+
+# Stage all changes forcibly, including untracked and ignored files
+git add --force .
 
 # Push the changes to the remote repository
 git push -u origin main
