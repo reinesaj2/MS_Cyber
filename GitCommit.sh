@@ -29,9 +29,6 @@ fi
 # Commit the .gitignore changes if there are any
 #it diff-index --quiet HEAD || git commit -m "Update .gitignore $DATE" --author "$AUTHOR"
 
-# Commit the removal of '._*' files if there are any
-git diff-index --quiet HEAD || git commit -m "Removing files starting with ._ $DATE"
-
 # Add all new and changed files to the git index, respecting .gitignore rules
 git add . --all --verbose
 
@@ -62,6 +59,9 @@ find . -name '._*' -exec git rm --cached {} \;
 
 # Stage all changes forcibly, including untracked and ignored files
 git add --force .
+
+# Commit the removal of '._*' files if there are any
+git diff-index --quiet HEAD || git commit -m "Removing files starting with ._ $DATE"
 
 # Push the changes to the remote repository
 git push -u origin main
