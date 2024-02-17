@@ -88,6 +88,21 @@ Commenting out the fflush(stdout) statement changes the program's behavior due t
   \section{Results and Analysis}
 This section will include the screenshots of the terminal output and the contents of the output files to illustrate the effects of forking and output buffering.
 
+%\newpage
+  \subsection{Terminal Output with fflush}
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Screenshot 2024-02-16 at 10.49.48 AM.png}
+    \caption{Terminal output when fflush is used.}
+    \end{figure}
+
+\subsection{Terminal Output without fflush}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Screenshot 2024-02-16 at 10.50.28 AM.png}
+\caption{Terminal output when fflush is not used.}
+\end{figure}
+
 \subsection{Text File Output with fflush}
 \begin{figure}[h]
 \centering
@@ -104,64 +119,63 @@ This section will include the screenshots of the terminal output and the content
   \end{figure}
 
 \newpage
-  \subsection{Terminal Output with fflush}
-    \begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{Screenshot 2024-02-16 at 10.49.48 AM.png}
-    \caption{Terminal output when fflush is used.}
-    \end{figure}
-
-\subsection{Terminal Output without fflush}
+\subsection{File Output appended with fflush}
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Screenshot 2024-02-16 at 10.50.28 AM.png}
-\caption{Terminal output when fflush is used.}
+\includegraphics[width=16cm]{Screenshot 2024-02-17 at 9.23.19 AM.png}
+\caption{File output when fflush is used.}
+\end{figure}
+
+\newpage
+\subsection{File Output appended without fflush}
+\begin{figure}[h]
+\centering
+\includegraphics[width=14cm]{Screenshot 2024-02-17 at 9.23.39 AM.png}
+\caption{File output when fflush is not used.}
 \end{figure}
 
 \newpage
   \subsection{Discussion}
 The C program executed using the \texttt{fork()} system call on our machine. The behavior/output of the script is varied, based on \texttt{fflush(stdout)}, and the redirection methods we used. 
 
-When \texttt{fflush(stdout)} was included, the output was consistently flushed to the terminal or file, ensuring the "I'm Alive!" message from both the parent and child processes was displayed immediately on our machine. The total count of displayed messages was 15 when output to the terminal and directed to a file with ">\texttt{output.txt}". When appending to a file multiple times using ">>", the count varied due to the asynchronous nature of process scheduling and the buffering of output streams on our machine.
+When \texttt{fflush(stdout)} was included, the output was consistently flushed to the terminal or file, ensuring the "I'm Alive!" message from both the parent and child processes was displayed immediately on our machine. The total count of displayed messages was \textit{14} when output to the terminal and directed to a file with "\texttt{>output.txt}". When appending to a file multiple times using "\texttt{>>}", the count did not vary; remaining \textit{14} lines.
 
-When \texttt{fflush(stdout)} is included in the execution, the output is supposed to be consistently flushed to the terminal/file we redirect to. This way, the "I'm Alive!" message from both the parent and child processes are displayed immediately. When appending to the output file multiple times, using ">>", the count varied. The asynchronous nature in this process scheduling and the buffering of output may play a role in this variation in output. 
+Without \texttt{fflush(stdout)}, the behavior was different on our machine. The output was buffered, creating an inconsistent/incomplete output message.This is due to the buffer not being flushed immediately, but rather automatically, when the program is terminated and/or the buffer is filled. The terminal output seemed to be \textit{14} lines, but the redirected/appended output was longer, about \textit{24} lines...
 
-Without \texttt{fflush(stdout)}, the behavior was different on our machine. The output was buffered, creating an inconsistent/incomplete output message.This is due to the buffer not being flushed immediately, but rather automatically, when the program is terminated and/or the buffer is filled.
-
-These variations show the effect of buffering in forking in our experiment. The parent and child processes have separate buffers when \texttt{fflush(stdout)} is ommitted. The \texttt{fflush(stdout)} line is important for predictable output in concurrent process execution. The disscrepancies between different execution environments (stu machine vs. other Linux mashines) further underscore the influence we experience when the operating system's process scheduling is working on our machine.
+These variations show the effect of buffering in forking in our assignment. The parent and child processes have separate buffers when \texttt{fflush(stdout)} is ommitted. The \texttt{fflush(stdout)} line is important for predictable output in concurrent process execution. The disscrepancies between different execution environments (stu machine vs. other Linux mashines) further underscore the influence we experience when the operating system's process scheduling is working on our machine.
 
 \subsection{With \texttt{fflush(stdout)}}
 The program was run with the \texttt{fflush(stdout)} statement included, which forces the buffer to send the output to the terminal or file immediately. The counts for the display of "I'm Alive!" are as follows:
 \begin{itemize}
-  \item Displayed on-screen: 15 times.
+  \item Displayed on-screen: 14 times.
   \item Redirected to a file using \texttt{>} operator: 14 times, as confirmed by \texttt{output.txt}.
-  \item Appended to a file using \texttt{>>} operator, twice: 42 times, aligning with expectations for two sequential appends.
+  \item Appended to a file using \texttt{>>} operator, thrice: 42 times, aligning with expectations for two sequential appends.
 \end{itemize}
 
 \subsection{Without \texttt{fflush(stdout)}}
 Omitting \texttt{fflush(stdout)}, hence relying on the system's buffering, led to the following outcomes:
 \begin{itemize}
-  \item Displayed on-screen: 16 times.
-  \item Redirected to a file using \texttt{>} operator: 21 times, as recorded in \texttt{output\_no\_fflush.txt}.
-  \item Appended to a file using \texttt{>>} operator, twice: A varying larger number of messages were captured, suggesting the system's buffer was not flushed upon each program completion.
+  \item Displayed on-screen: 14 times.
+  \item Redirected to a file using \texttt{>} operator: 24 times, as recorded in \texttt{output\_no\_fflush.txt}.
+  \item Appended to a file using \texttt{>>} operator, thrice: A varying larger number of messages were captured, suggesting the system's buffer was not flushed upon each program completion.
 \end{itemize}
 
 \subsection{Terminal Output with \texttt{fflush(stdout)}}
-The terminal output displayed a total of 15 "I'm Alive!" messages, indicating the buffer was flushed correctly after each message.
+The terminal output displayed a total of 14 "I'm Alive!" messages, indicating the buffer was flushed correctly after each message.
 
 \subsection{File Output with \texttt{fflush(stdout)}}
-The file \texttt{output.txt} contained 15 messages, consistent with the terminal output and indicative of immediate flushing to the file.
+The file \texttt{output.txt} contained 14 messages, consistent with the terminal output and indicative of immediate flushing to the file.
 
 \subsection{Terminal Output without \texttt{fflush(stdout)}}
-A total of 16 messages were output to the terminal, suggesting some messages were not immediately flushed and were potentially lost due to the program's termination before the buffer was automatically flushed.
+A total of 14 messages were output to the terminal, suggesting some messages were not immediately flushed and were potentially lost due to the program's termination before the buffer was automatically flushed.
 
 \subsection{File Output without \texttt{fflush(stdout)}}
-The file \texttt{output\_no\_fflush.txt} recorded 21 messages, more than the terminal output, which could be attributed to the file buffer being filled and flushed automatically, as apposed to immdeiatly, before the program's completion, thereby capturing more messages.
+The file \texttt{output\_no\_fflush.txt} recorded 24 messages, more than the terminal output, which could be attributed to the file buffer being filled and flushed automatically, as apposed to immdeiatly, before the program's completion, thereby capturing more messages.
 
 \subsection{Appending the Output}
 The consistent number of lines when appending with \texttt{fflush(stdout)} indicates the output buffer is flushed to the file immediately. Every "I'm Alive!" message is written to the file before the next iteration of the loop begins. 
 
-An inconsistent number of lines when appending without fflush(stdout) indicates the buffer is not being flushed immediately. 
+An inconsistent number of lines, between terminal and appended file, when appending without fflush(stdout), indicates the buffer is not being flushed immediately. 
 
 \section{Conclusion}
 This excersize shows the impace of the fork system call on process craetion and managment. It also highlights the orole of output buffering int the visibilty of print statemtents to the terminal and files. 
