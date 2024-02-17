@@ -26,6 +26,12 @@ append_gitignore "._*"
 git add .gitignore
 git commit -m "Update .gitignore" || true # Proceed even if no changes
 
+# Find and remove all files that start with '._'
+find . -name '._*' -exec git rm -f {} \;
+
+# Commit the removal of '._*' files
+git commit -m "Remove all files starting with ._"
+
 # Check for any changes or new files
 if git status --porcelain | grep -q "^??\|^ M"; then
     # Add all new and changed files to the git index, respecting .gitignore rules
