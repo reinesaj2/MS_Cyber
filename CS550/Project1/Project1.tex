@@ -107,7 +107,7 @@ This section will include the screenshots of the terminal output and the content
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{output_with_fflush.png}
-\caption{Terminal output when fflush is used.}
+\caption{File Output when fflush is used.}
 \end{figure}
 
 \newpage
@@ -115,7 +115,7 @@ This section will include the screenshots of the terminal output and the content
   \begin{figure}[h]
     \centering
     \includegraphics[width=17cm]{output_no_fflush.png}
-    \caption{Terminal output when fflush is not used.}
+    \caption{File Output when fflush is not used.}
   \end{figure}
 
 \newpage
@@ -138,9 +138,9 @@ This section will include the screenshots of the terminal output and the content
   \subsection{Discussion}
 The C program executed using the \texttt{fork()} system call on our machine. The behavior/output of the script is varied, based on \texttt{fflush(stdout)}, and the redirection methods we used. 
 
-When \texttt{fflush(stdout)} was included, the output was consistently flushed to the terminal or file, ensuring the "I'm Alive!" message from both the parent and child processes was displayed immediately on our machine. The total count of displayed messages was \textit{14} when output to the terminal and directed to a file with "\texttt{>output.txt}". When appending to a file multiple times using "\texttt{>>}", the count did not vary; remaining \textit{14} lines.
+When \texttt{fflush(stdout)} was included, the output was consistently flushed to the terminal or file, ensuring the "I'm Alive!" message from both the parent and child processes was displayed immediately on our machine. The total count of displayed messages was \textit{14} when output to the terminal and directed to a file with "\texttt{> output.txt}". When appending to a file multiple times using "\texttt{>>}", the count did not vary; remaining \textit{14} lines.
 
-Without \texttt{fflush(stdout)}, the behavior was different on our machine. The output was buffered, creating an inconsistent/incomplete output message.This is due to the buffer not being flushed immediately, but rather automatically, when the program is terminated and/or the buffer is filled. The terminal output seemed to be \textit{14} lines, but the redirected/appended output was longer, about \textit{24} lines...
+Without \texttt{fflush(stdout)}, the behavior was different on our machine. The output was buffered, creating an inconsistent output message.This is due to the buffer not being flushed immediately, but rather automatically, when the program is terminated and/or the buffer is filled. The terminal output seemed to be \textit{14} lines, but the redirected/appended output was longer, about \textit{24} lines...
 
 These variations show the effect of buffering in forking in our assignment. The parent and child processes have separate buffers when \texttt{fflush(stdout)} is ommitted. The \texttt{fflush(stdout)} line is important for predictable output in concurrent process execution. The disscrepancies between different execution environments (stu machine vs. other Linux mashines) further underscore the influence we experience when the operating system's process scheduling is working on our machine.
 
@@ -175,7 +175,7 @@ The file \texttt{output\_no\_fflush.txt} recorded 24 messages, more than the ter
 \subsection{Appending the Output}
 The consistent number of lines when appending with \texttt{fflush(stdout)} indicates the output buffer is flushed to the file immediately. Every "I'm Alive!" message is written to the file before the next iteration of the loop begins. 
 
-An inconsistent number of lines, between terminal and appended file, when appending without fflush(stdout), indicates the buffer is not being flushed immediately. 
+An inconsistent number of lines, between terminal and appended file, when appending without \texttt{fflush(stdout)}, indicates the buffer is not being flushed immediately. 
 
 \section{Conclusion}
 This excersize shows the impace of the fork system call on process craetion and managment. It also highlights the orole of output buffering int the visibilty of print statemtents to the terminal and files. 
