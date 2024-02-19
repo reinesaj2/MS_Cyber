@@ -53,4 +53,6 @@ for (( i=0; i<$count; i++ )); do
     sleep $tseconds
 done
 
+echo
+echo
 echo "Program is written by Abraham Reines. This work complies with the JMU honor code. I did not give or receive unauthorized help on this assignment. Exiting..."
