@@ -59,72 +59,61 @@
 
 \maketitle
 
-
 \section*{Understanding Linux file permissions}
 
 \begin{enumerate}
     \item \textbf{Can Alice read Bob's file \texttt{data.txt}? Why?}\\
-    Yes, because the permissions for \texttt{data.txt} are \texttt{-rw-r--r--}. The file is readable by others, which includes Alice.
+    Yes, the file \texttt{data.txt} permissions are set as \texttt{-rw-r--r--}, which grants read access to all users including Alice.
     
     \item \textbf{Can Alice remove Bob's file \texttt{data.txt}? Why?}\\
-    No, because Alice does not have write permission on the parent directory \texttt{/cs/home/stu/bob}, which is necessary to remove a file.
+    No, Alice lacks write permission on Bob's home directory \texttt{/cs/home/stu/bob}, which is required to delete files.
     
     \item \textbf{Can Alice read Bob's file \texttt{secret.txt}? Why?}\\
-    No, because the permissions for \texttt{secret.txt} are \texttt{-rw-r------}. The file is only readable and writable by the owner, who is Bob.
+    No, the file \texttt{secret.txt} has permissions \texttt{-rw-r-----}, which restricts read access to the owner and group `faculty`. Since Alice is not a member of the `faculty` group, she does not have read access.
     
     \item \textbf{Can Alice remove Bob's file \texttt{secret.txt}? Why?}\\
-    No, for the same reason as \texttt{data.txt}. Without write permissions on the containing directory, she cannot remove files within it.
+    No, Alice cannot delete \texttt{secret.txt} due to the absence of write permission in Bob's home directory.
     
-    \item \textbf{When Bob creates a new file with command \texttt{echo “My Super Secret is b7d5d78shes” > mysecret.txt}, what are the full permissions of this file?}\\
-    The permissions would be \texttt{-rw-r--r--} because the umask defaults to \texttt{0022}, which subtracts write permissions for group and others from the default permissions of \texttt{666} for files.
+    \item \textbf{When Bob creates a new file with the command \texttt{echo “My Super Secret is b7d5d78shes” > mysecret.txt}, what are the full permissions of this file?}\\
+    The new file \texttt{mysecret.txt} will inherit the `setgid` bit of the directory and receive the permissions \texttt{-rw-r-----}, assuming the `umask` is set to \texttt{0022} which is typical for user files.
 \end{enumerate}
 
 \section*{Setting Linux file permissions}
 
 \begin{enumerate}
     \item \textbf{Can Bob change the permissions so that all other students in \texttt{csmajor} can read \texttt{data.txt}, but any other users who are not in \texttt{csmajor} cannot?}\\
-    Yes, Bob can execute \texttt{chmod 640 /cs/home/stu/bob/data.txt}. This sets read and write permissions for the owner, read for the group, and no permissions for others.
+    Yes, by executing \texttt{chmod 640 /cs/home/stu/bob/data.txt}, Bob sets the file \texttt{data.txt} to be readable and writable by the owner and only readable by the group.
     
-    \item \textbf{If Bob wants to set the default permission of his new files to be readable/writable by himself and the group, and readable by others, what commands should he use? Hint: use umask.}\\
-    Bob should use \texttt{umask 002}. This umask value will create files with permissions \texttt{664} (\texttt{rw-rw-r--}) and directories with permissions \texttt{775} (\texttt{rwxrwxr-x}).
+    \item \textbf{If Bob wants to set the default permission of his new files to be readable and writable by himself and the group, and readable by others, what commands should he use? Hint: use umask.}\\
+    Bob should issue the command \texttt{umask 002} to ensure files are created with \texttt{rw-rw-r--} permissions and directories with \texttt{rwxrwxr-x}.
 \end{enumerate}
 
 \section*{A more complex case}
 
-Alice needs to perform the following steps to set the correct file permissions for \texttt{treasure.txt}:
-
-\begin{enumerate}
-    \item Create a group named \texttt{treasure\_group} and add Bob to it.
-    \item Change the group ownership of \texttt{treasure.txt} to \texttt{treasure\_group}.
-    \item Set the file permissions so the owner and group have read and write permissions, but not execute permissions.
-    \item Utilize Access Control Lists (ACLs) to grant Charlie read permissions without granting him write permissions.
-    \item Ensure all other users have no permissions to \texttt{treasure.txt}.
-\end{enumerate}
-
-The following LaTeX listing provides the exact Linux commands Alice should execute:
+Alice should execute the following commands to configure \texttt{treasure.txt} permissions appropriately:
 
 \begin{lstlisting}[language=bash]
-# Create a group for the treasure file and add Alice and Bob
+# Assume Alice has the necessary permissions to perform these actions
+# Create a group named 'treasure_group' and add Bob to it
 sudo groupadd treasure_group
-sudo usermod -a -G treasure_group alice
-sudo usermod -a -G treasure_group bob
+sudo usermod -aG treasure_group bob
 
-# Change group ownership of the file to treasure_group
+# Change the group ownership of treasure.txt to 'treasure_group'
 chgrp treasure_group treasure.txt
 
-# Set read and write permissions for the owner and group, and no permissions for others
+# Set permissions for the file to read and write for owner and group
 chmod 660 treasure.txt
 
-# If ACLs are enabled on the filesystem, set an ACL for Charlie to read
+# Set an ACL for Charlie to read but not write
 setfacl -m u:charlie:r-- treasure.txt
 
-# Verify the ACL settings
-getfacl treasure.txt
+# Remove all permissions for others
+setfacl -m o::--- treasure.txt
 
-# Ensure the file is not executable by anyone
-chmod a-x treasure.txt
+# Verify permissions
+getfacl treasure.txt
 \end{lstlisting}
 
-Alice should test these commands in her Linux environment to ensure they work as intended. If she encounters any issues, such as not having the required permissions or ACLs not being enabled, she will need to contact the system administrator for assistance.
+Alice should verify these settings in her environment to ensure they are correct. Should she face permission-related issues, the system administrator’s intervention may be required.
 
 \end{document}
