@@ -1,0 +1,394 @@
+Unknown Speaker  0:06  
+Okay, let's get started. Let's talk about the details of the bell Abdullah security model.
+
+Unknown Speaker  0:14  
+So this is a meet the very best security model
+
+Unknown Speaker  0:24  
+so the VOP model is a state machine model developed by PAL and Abdullah in 1975. We talk about the rationale behind state machine model NASA
+
+Unknown Speaker  0:38  
+so it's based on the mantle says control.
+
+Unknown Speaker  0:42  
+It also assumes security categories
+
+Unknown Speaker  0:50  
+it's about a data confidentiality. So here we have to be careful about what the Constitution means. I'm going to explain the relator
+
+Unknown Speaker  1:01  
+is a former model, so it's an inadequacy.
+
+Unknown Speaker  1:11  
+So the problem that the BLP model try to solve is here.
+
+Unknown Speaker  1:17  
+On this slide, there is a secret level finance document on the right hand side of the slide. So it's recycle that's an object and has a top security clearance. And is has it a finance security card.
+
+Unknown Speaker  1:38  
+So the question here is not what operations should the system allow us to do?
+
+Unknown Speaker  1:46  
+If data confidentiality is the major concern? Should and be allowed to read?
+
+Unknown Speaker  1:54  
+The object in question? should at least be allowed to ride through the object function should be allowed to modify the object in question you may think that this has driven us to be yes, yes. Well, it turns out that the house is not trivial.
+
+Unknown Speaker  2:20  
+Before we talk about the details of the VRP model, let's first revisit the concept of data confidentiality. What is confidentiality?
+
+Unknown Speaker  2:30  
+data confidentiality within a system will really mean no information.
+
+Unknown Speaker  2:40  
+There are two types of information Deacon first one is called over a decade. So here, you you give somebody information, and that is somebody actually, to me put in decree information.
+
+Unknown Speaker  2:55  
+In this case, you can do nothing about it because you charge somebody you already given us. Firstly, information for this type of ovary.
+
+Unknown Speaker  3:05  
+You can you can actually order another person and a prosecutor another person. That's the solution.
+
+Unknown Speaker  3:14  
+Now, there's a second type of leaking that's more salt is called COVID and decay. So here, you gave somebody information and you also gave them a sample rules, how to use NET information, that is somebody follow your rules, and steal. Information is unique in the system. In that case, that somebody is not responsive, you are responsible because a subsystem designer you are responsible.
+
+Unknown Speaker  3:46  
+So here, we try to prevent these type of leaking it's called a COVID leaking. We do not want leaking information when people follow your rules.
+
+Unknown Speaker  4:03  
+So I want to emphasize this, the whole purpose of the PRP model is to prevent COVID aching
+
+Unknown Speaker  4:15  
+let's use a concrete example to explain the idea behind the PMP model. So here Channy has a secret clearance
+
+Unknown Speaker  4:27  
+and we have a top secret document here.
+
+Unknown Speaker  4:31  
+So this document had secured level higher than Chinese communities. Fortunately, surely Chani be allowed to read this document
+
+Unknown Speaker  4:48  
+should the system allow Chani to read this document?
+
+Unknown Speaker  4:57  
+Of course, the answer seems straightforward because here, you do not want to information naked.
+
+Unknown Speaker  5:04  
+If you allow Chani to read a top secret clearance, top secret document, then information will leak from top secret to secret. You do not want that to happen. So this is natural. With the system should lot allow Chani to read up
+
+Unknown Speaker  5:24  
+this property is going to simple security property. So the basic idea is that no read up.
+
+Unknown Speaker  5:32  
+A subject can only read to an object, if the clearness of subject is not smaller than the classification of object.
+
+Unknown Speaker  5:43  
+So no reader has a nice big sense. This should be straightforward.
+
+Unknown Speaker  5:52  
+How about
+
+Unknown Speaker  5:57  
+this one? Here? We have confidential document.
+
+Unknown Speaker  6:02  
+Should the system allow Johnny to read the confidential document?
+
+Unknown Speaker  6:07  
+In other words, should the system allow Johnny to read it down?
+
+Unknown Speaker  6:15  
+The simple security property does not say anything about this pic because the system allowed John to lay down it does not hurt the confidentiality.
+
+Unknown Speaker  6:28  
+So the system does not say anything the property this this the simple security property does not say anything about it only says that the system will not allow Charlie to read up because it will violate go of information. You can.
+
+Unknown Speaker  6:48  
+So far so good.
+
+Unknown Speaker  6:55  
+Now, the same example, Johnny had secret clearance.
+
+Unknown Speaker  7:02  
+We have a confidential level document instead of talking about reading the stuff about writing shoot the system allow Chani to write down to write to the confidential level document
+
+Unknown Speaker  7:28  
+it's very tempting to answer yes.
+
+Unknown Speaker  7:33  
+We have some carefully.
+
+Unknown Speaker  7:39  
+The answer is actually no.
+
+Unknown Speaker  7:42  
+If the system gives Chani the permission to write it down, what will happen? Johnny may be honest person, Channing may advertently.
+
+Unknown Speaker  7:54  
+Write something sequel to the confidential document.
+
+Unknown Speaker  7:59  
+That information will flow from secret to confidential accidentally learned by pencils because Chinese honest person so here to prevent information you can persist them shouldn't not allow Chani to write now.
+
+Unknown Speaker  8:23  
+You have to think this for well, so this one is not a straightforward. This probably is for the staff.
+
+Unknown Speaker  8:32  
+So basically, it says that no write down because here, confidentiality is our major concern.
+
+Unknown Speaker  8:39  
+Writing down will hold confidentiality.
+
+Unknown Speaker  8:50  
+know we have a top secret never document should the system allows Shani to write up
+
+Unknown Speaker  9:03  
+the stock up it does not say anything about this. The stock promises not know right now. It does not say anything important right up. Why is that? Because writing up because no coverage.
+
+Unknown Speaker  9:18  
+If Chani accidentally do write something, information from a secret level, top secret level, it does not hurt confidentiality because it's not leaking.
+
+Unknown Speaker  9:29  
+So what write up is allowed or not. It's up to the patient to stop property does not seen anything about it.
+
+Unknown Speaker  9:39  
+So far, so good.
+
+Unknown Speaker  9:47  
+So let's do a summary. To avoid information you can pick up the model specified to security properties.
+
+Unknown Speaker  9:56  
+The first one is called simple security property. This is not no read up.
+
+Unknown Speaker  10:01  
+The second property is called a stop lovely. He says that no write down
+
+Unknown Speaker  10:11  
+no read up. No right now.
+
+Unknown Speaker  10:15  
+As for right up or down, does not hurt confidentiality.
+
+Unknown Speaker  10:21  
+These two security privacy to notice it and see about them.
+
+Unknown Speaker  10:29  
+Sometimes, sometimes, the star property is too restrictive. Because sometimes you do want information flow from high level to low level in a controlled manner. So for example, you want to classify a document in that case, you want a trusted subject to do in this type of declassification.
+
+Unknown Speaker  10:56  
+So there's a property called a string stop property.
+
+Unknown Speaker  11:01  
+It says that reading or writing is permitted at a particular level of activity, but another high or no love.
+
+Unknown Speaker  11:10  
+So you can right now in this case, right okay by trusted subjects by trusted subjects, only for trusted subjects.
+
+Unknown Speaker  11:25  
+Now, we're only talking about three properties. This model can can get more complicated. So let's focus on the most fundamental
+
+Unknown Speaker  11:39  
+now what's the whole point of these two security properties? What's the secure meaning of these two security properties? Remember, last time, we talked about security models, they talk about how security model work.
+
+Unknown Speaker  11:54  
+So from your security policy you can define the set of authorized states. From your business rule, you can define the set of reachable states. Security means that a set of reachable state is a subset of authorized cities.
+
+Unknown Speaker  12:17  
+This is good in theory, in practice is harder.
+
+Unknown Speaker  12:25  
+In practice, people want to make money so they define the business rules. From the business rule. You can find a lot of states you can find the state transition.
+
+Unknown Speaker  12:36  
+It's very hard to check every state for security.
+
+Unknown Speaker  12:42  
+So if you can't find easy way to check security, nobody lies that's the whole point of the PLP model.
+
+Unknown Speaker  12:55  
+BLP monitor says net
+
+Unknown Speaker  13:01  
+you feel you need to state is secure.
+
+Unknown Speaker  13:04  
+This is easy to check you will in my state. If your initial state is secure if all state transitions are secure.
+
+Unknown Speaker  13:14  
+If all those state transitions, you follow no read up no write down then all subsequent states will also be secure no matter what the inputs
+
+Unknown Speaker  13:31  
+are.
+
+Unknown Speaker  13:33  
+See carefully about the meaning of the statement.
+
+Unknown Speaker  13:37  
+This theorem says that it's easier to check the security of computer system. You only have to check the initial state. You only have to make sure that in a state transition those two rules a follow no read up no write it down. Then according to the theory proposed by Baron Abdullah then all subsequent states will be automatically secure.
+
+Unknown Speaker  14:08  
+This is actually kind of amazing, because here, it gives us an easy way to check the security of computer systems.
+
+Unknown Speaker  14:22  
+So in 1975, one power number two a puppy that people people can get really excited because it tells us that the future of computer security is very promising.
+
+Unknown Speaker  14:38  
+So two nodes, PLP properties really guarantee no information you can
+
+Unknown Speaker  14:51  
+it turns out that it depends it depends on some new substance.
+
+Unknown Speaker  15:02  
+Now before we talk about this one, let's spend a few minutes to review the PRP model
+
+Unknown Speaker  15:14  
+so here we have secret level classification on a signal flow clearance. Channy Channy has a secret level. Security means there is a secret level object here
+
+Unknown Speaker  15:37  
+does it assistant allow Johnny to read this document? Yes, because they're in the same level. So Johnny will be allowed by the system to read this object.
+
+Unknown Speaker  15:51  
+So here we have Dave. They've had confidential security clearance is lower than Johnny.
+
+Unknown Speaker  15:59  
+So what will happen if Johnny Ray the sick level document then tell Dave overnight
+
+Unknown Speaker  16:08  
+well the system be able to prevent this from happening.
+
+Unknown Speaker  16:13  
+Know the system does not have security mechanisms to prevent this from happening. This is over a decade.
+
+Unknown Speaker  16:20  
+You already gave Chani security clearance you always trust Johnny but it's Chaley Ridge this trust Chani values, gave them so you can always Chani, you can ask Johnny
+
+Unknown Speaker  16:40  
+the BLP model does not prevent these kinds of big
+
+Unknown Speaker  16:48  
+PLP model only handles COVID.
+
+Unknown Speaker  16:55  
+So what is the COVID channel? A covert channel isn't an intended communications pass between two or more subjects sharing a common source is over the channel will have to storage COVID a channel of our campus channels
+
+Unknown Speaker  17:17  
+COVID channels in general a bet for security.
+
+Unknown Speaker  17:21  
+So here the question is during those three PLP security properties, prevent over channels.
+
+Unknown Speaker  17:32  
+explained the idea is coming to here just like before, Dave has confidential security.
+
+Unknown Speaker  17:43  
+We have secret level document. This document is photography key.
+
+Unknown Speaker  17:48  
+So here this case for PS 0110. Of course, Dave does not know now.
+
+Unknown Speaker  17:56  
+Can they read this document?
+
+Unknown Speaker  18:00  
+No, Dave will not be able to bring this document because the PRP model prevent this from happening. No read up.
+
+Unknown Speaker  18:09  
+Let's say that they've managed to estore a Trojan horse or the secret level.
+
+Unknown Speaker  18:19  
+So they've developed Trojan horse program. They've managed to write a second level.
+
+Unknown Speaker  18:27  
+So this trojan horse will be able to read the second level document can this trojan horse passing the information down to Dave?
+
+Unknown Speaker  18:41  
+No, because the PLP model will prevent this from happening. The Mercer's that know Right. So even the children was can read the secret document which will you will not be able to pass the information down to Dave.
+
+Unknown Speaker  19:00  
+So Dave has not achieved his goal to get the content of the second level dogma
+
+Unknown Speaker  19:09  
+because the whole purpose of the PMP model prevents that from happening.
+
+Unknown Speaker  19:18  
+Here this is artificial case. So they've designed Trojan horse. Dave's and Trojan horse speaks the same language they speak the same protocol they can synchronize.
+
+Unknown Speaker  19:33  
+The goal is for them to get information in sacral level.
+
+Unknown Speaker  19:41  
+Let's assume that the system has 10 petabytes 10 megabytes of memory in total.
+
+Unknown Speaker  19:49  
+This total piece of memory is shared by the sacred level and accommodation.
+
+Unknown Speaker  19:57  
+And David children was also noticed that
+
+Unknown Speaker  20:04  
+so here are some keys that both Dave and the children wants to apply for. Remember from the system.
+
+Unknown Speaker  20:14  
+Now remember, in this example, the Trojan horse can breed the second level document the children has learned that the first bit of secret document is zero. They've chosen want to pass this bit of information down to Dave but the system does not now choose to write down instead of writing now
+
+Unknown Speaker  20:39  
+because the first bit is zero, the Trojan horse is going to do two things.
+
+Unknown Speaker  20:45  
+First, it will pry for five megabytes of memory from system this operation will succeed because the beat is zero down so your horse is going to apply for another five megabytes of memory again is application will succeed. So now the system has no memory left.
+
+Unknown Speaker  21:10  
+Next, Dave is going to apply for five megabytes of system because the system has no memory left.
+
+Unknown Speaker  21:19  
+Dave is gonna get a finish signal soon is from Dave Why can't you find that? Well the first bit is because the Trojan horse has used up all system memory.
+
+Unknown Speaker  21:38  
+And they've confirmed that in this case the PID is zero
+
+Unknown Speaker  21:46  
+the next bit is one because it's one the tuition was one pass speed information down to Dave in developed.
+
+Unknown Speaker  21:55  
+So here the choice is not going to use up or system memory is there. It will only apply for five megabytes of memory with Dave.
+
+Unknown Speaker  22:07  
+Dave is going to apply for five megabytes of memory. Dave's application was in seed solace success signal. Dave can you further what accountability is one Dave and switching was will correlate in this way to get all piece of information of a secret document today in his whole classes the PL Chem cyclic properties are not violated. There is no read up here. There is no write down here. Still saloon is synchronization process. The children has passed the information down to Dave in given this violate this is not consistent with the payer and Abdullah's conclusion
+
+Unknown Speaker  23:06  
+so all the PRP security properties and finally, there is information leaking.
+
+Unknown Speaker  23:18  
+What has gone wrong remember in 1975 Bell Abdullah actually provide a security proof for the security properties but still still.
+
+Unknown Speaker  23:32  
+We have good information you can
+
+Unknown Speaker  23:38  
+so what has gone wrong.
+
+Unknown Speaker  23:41  
+In the original pale Abdullah model, they assumed that was no resource URI.
+
+Unknown Speaker  23:48  
+So they're proof with some implicit assumption. There's no resource here
+
+Unknown Speaker  23:57  
+but once you have info resource sharing, then those secret properties will not guarantee security.
+
+Unknown Speaker  24:05  
+Now you can see give us some time people provide a proof doesn't mean that FCC is not
+
+Unknown Speaker  24:17  
+so for the summary for the PRP model. We have couple of observations about body. It has several disadvantages. First, it only handle confidential it does not automatically handle integrity.
+
+Unknown Speaker  24:37  
+If that's not 100 channels, so people talk about the PRP model, you should keep these images in mind
+
+Unknown Speaker  24:51  
+and the next step is the PRP model was use extra to verify the security of operating systems
+
+Unknown Speaker  25:05  
+so for mandatory access control, operating system you can use the PLP to check its security
+
+Transcribed by https://otter.ai

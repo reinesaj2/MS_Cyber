@@ -1,0 +1,76 @@
+Speaker 1  0:06  
+Okay, now let's talk about the second security model is called a Biba model.
+
+Speaker 1  0:20  
+So, this model also tries to solve a problem, what is the problem? So here on this slide and an F 100 side there are five security levels for objects for each interval, you have finest category you have different categories. So, you have 10 categories and five levels. On the right hand side you have security clearance for subjects. So, Alice has a top secret clearance in the finance compartment. Bob had second clearance in the finance compartment. Charlie had secret clearance in the development environment. Dave has confidential clearance in the world
+
+Speaker 1  1:18  
+we have a secret level finance object in the website because if integrity is a major concern, should the system allow any right to object to brain object and modify an object be careful here major concern here is more confidentiality. Our major concern here is integrity. So, our church should at least be allowed by the system to read up yet right to modify. Think about discussion for a few seconds before you jump to awesome.
+
+Speaker 1  2:32  
+Before we talk about the problem, first, we have to check the definition of integrity. What is integrity? I mean, if you're talking about communication security, integrity is well defined. So there it means that data protect from modification by an authorized users. So the opposite of integrity means an authorized modification.
+
+Speaker 1  3:06  
+Sometimes, for system security in depth is defined as also means data are protected from unauthorized modification but also rise in usage. How do we define integrity here? The Biba integrity model was developed by Ken PIPA in 1977, two years after the peer model was developed. So its major concern is not for confidentiality is major concern is voluntary. But it's the model itself is very similar to the PRP model. So here can be batch how to fill a gap because of the VRP model that's not 100 in geography like the PLP model, the PEEP integrity model also assumes the mantle of Saskatchewan model. So we're talking about a management system. Model never case.
+
+Speaker 1  4:20  
+No, because we change our concern from confidentiality, integrity, have to be careful about have to be careful about a security enables the BLP model, we talk about confidentiality enable encoding, coffee, or tea. See classification and confidentiality clearance. And here we're talking about integrity. Labels. So we have integrity classification, we have integrity concerns, confidential entities, labels are not necessarily the same as intelligent labels. Why is that? If you give people confidentiality clearance, do you trust that a person will not leak information
+
+Unknown Speaker  5:12  
+so what that's in the interpret enable me so if we're talking about a human being, integrity means not that a person will not tell a lie.
+
+Speaker 1  5:26  
+They will always be honest, they will tell us if you're talking about a piece of data integrity means that this piece of data has to see so confidential naipo are not the same as in terms of neighbor. That's just a quick example. So we're talking about Alice here. And he's had a big mouse. She talks a lot but she's always honest. So when she talks, she tells us in this case, and should be given high integrity enable but as should not be given high confidentiality labor because at its top is not could not keep secret. So now you can self defense now and it has high integrity label, but earnest does not have high integrity, confidentiality. But on the other hand, is tied in deep but sometimes it helps. So here you can show trust above to keep a secret. So you're gonna give up high confidential LT depot but you're gonna give him no integrity enable because barpeta has a nice sometimes. So you have to take his words was truckload of sorts. So now you can see Alice and Bob. The secret labels are different. That has a high integrity label, but no confidentiality label. Bob, on the other hand, has a high confidentiality label but no. They're mostly the same.
+
+Speaker 1  7:22  
+somewhat easy to handle. what is entailed for entities such as person and the computer process? Integrity means that they will follow orders Exactly. They will not tell a lie. So profit process, the higher the intelligence level, the more confidence that a program will ask you to corrupt
+
+Unknown Speaker  7:47  
+the data. Integrity means accuracy. Isn't that a piece of data is more accurate than it should have
+
+Speaker 1  7:56  
+high integrity people. sort of go off the beaver model is to prevent corruption or contamination of clean, high level entities by third. No, never. You don't ever want to people's mind to be polluted by dirty information. That's the whole purpose of people's integrity model. Is that clear? So our goal here is not about information. It's about prevent corruption of people's minds. Just think about it. If you send false information to the US President, if he or she believes it and makes a decision, then the consequence can be disastrous. So this integrity problem is important. Important problem let's use a concrete example to explain the idea behind the people integrity model. So here we have Channy Channy has a medium interval enabled medium. We have a low level integrity What's it for you? Should the system allow Johnny to wait it out?
+
+Speaker 1  9:30  
+Should the system allow Johnny to waste? Integrity is out. No, the answer is even if the system allowed Charlie to read it down. Then Chinese really dirty information is made through Charlie's mind. I wish I didn't need a may make a wrong decision says here. Chinese should not be allowed to return. This property is good simple. Integrity property basically says not for the sake of integrity. No. Tom is allowed to know when it comes along. Does that make sense? People sometimes have difficulty with this one. So here you do not want to pollute Charlie's mind because Charlie has
+
+Unknown Speaker  10:31  
+ended medium intelligent people. Charlie should be hooked in the harbor high integrity should resist them allow Charlie to read up. Simple integrity property does not say anything about the simple endeavor. The property says that no read up. does not say anything about no read down. does not say anything about read up.
+
+Speaker 1  11:07  
+So what Channy is shouldn't be allowed by the system to read up. Let's up to application that's up to the system. But no way down. Let's force you to if I say good let's go back to same example here. Charlie has a medium level interval label. Here we have a high integrity document. Let's talk about writing. Should the system allow Charlie to invite up?
+
+Unknown Speaker  11:56  
+Yes or No. If the system thoughts loud Charlie to write up what will happen because Charlie only has a medium integrity label. If the system allows Channy to write up Charlie May said,
+
+Speaker 1  12:18  
+Write medium interpret the information to a high integrity document. What's the best customer service? We have people and is here if a child is allowed to write medium in tabular information to high integrity document later when and is grade, high integrity document and durability. And as you come to make a decision, she may make a wrong decision. Because of the medium of information. So for the sake of integrity, Charlie should not allow by the system to write up. Does that make sense? This is not a suite of all. These this property is for the stock is held the property. So basically it basically says that no write up. For sake of integrity. No write up is allowed by the system.
+
+Unknown Speaker  13:29  
+How about right Tom? Write it down. It itself does not hold integrity. So to start integrity property, doesn't want to see anything about it right now. It only says that though right up.
+
+Speaker 1  13:52  
+So now, let's summarize the Biba integrity Model nilipie. The simple integrity property says that no. Read that. The sky integrity probably says that. No, right. So you shouldn't know these two security properties. So far. So good. Now remember, earlier I said that in tablet labels are very different from confidentiality. Labels. They can be separate. You can sign a separate Nabal to banish separate confidentiality label and a separate in public with Alice or sometimes for the sake of simplicity. You want to combine the confidentiality labels and the interval labels or what happened
+
+Unknown Speaker  14:58  
+in the BRP model to see system says that no read up
+
+Speaker 1  15:16  
+No, write it down. In a paper integrity model. It says that no read and no right. If you combine these two, what will happen? No read up no write it down. You can only do everything at the same level. So now you can see the dilemma here if you want both confidentiality and integrity, even combine the confidentiality neighbors with integrity enable your voice to in order to elicit across different levels
+
+Speaker 1  16:06  
+so some nice mix people's thinking that uh, well, maybe maybe the BLP model and the beaver in terminal motors they are not that useful. They are not not useful. So let me summarize a little bit about the P model and integrity. model because sometimes people get confused. They VRP model is for confidentiality. In answering this question for this slide. Should the system allow us to break is documented by Mr. Coleman. If confidentiality is our concern.
+
+Speaker 1  16:58  
+People model is about integrity. So here it answer the question what ads is allowed to read, write or modify an object if integrity is our concern. The PLP model and integrity model they have different security properties to not confuse Do not confuse pilot. That's it. That's for the PRP model and he by interpreting
+
+Unknown Speaker  22:12  
+Right
+
+Unknown Speaker  22:36  
+Soon
+
+Unknown Speaker  24:16  
+Students
+
+Transcribed by https://otter.ai

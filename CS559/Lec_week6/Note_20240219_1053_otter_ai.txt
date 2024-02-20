@@ -1,0 +1,262 @@
+Unknown Speaker  0:05  
+Okay, let's get started.
+
+Unknown Speaker  0:08  
+The topic of this unit is called security models. So here, we're going to talk about some general theory about security models.
+
+Unknown Speaker  0:23  
+Now, before we move to security models, we have to review some basic concepts about access control.
+
+Unknown Speaker  0:31  
+Still remember the concept of discretion. Access control and multiple access control.
+
+Unknown Speaker  0:37  
+What are the major differences?
+
+Unknown Speaker  0:42  
+For discretion access control the owner of object decide who can access it, but the management access control the system makes no decision based on security labels.
+
+Unknown Speaker  0:58  
+So imagine access control, even you are the owner of the object, you do not make a decision who can access it, the system makes a decision
+
+Unknown Speaker  1:10  
+immensely access control. We need a security categories because security levels are not sufficient.
+
+Unknown Speaker  1:17  
+So to enforce need to know the need to know principle, you have to use security categories if you are the same security level.
+
+Unknown Speaker  1:29  
+For this class and access control, we can use access control matrix and access control knees to implement the concept.
+
+Unknown Speaker  1:43  
+So why do we need security models?
+
+Unknown Speaker  1:47  
+What's the deployment?
+
+Unknown Speaker  1:49  
+These slides describe the problem. So here on the left hand side, you can find objects and their classification.
+
+Unknown Speaker  2:00  
+So we'll have five novels unclassified. Sensitive, bad, classified, Confidential, Secret, and top secret. For each interval, we have two security categories of finance calculator, we have development category.
+
+Unknown Speaker  2:18  
+On the right hand side of this slide, you can find subjects, subjects they have Siri.
+
+Unknown Speaker  2:26  
+Never have security clearance, confidential, secret and top secret. We have Alice Bob Chani and it's top secret clearance, and it's at security category. Finance.
+
+Unknown Speaker  2:41  
+Bob at the Secret clearance, Bobs in the finance, Chinese clearance, Chinese development. They've only have confidential clearance is in development.
+
+Unknown Speaker  2:54  
+So what's the problem?
+
+Unknown Speaker  2:57  
+Now question for you.
+
+Unknown Speaker  3:01  
+In this diagram, shows the system allow attendees to access a finance document or the secret level.
+
+Unknown Speaker  3:13  
+In other words, all the operations should at least be allowed by the system to do
+
+Unknown Speaker  3:20  
+should add is allowed to release this object should at least be allowed to write this object should at least be allowed to execute this object.
+
+Unknown Speaker  3:35  
+Now, it's tempting to jump to the conclusion, but here seek advice sympathize.
+
+Unknown Speaker  3:51  
+So in these slides gives our roadmap bro first justify the rationale for security models.
+
+Unknown Speaker  3:59  
+Then in second unit, we will talk about the most probably the most famous current model is called a bell Abdullah confidentiality model.
+
+Unknown Speaker  4:09  
+Then whatever without p but integrity model.
+
+Unknown Speaker  4:13  
+The there are few commercial models if I have time, we will talk about them too.
+
+Unknown Speaker  4:22  
+So what is security model?
+
+Unknown Speaker  4:24  
+Why do we need security models?
+
+Unknown Speaker  4:29  
+Now I want to bring to your attention. The difference the subtle difference of two concepts, policy and a model. Some people use them interchangeably but there are different
+
+Unknown Speaker  4:45  
+security policy. It's very concrete.
+
+Unknown Speaker  4:48  
+It's usually for a specific application.
+
+Unknown Speaker  4:54  
+On the other hand, a security model is very general, because it's a model. It can be applied in many cases.
+
+Unknown Speaker  5:05  
+So why do we need models?
+
+Unknown Speaker  5:10  
+A model is nothing new. It's not specifically to security applications. We have models everywhere in our real life. A model is an abstraction of what we do when we study.
+
+Unknown Speaker  5:25  
+A model allows us to yellow some important chapters.
+
+Unknown Speaker  5:30  
+It allows us to focus on the most important seats so for example, we have stock models.
+
+Unknown Speaker  5:43  
+So the first thing for model is to make sure that you have to write the models not every time we have to write models.
+
+Unknown Speaker  5:55  
+So for security, we have question how to better enforce your security policy.
+
+Unknown Speaker  6:02  
+The step is always to pick access control methods, three one a month access control, or do you want discretion access control?
+
+Unknown Speaker  6:16  
+For the month process, control how to do things right.
+
+Unknown Speaker  6:20  
+Ie that's why we need to secure models or support the PLP did a computational model for better or people that didn't have the model?
+
+Unknown Speaker  6:32  
+So we have different models for different security purposes.
+
+Unknown Speaker  6:37  
+If your major concern is data confidentiality in the system, then you need to study the Bell Labs doula model.
+
+Unknown Speaker  6:46  
+If your goal is to enforce in depth of data in the system, then you need to study the people in that group model.
+
+Unknown Speaker  6:58  
+Both of them are based on the mandatory access control.
+
+Unknown Speaker  7:05  
+For commercial applications, they're a couple of models too.
+
+Unknown Speaker  7:13  
+So how to secure the models what in general.
+
+Unknown Speaker  7:20  
+In a digital world, everything can be considered as a state machine.
+
+Unknown Speaker  7:27  
+So a state is a representation of the system at one moment in time.
+
+Unknown Speaker  7:32  
+So for example, this is one state in each state. We have four subjects, s one, S two s three s four, we have four objects, O one, O two o three o four.
+
+Unknown Speaker  7:48  
+And this moment as one access oh two plus two can access o One and o for us we cannot access any objects.
+
+Unknown Speaker  7:58  
+Access, oh sorry in the Oval. So this is one state of system and this moment snapshot of our system.
+
+Unknown Speaker  8:11  
+The state of a system you've off so you change from one state to another state over time. When the system receives a new input. It will generate output then each state will change.
+
+Unknown Speaker  8:25  
+This is called a state transition.
+
+Unknown Speaker  8:29  
+So in this slide here, the state evolves to a second state on the right.
+
+Unknown Speaker  8:36  
+So the second state you will see it has new permissions to now as one can access those three two as we can access oh two two.
+
+Unknown Speaker  8:47  
+So this is called state transition from one state.
+
+Unknown Speaker  8:54  
+In the real world we have two different starting points.
+
+Unknown Speaker  9:00  
+First, you have rules you have rules for business.
+
+Unknown Speaker  9:07  
+So this is how people make money.
+
+Unknown Speaker  9:10  
+So under the rules and a business rule, your computer system will take the input will generally output here will you involve in its state.
+
+Unknown Speaker  9:21  
+The second starting point is security.
+
+Unknown Speaker  9:26  
+We want security.
+
+Unknown Speaker  9:28  
+We know we want
+
+Unknown Speaker  9:33  
+so the question here is that is your security policy consistent with your business rules.
+
+Unknown Speaker  9:44  
+If they're not consistent, then we need to make a judgment. How do we know?
+
+Unknown Speaker  9:52  
+So according to your business rule, the state of your computer system evolved from one state to another state. So here it evolves from state one to state two. According to your business business rule one, then from state three evolved into state three, according to your business will go to
+
+Unknown Speaker  10:14  
+so you have a bunch of states.
+
+Unknown Speaker  10:17  
+Many states, not all of them are secure sound from secure. Some of them are secure according to your security policy.
+
+Unknown Speaker  10:27  
+So we have several sets.
+
+Unknown Speaker  10:30  
+Here on the left hand side S is a set of all possible states of your computer system.
+
+Unknown Speaker  10:40  
+P its set of states defined by your security policy. You know what you want in terms of security policy. So you can define a set of states not authorized.
+
+Unknown Speaker  10:54  
+And the right hand side is set of states defined by your business rules.
+
+Unknown Speaker  11:00  
+So those are reachable states, according to your business rules.
+
+Unknown Speaker  11:07  
+So what is security in this case?
+
+Unknown Speaker  11:10  
+Security means that if the set of reachable stays defined by your business rules is a subset of the authorized states defined by your security policy. If that's true, then you have security.
+
+Unknown Speaker  11:32  
+If on the other hand to reach a state is bigger than authorized state, then you have a security problem. Because your business rules are not consistent with your security policy. You have to make adjustments.
+
+Unknown Speaker  11:48  
+So that's what a security is in terms of state machine
+
+Unknown Speaker  11:55  
+and costing so far.
+
+Unknown Speaker  11:58  
+Now we're talking about a general idea. We're not talking about concrete process concrete starting with an idea how security model works.
+
+Unknown Speaker  12:20  
+So what kind of models do we have a bunch of very famous current models for data confidentiality. We'll have the bell Abdullah model. Then we'll have people model for commercial applications. To avoid conflict of interest. We'll have the Chinese model for data integrity in general in commercial applications, we'll have to click those models
+
+Unknown Speaker  12:54  
+all these are state machine models.
+
+Unknown Speaker  13:03  
+These slides showed you the epochs of security model a problem was not a study until 1975. So the first probably the most famous security model is repair nocciola model.
+
+Unknown Speaker  13:22  
+Then in 1976, have Harrison Raza OMA model 1977 And half the people they didn't have a model and then somebody paid you have to run a model to take one model will not be copying these costs.
+
+Unknown Speaker  13:37  
+They in 1987 have cracked was a model for commercial applications.
+
+Unknown Speaker  13:44  
+Chinese model was developed in 1985
+
+Transcribed by https://otter.ai
