@@ -5,7 +5,7 @@
 tseconds=1
 count=5
 
-# Function to show usage
+# Function for usage
 show_usage() {
     echo "Usage: $0 [-t tseconds] [-n count]"
     exit 1
@@ -17,10 +17,10 @@ handle_interrupt() {
     exit 2
 }
 
-# Trap for SIGINT (Ctrl-C)
+# SIGINT Trap (Ctrl-C)
 trap handle_interrupt SIGINT
 
-# Parsing command-line options
+# Parsing 
 while getopts ":t:n:" opt; do
     case ${opt} in
         t )
@@ -40,7 +40,7 @@ while getopts ":t:n:" opt; do
     esac
 done
 
-# Check for non-numeric values
+# Check for integers
 if ! [[ $tseconds =~ ^[0-9]+$ ]] || ! [[ $count =~ ^[0-9]+$ ]]; then
     echo "Error: tseconds and count must be positive and integers."
     exit 3

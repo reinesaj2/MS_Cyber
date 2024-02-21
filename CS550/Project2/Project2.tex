@@ -62,7 +62,7 @@
 \maketitle
 
 \section{Script Requirements}
-The script \texttt{psmonitor.sh} is designed to scan the system process table and display all processes running in the system at specified intervals for a specified number of iterations. It takes two optional command-line arguments to customize the time between scans and the number of scans.
+The \texttt{psmonitor.sh} script scans the system process table; it displays the process running on the system. A specific amount of intervals for a specified number of iterations is acheived. It takes two command-line arguments (CLAs) to set the time between scans and the number of scans.
 
 \section{Usage}
 The script is invoked with the following syntax:
@@ -70,9 +70,6 @@ The script is invoked with the following syntax:
 ./psmonitor.sh [-t tseconds] [-n count]
 \end{lstlisting}
 where \texttt{-t tseconds} specifies the time interval between each scan, and \texttt{-n count} specifies the number of times the scan is performed.
-
-\section{Sample Output}
-A sample output of the script includes the current date and time followed by the list of current processes. The output concludes with an attribution to the script's author and a statement of honor code compliance.
 
 \section{Error Checking}
 The script includes error checking for invalid options, missing argument values, and non-numeric input for time intervals and count.
@@ -83,6 +80,15 @@ Interrupts, such as Ctrl-C, are gracefully handled by the script to provide a us
 \section{Script Listing}
 \lstinputlisting[language=bash]{psmonitor.sh}
 
+\section{Sample Output Listing}
+For the first 10 lines:
+\lstinputlisting[firstline=1, lastline=10]{psmonitor_output.txt}
+
+
+
+For the last 10 lines:
+\lstinputlisting[firstline=6971, lastline=6980]{psmonitor_output.txt}
+
 \section{Executing the Script}
 To execute the script, first ensure it has the appropriate permissions set:
 \begin{lstlisting}[language=bash]
@@ -90,8 +96,12 @@ chmod +x psmonitor.sh
 \end{lstlisting}
 Then run the script by providing the desired arguments for time interval and count, e.g.:
 \begin{lstlisting}[language=bash]
-./psmonitor.sh -t 1 -n 10
+./psmonitor.sh -t 1 -n 10 > psmonitor_output.txt
 \end{lstlisting}
  or use the default values by not providing any arguments.
+ 
+ \vfill
+  \section*{Academic Integrity Pledge}
+    {\color{red}\textit{“This work complies with the JMU honor code. I did not give or receive unauthorized help on this assignment.”}}
 
 \end{document}

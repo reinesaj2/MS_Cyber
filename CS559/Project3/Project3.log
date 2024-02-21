@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  18 FEB 2024 10:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  20 FEB 2024 09:59
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -446,11 +446,11 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 (./Project3.aux) ) 
 Here is how much of TeX's memory you used:
- 6113 strings out of 478994
- 82308 string characters out of 5858184
+ 6115 strings out of 478994
+ 82331 string characters out of 5858184
  658801 words of memory out of 5000000
- 23501 multiletter control sequences out of 15000+600000
- 441383 words of font info for 55 fonts, out of 8000000 for 9000
+ 23502 multiletter control sequences out of 15000+600000
+ 445646 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,6n,74p,261b,1749s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.
@@ -459,13 +459,14 @@ local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texl
 ive/2021/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2021/te
 xmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/lm/lmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/p
-ublic/lm/lmr5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmt
-k10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></
-usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
-Output written on Project3.pdf (2 pages, 224634 bytes).
+ublic/lm/lmr5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr
+i10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></
+usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
+Output written on Project3.pdf (2 pages, 242339 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
+ 52 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
