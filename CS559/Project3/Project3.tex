@@ -63,7 +63,7 @@
 
 \begin{enumerate}
     \item \textbf{Can Alice read Bob's file \texttt{data.txt}? Why?}\\
-    Yes, the file \texttt{data.txt} permissions are set as \texttt{-rw-r--r--}, which grants read access to all users including Alice.
+    Yes, the file \texttt{data.txt} permissions are set as \texttt{-rw-r----r--}, which grants read access to all users including Alice.
     
     \item \textbf{Can Alice remove Bob's file \texttt{data.txt}? Why?}\\
     No, Alice lacks write permission on Bob's home directory \texttt{/cs/home/stu/bob}, which is required to delete files.
