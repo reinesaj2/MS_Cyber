@@ -1,0 +1,51 @@
+3.4.1 Solutions:
+--------------------------------
+Question 1:
+yes - Alice can read the file /cs/home/stu/bob/data.txt because the 'others' permissions on the file allow read access.
+Question 2:
+no - Alice cannot remove the file /cs/home/stu/bob/data.txt because she lacks write permissions.
+Question 3:
+no - Alice cannot read the file /cs/home/stu/bob/secret.txt because she lacks read permissions.
+Question 4:
+no - Alice cannot remove the file /cs/home/stu/bob/secret.txt because she lacks write permissions.
+Question 5:
+The full permissions for the new file /cs/home/stu/bob/mysecret2.txt are:
+-rw-r-Sr-- 1 bob faculty 0 Feb 22 16:48 /cs/home/stu/bob/mysecret2.txt
+
+--------------------------------
+3.4.2 Solutions: 
+--------------------------------
+Yes, Bob can change the permissions. The commands used are:
+chgrp csmajor /cs/home/stu/bob/data.txt
+chmod 640 /cs/home/stu/bob/data.txt
+Bob should use the command: umask 002
+Final Permissions:
+-rw-r-----+ 1 bob csmajor 0 Feb 22 11:10 /cs/home/stu/bob/data.txt
+Permissions for Bob's home directory:
+drwxr-s--- 2 bob faculty 4096 Feb 22 09:13 /cs/home/stu/bob
+
+--------------------------------
+3.4.3 Solutions: 
+--------------------------------
+Alice's home directory already exists.
+Removed unauthorized copies of treasure.txt within the home directory.
+File /home/alice/treasure.txt is ready.
+Removed immutable attribute from /home/alice/treasure.txt.
+Changed file ownership to Alice.
+Changed file permissions to read/write for owner (Alice), no permissions for others.
+Changed the file group to 'treasure_group' and set group permissions to read/write.
+Set ACL for 'charlie' to read only.
+Final permissions for /home/alice/treasure.txt:
+-rw-rw----+ 1 alice treasure_group 0 Feb 22 11:06 /home/alice/treasure.txt
+# file: home/alice/treasure.txt
+# owner: alice
+# group: treasure_group
+user::rw-
+user:charlie:r--
+group::rw-
+mask::rw-
+other::---
+
+treasure_group:x:1006:bob
+--------------------------------
+This work complies with the JMU honor code. I did not give or receive unauthorized help on this assignment.
