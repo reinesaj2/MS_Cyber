@@ -18,11 +18,15 @@ The full permissions for the new file /cs/home/stu/bob/mysecret2.txt are:
 Yes, Bob can change the permissions. The commands used are:
 chgrp csmajor /cs/home/stu/bob/data.txt
 chmod 640 /cs/home/stu/bob/data.txt
-Bob should use the command: umask 002
-Final Permissions:
--rw-r-----+ 1 bob csmajor 0 Feb 22 11:10 /cs/home/stu/bob/data.txt
+Bob should use the command: umask 002 to set default file permissions.
+Created new file /cs/home/stu/bob/newfile.txt with default permissions.
+Changed ownership of /cs/home/stu/bob/newfile.txt to bob:csmajor.
+Permissions for new file /cs/home/stu/bob/newfile.txt:
+-rw-rw-r-- 1 bob csmajor 0 Feb 23 10:45 /cs/home/stu/bob/newfile.txt
+Final Permissions for /cs/home/stu/bob/data.txt:
+-rw-r----- 1 bob csmajor 0 Feb 23 10:45 /cs/home/stu/bob/data.txt
 Permissions for Bob's home directory:
-drwxr-s--- 2 bob faculty 4096 Feb 22 09:13 /cs/home/stu/bob
+drwxr-s--- 2 bob faculty 4096 Feb 23 10:42 /cs/home/stu/bob
 
 --------------------------------
 3.4.3 Solutions: 
@@ -32,9 +36,9 @@ Removed unauthorized copies of treasure.txt within the home directory.
 File /home/alice/treasure.txt is ready.
 Removed immutable attribute from /home/alice/treasure.txt.
 Changed file ownership to Alice.
-Changed file permissions to read/write for owner (Alice), no permissions for others.
+Changed file permissions to read/write for (Alice), no permissions for others.
 Changed the file group to 'treasure_group' and set group permissions to read/write.
-Set ACL for 'charlie' to read only.
+Set ACL for 'charlie' to read.
 Final permissions for /home/alice/treasure.txt:
 -rw-rw----+ 1 alice treasure_group 0 Feb 22 11:06 /home/alice/treasure.txt
 # file: home/alice/treasure.txt

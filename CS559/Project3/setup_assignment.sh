@@ -4,7 +4,7 @@
 # Author: Abraham Reines
 # Date: February 21, 2024
 
-# This script complies with the requirements and should produce an output consistent with the assignment when executed in an appropriate environment.
+# This script complies with the requirements. Should produce output consistent with assignment when executed in appropriate environment.
 
 usermod -a -G faculty bob
 

@@ -22,25 +22,19 @@
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
-% Style for code
+% Set listings configuration
 \lstset{
-    language=Python,
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\small,
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2
+  basicstyle=\ttfamily,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  showstringspaces=false,
+  tabsize=2,
+  language=bash,
+  captionpos=b
 }
 
 % Adjust margins as needed
@@ -59,7 +53,13 @@
 
 \maketitle
 
-\section*{Understanding Linux file permissions}
+\section*{Introduction}
+In order to verify the answers of our project on Linux File Permissions, multiple bash scripts were written. The scripts are found in the \textit{'Script Listings'} section at the bottom of this report. The output of the script \texttt{assignment\_solutions.sh} can be found at the top of sections 3.4.1, 3.4.2, 3.4.3 of this report. 
+
+\section*{3.4.1 Understanding Linux file permissions}
+
+\subsection*{Output of Solutions for 3.4.1:}
+\lstinputlisting[firstline=1, lastline=13,caption={Solutions to 3.4.1.}]{solutions_output.txt}
 
 \begin{enumerate}
     \item \textbf{Can Alice read Bob's file \texttt{data.txt}? Why?}\\
@@ -75,46 +75,41 @@
     No, Alice cannot delete \texttt{secret.txt} due to the absence of write permission in Bob's home directory.
     
     \item \textbf{When Bob creates a new file with the command \texttt{echo “My Super Secret is b7d5d78shes” > mysecret.txt}, what are the full permissions of this file?}\\
-    The new file \texttt{mysecret.txt} will inherit the `setgid` bit of the directory and receive the permissions \texttt{-rw-r-----}, assuming the `umask` is set to \texttt{0022} which is typical for user files.
+The full permissions for the new file \texttt{/cs/home/stu/bob/mysecret2.txt} are: \texttt{-rw-r-Sr-- 1 bob faculty 0 Feb 22 16:48 /cs/home/stu/bob/mysecret2.txt}
 \end{enumerate}
 
-\section*{Setting Linux file permissions}
+\section*{3.4.2 Setting Linux file permissions}
+
+\subsection*{Output of Solutions for 3.4.2:}
+\lstinputlisting[firstline=15, lastline=29,caption={Solutions to 3.4.2.}]{solutions_output.txt}
 
 \begin{enumerate}
     \item \textbf{Can Bob change the permissions so that all other students in \texttt{csmajor} can read \texttt{data.txt}, but any other users who are not in \texttt{csmajor} cannot?}\\
     Yes, by executing \texttt{chmod 640 /cs/home/stu/bob/data.txt}, Bob sets the file \texttt{data.txt} to be readable and writable by the owner and only readable by the group.
     
     \item \textbf{If Bob wants to set the default permission of his new files to be readable and writable by himself and the group, and readable by others, what commands should he use? Hint: use umask.}\\
-    Bob should issue the command \texttt{umask 002} to ensure files are created with \texttt{rw-rw-r--} permissions and directories with \texttt{rwxrwxr-x}.
+    Bob should issue the command \texttt{umask 002} to ensure files are created with \texttt{rw--rw--r----} permissions and directories with \texttt{drwxr-s----}.
 \end{enumerate}
 
-\section*{A more complex case}
+\section*{3.4.3 A more complex case}
 
-Alice should execute the following commands to configure \texttt{treasure.txt} permissions appropriately:
+Please see lines \textit{114-185} of \texttt{assignment\_solutions.sh} for the proper commands to accomplish Alice's desired effect. The following are commands for running the scripts: 
 
 \begin{lstlisting}[language=bash]
-# Assume Alice has the necessary permissions to perform these actions
-# Create a group named 'treasure_group' and add Bob to it
-sudo groupadd treasure_group
-sudo usermod -aG treasure_group bob
-
-# Change the group ownership of treasure.txt to 'treasure_group'
-chgrp treasure_group treasure.txt
-
-# Set permissions for the file to read and write for owner and group
-chmod 660 treasure.txt
-
-# Set an ACL for Charlie to read but not write
-setfacl -m u:charlie:r-- treasure.txt
-
-# Remove all permissions for others
-setfacl -m o::--- treasure.txt
-
-# Verify permissions
-getfacl treasure.txt
+sudo chmod +x setup_assignment.sh
+sudo ./setup_assignment.sh
+sudo chmod +x assignment_solutions_v2. sh
+sudo ./assignment_solutions_v2.sh > solutions_output.txt
 \end{lstlisting}
 
-Alice should verify these settings in her environment to ensure they are correct. Should she face permission-related issues, the system administrator’s intervention may be required.
+{\color{red}Alice should verify these settings in her environment to ensure they are correct. Should she face permission-related issues, the system administrator’s intervention may be required. She will most likely need to use sudo. If Alice can request sudo privileges for specific commands, she can ask the administrator to add Bob to the group or do it herself if granted those privileges. }
+
+\subsection*{Output of Solutions for 3.4.3:}
+\lstinputlisting[firstline=31, lastline=53,caption={Solutions to 3.4.3.}]{solutions_output.txt}
+
+\section*{Script Listings}
+\lstinputlisting[caption={Initial setup with setup\_assignement.sh.}]{setup_assignment.sh}
+\lstinputlisting[caption={assignment\_solutions.sh for printing assignment solutions.}]{assignment_solutions.sh}
 
 \vfill
   \section*{Academic Integrity Pledge}
