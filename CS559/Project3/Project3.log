@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  23 FEB 2024 12:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  25 FEB 2024 10:07
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -445,41 +445,56 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 1.
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 4.
-) [1
+)
+Overfull \hbox (0.32925pt too wide) in paragraph at lines 77--79
+\T1/lmr/m/n/10 The full per-mis-sions for the new file \T1/lmtt/m/n/10 /cs/home
+/stu/bob/mysecret2.txt \T1/lmr/m/n/10 are: \T1/lmtt/m/n/10 -rw-r-sr---- 1 bob f
+aculty
+ []
 
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./solu
-tions_output.txt
+[1
+
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./solutions_output.txt
 consecutive:
-) (./solutions_output.txt
+)
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 9
+7.
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [2]
+(./solutions_output.txt
 consecutive:
-[2]) (./setup_assignment.sh [3]) (./assignment_solutions.sh [4] [5] [6])
-[7] (./Project3.aux) ) 
+) [3] (./assignment_solutions.sh
+consecutive:
+[4]) [5] (./Project3.aux) ) 
 Here is how much of TeX's memory you used:
- 6248 strings out of 478994
- 83782 string characters out of 5858184
- 1054937 words of memory out of 5000000
- 23614 multiletter control sequences out of 15000+600000
- 457694 words of font info for 71 fonts, out of 8000000 for 9000
+ 6255 strings out of 478994
+ 84297 string characters out of 5858184
+ 897937 words of memory out of 5000000
+ 23620 multiletter control sequences out of 15000+600000
+ 458059 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,6n,74p,433b,1646s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm
--ec.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/
-usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}</usr/local/
-texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2021/texmf-d
-ist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/
-type1/public/lm/lmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/publi
-c/lm/lmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr17.
-pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/lo
-cal/texlive/2021/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2021/tex
-mf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2021/texmf-dist/fo
-nts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/
-public/lm/lmtti10.pfb>
-Output written on Project3.pdf (7 pages, 280176 bytes).
+ 68i,6n,74p,498b,1625s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/
+lm/lm-ec.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/loca
+l/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}</usr/local/texlive/
+2021/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2021/texmf-dist/font
+s/type1/public/lm/lmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pu
+blic/lm/lmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr
+12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr17.pfb></us
+r/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2021/t
+exmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
+1/public/lm/lmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/l
+m/lmtti10.pfb>
+Output written on Project3.pdf (5 pages, 271404 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 74 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -33,7 +33,7 @@ Can_she_remove?() {
 # simulate the creation of a new file by Bob with specific permissions
 Bobs_new_file() {
   sudo -u bob touch "$1"
-  sudo -u bob chmod g+s "$1"
+  sudo -u bob chmod g+x "$1"
   echo "My Super Secret is b7sd78shes" > mysecret2.txt
   echo "The full permissions for the new file $1 are:"
   ls -l "$1"

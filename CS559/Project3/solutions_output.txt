@@ -10,7 +10,7 @@ Question 4:
 no - Alice cannot remove the file /cs/home/stu/bob/secret.txt because she lacks write permissions.
 Question 5:
 The full permissions for the new file /cs/home/stu/bob/mysecret2.txt are:
--rw-r-Sr-- 1 bob faculty 0 Feb 22 16:48 /cs/home/stu/bob/mysecret2.txt
+-rw-r-sr-- 1 bob faculty 0 Feb 22 16:48 /cs/home/stu/bob/mysecret2.txt
 
 --------------------------------
 3.4.2 Solutions: 

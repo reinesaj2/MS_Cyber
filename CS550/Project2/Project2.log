@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  22 FEB 2024 19:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  25 FEB 2024 10:02
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -453,22 +453,22 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 64.
  (./psmonitor.sh
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 10.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 11.
 
 [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
-(./psmonitor_output.txt) [2] (./psmonitor_output.txt
+[2] (./psmonitor_output.txt) (./psmonitor_output.txt
 consecutive:
 ) [3] (./Project2.aux) ) 
 Here is how much of TeX's memory you used:
- 6229 strings out of 478994
- 83662 string characters out of 5858184
- 962561 words of memory out of 5000000
- 23598 multiletter control sequences out of 15000+600000
+ 6230 strings out of 478994
+ 83660 string characters out of 5858184
+ 936561 words of memory out of 5000000
+ 23599 multiletter control sequences out of 15000+600000
  451701 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,6n,74p,3363b,1696s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,6n,74p,3365b,1696s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/
 lm-ec.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}</usr/loca
@@ -482,7 +482,7 @@ local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texl
 ive/2021/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2021/t
 exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2021/texmf-dist/
 fonts/type1/public/lm/lmtti10.pfb>
-Output written on Project2.pdf (3 pages, 232434 bytes).
+Output written on Project2.pdf (3 pages, 234626 bytes).
 PDF statistics:
  61 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream

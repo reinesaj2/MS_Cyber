@@ -56,7 +56,7 @@
 \maketitle
 
 \section{Script Requirements}
-The \texttt{psmonitor.sh} script scans the system process table; it displays the process running on the system. A specific amount of intervals for a specified number of iterations is acheived. It takes two command-line arguments (CLAs) to set the time between scans and the number of scans.
+The \texttt{psmonitor.sh} script displays the list of all the processes running in the system, once every tseconds for count number of times. A specific amount of intervals for a specified number of iterations is acheived. It takes two command-line arguments (CLAs) to repeatedly scan the system process table, displaying the list of processes running in the system.
 
 \section{Usage}
 The script is invoked with the following syntax:
@@ -74,14 +74,15 @@ Interrupts, such as Ctrl-C, are gracefully handled by the script to provide a us
 \section{Script Listing}
 \lstinputlisting[language=bash]{psmonitor.sh}
 
+\newpage
 \section{Sample Output Listing}
 For the first 10 lines:
 \lstinputlisting[firstline=1, lastline=10]{psmonitor_output.txt}
 
+For the last 5 lines:
+\lstinputlisting[firstline=7220, lastline=7228]{psmonitor_output.txt}
 
-
-For the last 10 lines:
-\lstinputlisting[firstline=6971, lastline=6980]{psmonitor_output.txt}
+{\color{red}Full output too long to display in this PDF. The output is intended to be submitted as a .txt file alogn with \texttt{psmonitor.sh} }
 
 \section{Executing the Script}
 To execute the script, first ensure it has the appropriate permissions set:
