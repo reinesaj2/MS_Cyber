@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc} % for Unicode input
+\usepackage[T1]{fontenc} % for font encoding
+\usepackage{lmodern} % Latin Modern font that supports the T1 encoding
+\usepackage{textcomp} % for additional symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{listings} % For code listing
+
+% Custom colors for code highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Set listings configuration
+\lstset{
+  basicstyle=\ttfamily,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  showstringspaces=false,
+  tabsize=2,
+  language=bash,
+  captionpos=b
+}
+
+% Adjust margins as needed
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+\title{Databases and Database Security}
+\author{Abraham J. Reines}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+\section*{4.6.1 Install MySQL to Ubuntu machine}
+
+\subsection*{Output of Requirements of 4.6.1:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot 2024-02-26 at 10.19.07 AM.png}
+    \caption{}
+\end{figure}
+\lstinputlisting[firstline=1, lastline=13,caption={Requirements for 4.6.1}]{solutions_output.txt}
+
+\section*{4.6.2 Create a database, two tables, one view, and insert data to them}
+
+\subsection*{Output of Requirements for 4.6.2:}
+
+
+
+\section*{4.6.3 Fix password storage}
+
+\subsection*{Output of Requirements for 4.6.3:}
+\lstinputlisting[firstline=31, lastline=53,caption={Solutions to 3.4.3.}]{solutions_output.txt}
+
+
+\section*{Script Listings}
+%\lstinputlisting[caption={Initial setup with setup\_assignement.sh.}]{setup_assignment.sh}
+\lstinputlisting[firstline=118, lastline=190,caption={assignment\_solutions.sh for printing assignment solutions.}]{assignment_solutions.sh}
+
+\vfill
+  \section*{Academic Integrity Pledge}
+    {\color{red}\textit{“This work complies with the JMU honor code. I did not give or receive unauthorized help on this assignment.”}}
+
+\end{document}
