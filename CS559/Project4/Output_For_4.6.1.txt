@@ -1,0 +1,10 @@
++-------------------+
+| user              |
++-------------------+
+| debian-sys-maint  |
+| mysql.infoschema  |
+| mysql.session     |
+| mysql.sys         |
+| root              |
++-------------------+
+5 rows in set (0.01 sec)

@@ -1,99 +1,92 @@
+"""
+This script is designed to enhance the security of the customer passwords in the 'customers' table of the 'cs559dbsec' database.
+It complies with the reqirements of section 4.6.3.    
+Author: Abraham Reines
+Modified: 2024-03-04 09:53:12
+"""
 import os
 import bcrypt
 import mysql.connector
 
-# Determine the directory of the current script
-script_dir = os.path.dirname(__file__)
-# Compute the directory path
-dir_path = os.path.join(script_dir, '')
-
-def connect_to_database():
+def Is_there_a_database():
     """
-    Establishes a connection to the database and returns the connection and cursor.
-    Author: ByteMeXpert
-    Date: 2024-02-28
+    secure connection to database using mysql.connector
     """
-    conn = mysql.connector.connect(
+    connection = mysql.connector.connect(
         host='127.0.0.1',
         database='cs559dbsec',
-        user='webuser',
-        password='N3wStr0ng!Passw0rd'
+        user='root',
+        password='C0d3Pyth0n>L8@N!te'
     )
-    print("Connected to the database.")
-    return conn, conn.cursor()
+    print("Securely connected to the database.")
+    return connection, connection.cursor()
 
-def check_and_alter_table_to_add_password_hash(cursor):
+def Columns_need_some_hashing(Cursor):
     """
-    Checks for the existence of the password_hash column and adds it if it does not exist.
-    Author: ByteMeXpert
-    Date: 2024-02-28
+    new column 'password_hash' in the 'customers' table
     """
-    try:
-        # Check if the password_hash column already exists
-        cursor.execute("""
-            SELECT COUNT(*)
-            FROM information_schema.columns 
-            WHERE table_schema = 'cs559dbsec' 
-            AND table_name = 'customers' 
-            AND column_name = 'password_hash';
+    Cursor.execute("""
+        SELECT COUNT(*)
+        FROM information_schema.columns 
+        WHERE table_schema = 'cs559dbsec' 
+        AND table_name = 'customers' 
+        AND column_name = 'password_hash';
+    """)
+    if Cursor.fetchone()[0] == 0:
+        Cursor.execute("""
+            ALTER TABLE customers 
+            ADD COLUMN password_hash VARCHAR(60) AFTER password;
         """)
-        if cursor.fetchone()[0] == 0:
-            # If the password_hash column does not exist, add it
-            cursor.execute("""
-                ALTER TABLE customers 
-                ADD password_hash VARCHAR(60);
-            """)
-            print("Added password_hash column to customers table.")
-        else:
-            print("password_hash column already exists in customers table.")
-    except mysql.connector.Error as err:
-        print("Error occurred: {}".format(err))
+        print("password_hash column added to customers table.")
 
-def update_customer_password_hashes(cursor):
+def Get_to_hashin(Cursor):
     """
-    Hashes plaintext passwords stored in the customers table and updates the table with the hashed passwords.
+    hashing existing plaintext passwords
+    """
+    Columns_need_some_hashing(Cursor)
+    Cursor.execute("""
+        SELECT loginName, password 
+        FROM customers 
+        WHERE password_hash IS NULL OR password_hash = '';
+    """)
+    for loginName, plaintext_password in Cursor:
+        password_hash = bcrypt.hashpw(plaintext_password.encode('utf-8'), bcrypt.gensalt())
+        Cursor.execute("""
+            UPDATE customers 
+            SET password_hash = %s 
+            WHERE loginName = %s;
+        """, (password_hash, loginName))
+
+def Lets_comply(Cursor):
+    """
+    Prints hashes of all customer passwords
+    """
+    Cursor.execute("""
+        SELECT loginName, password_hash 
+        FROM customers;
+    """)
+    print("Printing all hashed passwords:")
+    for loginName, password_hash in Cursor:
+        print(f"Login Name: {loginName} | Hash: {password_hash}")
+
+def Secure_them_passwords():
+    """
+    Executes the security enhancement protocol by updating all customer passwords to use bcrypt hashing
+    and then prints all hashed passwords.
     Author: ByteMeXpert
-    Date: 2024-02-28
+    Date: 2024-03-03
     """
+    db_connection, Cursor = Is_there_a_database()
     try:
-        # Add password_hash column to the customers table
-        check_and_alter_table_to_add_password_hash(cursor)
-
-        # Select customer IDs and plaintext passwords
-        cursor.execute("SELECT loginName, password FROM customers WHERE password_hash IS NULL OR password_hash = ''")
-        customers = cursor.fetchall()
-        if customers:
-            print(f"Updating password hashes for {len(customers)} customers.")
-
-        # Hash each password and update the database
-        for loginName, password in customers:
-            hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-            cursor.execute("UPDATE customers SET password_hash = %s WHERE loginName = %s", (hashed, loginName))
-            print(f"Updated password hash for customer: {loginName}")
-
-        if not customers:
-            print("No customers to update.")
-
-    except mysql.connector.Error as err:
-        print("Error occurred: {}".format(err))
-
-def main():
-    """
-    The main execution method for the script.
-    Author: ByteMeXpert
-    Date: 2024-02-28
-    """
-    conn, cursor = connect_to_database()
-    try:
-        update_customer_password_hashes(cursor)
-        conn.commit()
-        print("All password hashes updated successfully.")
+        Get_to_hashin(Cursor)
+        db_connection.commit()
+        print("All customer password hashes updated successfully.")
+        Lets_comply(Cursor)
     finally:
-        # Close the cursor and connection
-        if conn.is_connected():
-            cursor.close()
-            conn.close()
-            print("Database connection closed.")
+        if db_connection.is_connected():
+            Cursor.close()
+            db_connection.close()
+            print("Database connection securely closed.")
 
 if __name__ == "__main__":
-    main()
+    Secure_them_passwords()

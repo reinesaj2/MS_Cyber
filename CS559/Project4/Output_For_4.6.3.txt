@@ -1,0 +1,10 @@
+Securely connected to the database.
+All customer password hashes updated successfully.
+Printing all hashed passwords:
+Login Name: addiekw | Hash: $2b$12$V4MAvozO/BvilMdqr09BOuqHjEPsD2LRTL2Zexdecb5o0AutqomeO
+Login Name: allenrm | Hash: $2b$12$t.Ni8cIxCg75ghS1SjMbFu/z5Zjm4mCob.5DkxDF7yx8lUKiupBZO
+Login Name: eskridcm | Hash: $2b$12$OmcnxbcYzQOkLRZ8yHjl1.H/QOoEDgmwc329ywLc8/dbmmLTMY.ha
+Login Name: fieldkl | Hash: $2b$12$tNyucVDJFGDCZfbpN0pnVO0jx.iA.8BYR7Cjk33bT8DAezF2JbStq
+Login Name: fleminel | Hash: $2b$12$/J5npAR4eyGbFMy7zwU8peowFFi7xTaywnYOvJ3Nj7t0CJqZe4ACi
+Login Name: grant2ct | Hash: $2b$12$SEhO8kLy8z2yiu1s7ozyOuzdSaY1.ifQSH0THI3XQGYjRVyg6BfHS
+Database connection securely closed.

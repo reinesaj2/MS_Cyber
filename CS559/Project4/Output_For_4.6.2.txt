@@ -1,0 +1,11 @@
++--------------------+
+| Database           |
++--------------------+
+| cs559dbsec         |
+| example_database   |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.01 sec)

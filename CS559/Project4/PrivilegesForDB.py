@@ -1,13 +1,21 @@
+"""
+This script is used to grant privileges to the users of the database. 
+he users are backenduser, webuser, and dbmanager. 
+The backenduser is granted all privileges on the 'cs559dbsec' database.
+The webuser is granted SELECT privileges on the 'restrictedcustomers' table and INSERT privileges on the 'queries' table.
+The dbmanager is granted all privileges on all databases with the GRANT OPTION.
+Author: Abraham Reines
+Modified: 2024-03-04 09:53:12
+"""
 import mysql.connector
 from mysql.connector import Error
 
-# Replace the following variables with your actual details.
-db_password = 'C0d3Pyth0n>L8@N!te'
-db_host = '127.0.0.1'
-db_name = 'cs559dbsec'
+DBPassword = 'C0d3Pyth0n>L8@N!te'
+DBHost = '127.0.0.1'
+DBName = 'cs559dbsec'
 
-# Function to create a connection to the database
-def create_db_connection(password, host, database):
+# create a connection to database
+def Lets_connect(password, host, database):
     connection = None
     try:
         connection = mysql.connector.connect(
@@ -21,12 +29,12 @@ def create_db_connection(password, host, database):
         print(f"Error: '{err}'")
     return connection
 
-# Function to execute a query
-def execute_query(connection, query, user):
+# execute a query
+def Lets_execute(connection, query, user):
     cursor = connection.cursor()
     try:
         for result in cursor.execute(query, multi=True):
-            pass  # You need to iterate through the result even if you don't do anything with it
+            pass  
         connection.commit()
         print(f"Query successful for {user}")
     except Error as err:
@@ -35,21 +43,21 @@ def execute_query(connection, query, user):
         cursor.close()
 
 # Connect to the database
-connection = create_db_connection(db_password, db_host, db_name)
+connection = Lets_connect(DBPassword, DBHost, DBName)
 
 # Check if the connection was successful before proceeding
 if connection is not None and connection.is_connected():
     # SQL commands to grant privileges
-    backenduser_privileges = "GRANT ALL PRIVILEGES ON cs559dbsec.* TO 'backenduser'@'localhost';"
+    backenduser_needs_privileges = "GRANT ALL PRIVILEGES ON cs559dbsec.* TO 'backenduser'@'localhost';"
     webuser_select_privileges = "GRANT SELECT ON cs559dbsec.restrictedcustomers TO 'webuser'@'localhost';"
     webuser_insert_privileges = "GRANT INSERT ON cs559dbsec.queries TO 'webuser'@'localhost';"
-    dbmanager_privileges = "GRANT ALL PRIVILEGES ON *.* TO 'dbmanager'@'localhost' WITH GRANT OPTION;"
+    dbmanager_needs_privileges = "GRANT ALL PRIVILEGES ON *.* TO 'dbmanager'@'localhost' WITH GRANT OPTION;"
 
     # Execute the queries one by one
-    execute_query(connection, backenduser_privileges, "backenduser")
-    execute_query(connection, webuser_select_privileges, "webuser for SELECT")
-    execute_query(connection, webuser_insert_privileges, "webuser for INSERT")
-    execute_query(connection, dbmanager_privileges, "dbmanager")
+    Lets_execute(connection, backenduser_needs_privileges, "backenduser")
+    Lets_execute(connection, webuser_select_privileges, "webuser for SELECT")
+    Lets_execute(connection, webuser_insert_privileges, "webuser for INSERT")
+    Lets_execute(connection, dbmanager_needs_privileges, "dbmanager")
 
     # Close the connection
     connection.close()

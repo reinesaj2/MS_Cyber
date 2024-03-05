@@ -1,11 +1,15 @@
+"""
+This script is designed to extract IDs and details of events.
+Author: Abraham Reines
+Date: 2024-03-01
+Modified: 2024-03-04 09:53:12
+"""
+
 import os
 import sqlite3
 from datetime import datetime
 import logging
 import re
-
-# Author: Reines Aj99
-# Date: 2024-03-01
 
 # Setup logging configuration
 logging.basicConfig(level=logging.DEBUG, filename='query.log', filemode='w',
