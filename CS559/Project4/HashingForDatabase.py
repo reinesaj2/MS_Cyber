@@ -1,5 +1,5 @@
 """
-This script is designed to enhance the security of the customer passwords in the 'customers' table of the 'cs559dbsec' database.
+This script is designed to hash customer passwords in the 'customers' table of the 'cs559dbsec' database.
 It complies with the reqirements of section 4.6.3.    
 Author: Abraham Reines
 Modified: 2024-03-04 09:53:12
@@ -21,7 +21,7 @@ def Is_there_a_database():
     print("Securely connected to the database.")
     return connection, connection.cursor()
 
-def Columns_need_some_hashing(Cursor):
+def Hash_to_columns(Cursor):
     """
     new column 'password_hash' in the 'customers' table
     """
@@ -43,7 +43,7 @@ def Get_to_hashin(Cursor):
     """
     hashing existing plaintext passwords
     """
-    Columns_need_some_hashing(Cursor)
+    Hash_to_columns(Cursor)
     Cursor.execute("""
         SELECT loginName, password 
         FROM customers 
@@ -71,10 +71,7 @@ def Lets_comply(Cursor):
 
 def Secure_them_passwords():
     """
-    Executes the security enhancement protocol by updating all customer passwords to use bcrypt hashing
-    and then prints all hashed passwords.
-    Author: ByteMeXpert
-    Date: 2024-03-03
+    Basically, the main function
     """
     db_connection, Cursor = Is_there_a_database()
     try:

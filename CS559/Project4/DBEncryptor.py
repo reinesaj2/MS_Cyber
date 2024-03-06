@@ -8,7 +8,7 @@ import mysql.connector
 from mysql.connector import Error
 from cryptography.fernet import Fernet
 
-db_password = 'C0d3Pyth0n>L8@N!te'
+DBPassword = 'C0d3Pyth0n>L8@N!te'
 DBHost = '127.0.0.1'
 DBName = 'cs559dbsec'
 
@@ -47,14 +47,14 @@ def Encryption_is_necessary(connection, ciphers):
         
         # Encrypt existing data...
         for loginName, ssn, creditCardNumber in customers:
-            encrypted_ssn = ciphers.encrypt(ssn if isinstance(ssn, bytes) else ssn.encode())
-            encrypted_ccn = ciphers.encrypt(creditCardNumber if isinstance(creditCardNumber, bytes) else creditCardNumber.encode())
+            SSNEncrypted = ciphers.encrypt(ssn if isinstance(ssn, bytes) else ssn.encode())
+            CCNEncrypted = ciphers.encrypt(creditCardNumber if isinstance(creditCardNumber, bytes) else creditCardNumber.encode())
             update_query = """
             UPDATE customers 
             SET ssn = %s, creditCardNumber = %s WHERE loginName = %s;
             """
-            cursor.execute(update_query, (encrypted_ssn, encrypted_ccn, loginName))
-            print(f"loginName: {loginName}, Encrypted SSN: {encrypted_ssn}, Encrypted Credit Card: {encrypted_ccn}")
+            cursor.execute(update_query, (SSNEncrypted, CCNEncrypted, loginName))
+            print(f"loginName: {loginName}, Encrypted SSN: {SSNEncrypted}, Encrypted Credit Card: {CCNEncrypted}")
 
         connection.commit()
         cursor.close()
@@ -63,10 +63,10 @@ def Encryption_is_necessary(connection, ciphers):
         print(f"Error: '{err}'")
 
 if __name__ == "__main__":
-    conn = We_should_connect(db_password, DBHost, DBName)
+    conn = We_should_connect(DBPassword, DBHost, DBName)
     
     key = Fernet.generate_key()
-    ciphers = Fernet(key) #WARNING: in a professional setting, this key should be stored securely and not hardcoded in the script
+    ciphers = Fernet(key) #NOTE: in a professional setting, this key should be stored securely and not hardcoded in the script
 
     if conn is not None:
         Encryption_is_necessary(conn, ciphers)

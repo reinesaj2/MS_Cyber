@@ -1,9 +1,5 @@
 """
 This script is used to grant privileges to the users of the database. 
-he users are backenduser, webuser, and dbmanager. 
-The backenduser is granted all privileges on the 'cs559dbsec' database.
-The webuser is granted SELECT privileges on the 'restrictedcustomers' table and INSERT privileges on the 'queries' table.
-The dbmanager is granted all privileges on all databases with the GRANT OPTION.
 Author: Abraham Reines
 Modified: 2024-03-04 09:53:12
 """
@@ -45,7 +41,6 @@ def Lets_execute(connection, query, user):
 # Connect to the database
 connection = Lets_connect(DBPassword, DBHost, DBName)
 
-# Check if the connection was successful before proceeding
 if connection is not None and connection.is_connected():
     # SQL commands to grant privileges
     backenduser_needs_privileges = "GRANT ALL PRIVILEGES ON cs559dbsec.* TO 'backenduser'@'localhost';"
@@ -53,7 +48,7 @@ if connection is not None and connection.is_connected():
     webuser_insert_privileges = "GRANT INSERT ON cs559dbsec.queries TO 'webuser'@'localhost';"
     dbmanager_needs_privileges = "GRANT ALL PRIVILEGES ON *.* TO 'dbmanager'@'localhost' WITH GRANT OPTION;"
 
-    # Execute the queries one by one
+    # Execute the queries
     Lets_execute(connection, backenduser_needs_privileges, "backenduser")
     Lets_execute(connection, webuser_select_privileges, "webuser for SELECT")
     Lets_execute(connection, webuser_insert_privileges, "webuser for INSERT")
@@ -62,5 +57,5 @@ if connection is not None and connection.is_connected():
     # Close the connection
     connection.close()
 else:
-    print("Failed to connect to the database. Please check your credentials and ensure the MySQL service is running.")
+    print("Failed to connect to the database.")
 

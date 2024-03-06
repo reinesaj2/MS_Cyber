@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  4 MAR 2024 16:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  5 MAR 2024 10:53
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -434,10 +434,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: Screenshot 2024-02-26 at 10.19.07 AM.png Graphic file (type png)
 <use Screenshot 2024-02-26 at 10.19.07 AM.png>
 Package pdftex.def Info: Screenshot 2024-02-26 at 10.19.07 AM.png  used on in
-put line 63.
-(pdftex.def)             Requested size: 341.43306pt x 480.42406pt.
+put line 65.
+(pdftex.def)             Requested size: 312.9803pt x 440.38872pt.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
-6.
+8.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -459,39 +459,39 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 File: Screenshot 2024-03-03 at 9.12.22 AM.png Graphic file (type png)
 <use Screenshot 2024-03-03 at 9.12.22 AM.png>
 Package pdftex.def Info: Screenshot 2024-03-03 at 9.12.22 AM.png  used on inp
-ut line 92.
+ut line 94.
 (pdftex.def)             Requested size: 284.52756pt x 287.1432pt.
 <Screenshot 2024-02-27 at 8.40.57 AM.png, id=14, 694.595pt x 733.74126pt>
 File: Screenshot 2024-02-27 at 8.40.57 AM.png Graphic file (type png)
 <use Screenshot 2024-02-27 at 8.40.57 AM.png>
 Package pdftex.def Info: Screenshot 2024-02-27 at 8.40.57 AM.png  used on inp
-ut line 98.
+ut line 100.
 (pdftex.def)             Requested size: 483.69684pt x 510.97313pt.
  [2 <./Screenshot 2024-03-03 at 9.12.22 AM.png>]
 <Screenshot 2024-02-27 at 8.40.47 AM.png, id=22, 641.39626pt x 192.72pt>
 File: Screenshot 2024-02-27 at 8.40.47 AM.png Graphic file (type png)
 <use Screenshot 2024-02-27 at 8.40.47 AM.png>
 Package pdftex.def Info: Screenshot 2024-02-27 at 8.40.47 AM.png  used on inp
-ut line 104.
+ut line 106.
 (pdftex.def)             Requested size: 483.69684pt x 145.3395pt.
  [3 <./Screenshot 2024-02-27 at 8.40.57 AM.png>]
 <Screenshot 2024-02-27 at 8.40.40 AM.png, id=27, 688.5725pt x 200.75pt>
 File: Screenshot 2024-02-27 at 8.40.40 AM.png Graphic file (type png)
 <use Screenshot 2024-02-27 at 8.40.40 AM.png>
 Package pdftex.def Info: Screenshot 2024-02-27 at 8.40.40 AM.png  used on inp
-ut line 110.
+ut line 112.
 (pdftex.def)             Requested size: 483.69684pt x 141.02026pt.
 <Screenshot 2024-02-27 at 10.20.00 AM.png, id=28, 692.5875pt x 435.6275pt>
 File: Screenshot 2024-02-27 at 10.20.00 AM.png Graphic file (type png)
 <use Screenshot 2024-02-27 at 10.20.00 AM.png>
 Package pdftex.def Info: Screenshot 2024-02-27 at 10.20.00 AM.png  used on in
-put line 116.
+put line 118.
 (pdftex.def)             Requested size: 483.69684pt x 304.24586pt.
 <Screenshot 2024-02-27 at 10.20.21 AM.png, id=29, 688.5725pt x 283.0575pt>
 File: Screenshot 2024-02-27 at 10.20.21 AM.png Graphic file (type png)
 <use Screenshot 2024-02-27 at 10.20.21 AM.png>
 Package pdftex.def Info: Screenshot 2024-02-27 at 10.20.21 AM.png  used on in
-put line 122.
+put line 124.
 (pdftex.def)             Requested size: 483.69684pt x 198.83858pt.
  [4 <./Screenshot 2024-02-27 at 8.40.47 AM.png> <./Screenshot 2024-02-27 at 8
 .40.40 AM.png> <./Screenshot 2024-02-27 at 10.20.00 AM.png>]
@@ -500,71 +500,110 @@ put line 122.
 File: Screenshot 2024-03-03 at 8.51.45 AM.png Graphic file (type png)
 <use Screenshot 2024-03-03 at 8.51.45 AM.png>
 Package pdftex.def Info: Screenshot 2024-03-03 at 8.51.45 AM.png  used on inp
-ut line 226.
+ut line 228.
 (pdftex.def)             Requested size: 483.69684pt x 117.01512pt.
  [6] (./HashingForDatabase.py [7 <./Screenshot 2024-03-03 at 8.51.45 AM.png>]
 ) [8] (./Output_For_4.6.3.txt)
-<Screenshot 2024-02-27 at 10.06.49 AM.png, id=56, 692.5875pt x 61.22874pt>
+<Screenshot 2024-02-27 at 10.06.49 AM.png, id=55, 692.5875pt x 61.22874pt>
 File: Screenshot 2024-02-27 at 10.06.49 AM.png Graphic file (type png)
 <use Screenshot 2024-02-27 at 10.06.49 AM.png>
 Package pdftex.def Info: Screenshot 2024-02-27 at 10.06.49 AM.png  used on in
 put line 267.
 (pdftex.def)             Requested size: 483.69684pt x 42.76265pt.
- [9]
-<Screenshot 2024-02-29 at 4.32.46 PM.png, id=60, 697.60625pt x 155.58125pt>
+<Screenshot 2024-02-29 at 4.32.46 PM.png, id=56, 697.60625pt x 155.58125pt>
 File: Screenshot 2024-02-29 at 4.32.46 PM.png Graphic file (type png)
 <use Screenshot 2024-02-29 at 4.32.46 PM.png>
 Package pdftex.def Info: Screenshot 2024-02-29 at 4.32.46 PM.png  used on inp
 ut line 273.
 (pdftex.def)             Requested size: 483.69684pt x 107.87581pt.
-<Screenshot 2024-02-29 at 4.31.50 PM.png, id=61, 688.5725pt x 154.5775pt>
+ [9 <./Screenshot 2024-02-27 at 10.06.49 AM.png>]
+<Screenshot 2024-02-29 at 4.31.50 PM.png, id=62, 688.5725pt x 154.5775pt>
 File: Screenshot 2024-02-29 at 4.31.50 PM.png Graphic file (type png)
 <use Screenshot 2024-02-29 at 4.31.50 PM.png>
 Package pdftex.def Info: Screenshot 2024-02-29 at 4.31.50 PM.png  used on inp
 ut line 279.
 (pdftex.def)             Requested size: 483.69684pt x 108.5856pt.
-<Screenshot 2024-02-29 at 4.33.25 PM.png, id=62, 675.52374pt x 341.275pt>
-File: Screenshot 2024-02-29 at 4.33.25 PM.png Graphic file (type png)
-<use Screenshot 2024-02-29 at 4.33.25 PM.png>
-Package pdftex.def Info: Screenshot 2024-02-29 at 4.33.25 PM.png  used on inp
-ut line 285.
-(pdftex.def)             Requested size: 483.69684pt x 244.36908pt.
-<Screenshot 2024-02-29 at 5.01.31 PM.png, id=63, 490.83376pt x 104.39pt>
+<Screenshot 2024-03-05 at 10.07.54 AM.png, id=63, 771.88374pt x 346.29375pt>
+File: Screenshot 2024-03-05 at 10.07.54 AM.png Graphic file (type png)
+<use Screenshot 2024-03-05 at 10.07.54 AM.png>
+Package pdftex.def Info: Screenshot 2024-03-05 at 10.07.54 AM.png  used on in
+put line 285.
+(pdftex.def)             Requested size: 483.69684pt x 217.00372pt.
+<Screenshot 2024-02-29 at 5.01.31 PM.png, id=64, 490.83376pt x 104.39pt>
 File: Screenshot 2024-02-29 at 5.01.31 PM.png Graphic file (type png)
 <use Screenshot 2024-02-29 at 5.01.31 PM.png>
 Package pdftex.def Info: Screenshot 2024-02-29 at 5.01.31 PM.png  used on inp
 ut line 291.
 (pdftex.def)             Requested size: 483.69684pt x 102.87491pt.
- [10 <./Screenshot 2024-02-27 at 10.06.49 AM.png> <./Screenshot 2024-02-29 at
- 4.32.46 PM.png> <./Screenshot 2024-02-29 at 4.31.50 PM.png> <./Screenshot 
-2024-02-29 at 4.33.25 PM.png>] (./PrivilegesForDB.py [11 <./Screenshot 2024-0
-2-29 at 5.01.31 PM.png>])
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-31.
+ [10 <./Screenshot 2024-02-29 at 4.32.46 PM.png> <./Screenshot 2024-02-29 at 
+4.31.50 PM.png> <./Screenshot 2024-03-05 at 10.07.54 AM.png> <./Screenshot 
+2024-02-29 at 5.01.31 PM.png>] (./PrivilegesForDB.py [11]) (./Output_For_4.6.
+4.txt
+Overfull \hbox (14.00822pt too wide) in paragraph at lines 11--12
+[][][][] 
+ []
 
-(/usr/local/texlive/2021/texmf-dist/tex/latex/lm/ts1lmr.fd
+
+Overfull \hbox (14.00822pt too wide) in paragraph at lines 13--14
+[][][][] 
+ []
+
+
+Overfull \hbox (14.00822pt too wide) in paragraph at lines 17--18
+[][][][] 
+ []
+
+
+Overfull \hbox (14.00822pt too wide) in paragraph at lines 21--22
+[][][][] 
+ []
+
+
+Overfull \hbox (4209.46176pt too wide) in paragraph at lines 22--23
+[][][] 
+ []
+
+
+Overfull \hbox (14.00822pt too wide) in paragraph at lines 23--24
+[][][][] 
+ []
+
+
+Overfull \hbox (1897.33824pt too wide) in paragraph at lines 24--25
+[][][] 
+ []
+
+[12]
+Overfull \hbox (14.00822pt too wide) in paragraph at lines 26--27
+[][][][] 
+ []
+
+)
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
+33.
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [12]
+)
 <Screenshot 2024-03-02 at 9.30.05 AM.png, id=79, 865.2325pt x 278.03876pt>
 File: Screenshot 2024-03-02 at 9.30.05 AM.png Graphic file (type png)
 <use Screenshot 2024-03-02 at 9.30.05 AM.png>
 Package pdftex.def Info: Screenshot 2024-03-02 at 9.30.05 AM.png  used on inp
-ut line 342.
+ut line 344.
 (pdftex.def)             Requested size: 483.69684pt x 155.43335pt.
- (./NSATime.py
-[13 <./Screenshot 2024-03-02 at 9.30.05 AM.png>] [14] [15])
+ [13]
+(./NSATime.py [14 <./Screenshot 2024-03-02 at 9.30.05 AM.png>] [15])
 (./Output_For_4.6.5.txt
 Overfull \hbox (265.62164pt too wide) in paragraph at lines 2--3
 [][][] 
  []
 
 )
-Overfull \hbox (366.42267pt too wide) in paragraph at lines 3--348
+Overfull \hbox (366.42267pt too wide) in paragraph at lines 3--350
 [][][] 
  []
 
 
-Overfull \hbox (341.22241pt too wide) in paragraph at lines 3--348
+Overfull \hbox (341.22241pt too wide) in paragraph at lines 3--350
 [][][] 
  []
 
@@ -573,40 +612,36 @@ Overfull \hbox (341.22241pt too wide) in paragraph at lines 3--348
 File: Screenshot 2024-03-02 at 4.44.43 PM.png Graphic file (type png)
 <use Screenshot 2024-03-02 at 4.44.43 PM.png>
 Package pdftex.def Info: Screenshot 2024-03-02 at 4.44.43 PM.png  used on inp
-ut line 380.
+ut line 384.
 (pdftex.def)             Requested size: 483.69684pt x 383.79803pt.
- [18]
-(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [19 <./Screenshot 2024-03-02 at 4.44.43 PM.png>] [20] (./REINES_ABRAHAM_Pro
-ject_4.aux) ) 
+ [18] [19 <./Screenshot 2024-03-02 at 4.44.43 PM.png>] (./REINES_ABRAHAM_Proj
+ect_4.aux) ) 
 Here is how much of TeX's memory you used:
- 6678 strings out of 478994
- 93061 string characters out of 5858184
- 1000321 words of memory out of 5000000
- 24014 multiletter control sequences out of 15000+600000
+ 6533 strings out of 478994
+ 91765 string characters out of 5858184
+ 1006969 words of memory out of 5000000
+ 23868 multiletter control sequences out of 15000+600000
  458059 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,6n,74p,778b,1846s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/te
-xlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2021
-/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}</usr/local/texlive/2021/texmf-dis
-t/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
-pe1/public/lm/lmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public
-/lm/lmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr10.
-pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/l
-ocal/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2021/texmf
--dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2021/texmf-dist/font
-s/type1/public/lm/lmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pu
-blic/lm/lmtk10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lm
-tt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-
-Output written on REINES_ABRAHAM_Project_4.pdf (20 pages, 7782833 bytes).
+ 68i,6n,74p,906b,1725s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{
+/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/tex
+live/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2021/
+texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}</usr/local/texlive/2021/texmf-dist
+/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/typ
+e1/public/lm/lmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/
+lm/lmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr10.p
+fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/lo
+cal/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2021/texmf-
+dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2021/texmf-dist/fonts
+/type1/public/lm/lmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pub
+lic/lm/lmtk10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmt
+t10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
+Output written on REINES_ABRAHAM_Project_4.pdf (19 pages, 7748312 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
+ 151 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
