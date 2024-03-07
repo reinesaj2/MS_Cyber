@@ -49,8 +49,8 @@ def Get_to_hashin(Cursor):
         FROM customers 
         WHERE password_hash IS NULL OR password_hash = '';
     """)
-    for loginName, plaintext_password in Cursor:
-        password_hash = bcrypt.hashpw(plaintext_password.encode('utf-8'), bcrypt.gensalt())
+    for loginName, OriginalPasswordword in Cursor:
+        password_hash = bcrypt.hashpw(OriginalPasswordword.encode('utf-8'), bcrypt.gensalt())
         Cursor.execute("""
             UPDATE customers 
             SET password_hash = %s 
@@ -73,16 +73,16 @@ def Secure_them_passwords():
     """
     Basically, the main function
     """
-    db_connection, Cursor = Is_there_a_database()
+    DBConnection, Cursor = Is_there_a_database()
     try:
         Get_to_hashin(Cursor)
-        db_connection.commit()
+        DBConnection.commit()
         print("All customer password hashes updated successfully.")
         Lets_comply(Cursor)
     finally:
-        if db_connection.is_connected():
+        if DBConnection.is_connected():
             Cursor.close()
-            db_connection.close()
+            DBConnection.close()
             print("Database connection securely closed.")
 
 if __name__ == "__main__":

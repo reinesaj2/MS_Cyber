@@ -28,17 +28,17 @@ def We_should_connect(password, host, database):
     return connection
 
 # alter the table and encrypt data
-def Encryption_is_necessary(connection, ciphers):
+def Encryption_is_necessary(connection, Cipher):
     try:
         cursor = connection.cursor()
 
         # Alter table to use BLOB...
-        altering_table = """
+        TableAlternator = """
         ALTER TABLE customers 
             MODIFY ssn BLOB,
             MODIFY creditCardNumber BLOB;
         """
-        cursor.execute(altering_table)
+        cursor.execute(TableAlternator)
         print("Table structure altered to accommodate encrypted data.")
 
         which_query = "SELECT loginName, ssn, creditCardNumber FROM customers;"
@@ -47,13 +47,13 @@ def Encryption_is_necessary(connection, ciphers):
         
         # Encrypt existing data...
         for loginName, ssn, creditCardNumber in customers:
-            SSNEncrypted = ciphers.encrypt(ssn if isinstance(ssn, bytes) else ssn.encode())
-            CCNEncrypted = ciphers.encrypt(creditCardNumber if isinstance(creditCardNumber, bytes) else creditCardNumber.encode())
-            update_query = """
+            SSNEncrypted = Cipher.encrypt(ssn if isinstance(ssn, bytes) else ssn.encode())
+            CCNEncrypted = Cipher.encrypt(creditCardNumber if isinstance(creditCardNumber, bytes) else creditCardNumber.encode())
+            NewQuery = """
             UPDATE customers 
             SET ssn = %s, creditCardNumber = %s WHERE loginName = %s;
             """
-            cursor.execute(update_query, (SSNEncrypted, CCNEncrypted, loginName))
+            cursor.execute(NewQuery, (SSNEncrypted, CCNEncrypted, loginName))
             print(f"loginName: {loginName}, Encrypted SSN: {SSNEncrypted}, Encrypted Credit Card: {CCNEncrypted}")
 
         connection.commit()
@@ -66,8 +66,8 @@ if __name__ == "__main__":
     conn = We_should_connect(DBPassword, DBHost, DBName)
     
     key = Fernet.generate_key()
-    ciphers = Fernet(key) #NOTE: in a professional setting, this key should be stored securely and not hardcoded in the script
+    Cipher = Fernet(key) #NOTE: in a professional setting, this key should be stored securely and not hardcoded in the script
 
     if conn is not None:
-        Encryption_is_necessary(conn, ciphers)
+        Encryption_is_necessary(conn, Cipher)
         conn.close()
