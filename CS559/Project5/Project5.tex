@@ -1,0 +1,210 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc} % for Unicode input
+\usepackage[T1]{fontenc} % for font encoding
+\usepackage{lmodern} % Latin Modern font that supports the T1 encoding
+\usepackage{textcomp} % for additional symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+% Define colors for code listing
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for the Python code listings
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+% Setup the style for plain text listings
+\lstdefinestyle{plaintextstyle}{
+    language={},
+    basicstyle=\ttfamily,
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    numbers=left,
+    numberstyle=\small,
+    numbersep=8pt,
+    showstringspaces=false,
+    tabsize=2,
+    language=bash,
+    captionpos=b
+}
+
+
+% Adjust margins as needed
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+\title{HourClock Specification and Model Checking}
+\author{Abraham Reines} % Replace [Your Name] with your actual name.
+\date{\today} % Use the date of document completion.
+
+\begin{document}
+
+\maketitle
+
+\section*{5.4.1 Task}
+Here we cover the typesetting and model checking of the HourClock system, as specified in the HourClock.tla file. The tasks involve updating authorship, explaining the system specification, typesetting the TLA+ specification, and documenting the model-checking process.
+
+\subsection*{Authorship Update}
+Dr. Wangs name and the date have been updated; A script \texttt{ChangeName.py} was used to accomplish this task. Please see the \textit{Scripting} section at the bottom of this report. 
+ 
+\lstinputlisting[style=plaintextstyle, caption={Content from HourClock.tla}]{HourClock.tla}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Screenshot 2024-03-31 at 1.36.32 PM.png}
+\caption{Updated Authorship in the HourClock.tla file}
+\end{figure}
+
+\subsection*{Specification Explanation}
+The TLA+ specification defines module \texttt{HourClock}; a simple 12-hour clock. The module has the following:
+
+\begin{itemize}
+    \item \textbf{Variable Declaration:} The line \texttt{VARIABLE hr} declares a variable \texttt{hr}; denotes current hour on clock.
+
+    \item \textbf{Initial State:} The initial state \texttt{HCini} is \texttt{HCini == hr $\in$ \{1 \ldots 12\}}; the hour starts within range of 12-hour clock, i.e., from 1 to 12.
+
+    \item \textbf{Next State Relation:} The state relation \texttt{HCnxt} is \texttt{HCnxt == hr' = IF hr $\neq$ 12 THEN hr + 1 ELSE 1}. This is the clock's behavior upon reaching the next hour: if the current hour \texttt{hr} is not 12, increment by 1; if it is 12, wrap to 1.
+
+    \item \textbf{System Behavior:} The behavior of the hour clock is \texttt{HC == HCini $\land$ $\Box$[HCnxt]\_hr}. the clock starts in a state \texttt{HCini} and follows \texttt{HCnxt} relation every hour.
+
+    \item \textbf{Theorem:} the theorem \texttt{THEOREM HC $\Rightarrow$ $\Box$HCini} is if system's behavior is \texttt{HC}, the predicate \texttt{HCini} holds at all times, makes sure \texttt{hr} represents a  hour on 12-hour clock.
+\end{itemize}
+
+\subsection*{Typesetting the Specification}
+The HourClock.tla specification has been typeset to a PDFt:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.875\textwidth]{Screenshot 2024-03-31 at 1.38.05 PM.png}
+\caption{Content of the Typeset HourClock.pdf file}
+\end{figure}
+
+\newpage
+\subsection*{Model Checking}
+Model checking indicates no errors. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Screenshot 2024-03-31 at 1.40.18 PM.png}
+\caption{Model Checking Output}
+\end{figure}
+
+%\newpage
+\section*{5.4.2 Task}
+Here we cover the typesetting and model checking of the HourClock system, as specified in the HourClock3.tla file. The tasks involve updating authorship, explaining the system specification, typesetting the TLA+ specification, and documenting the model-checking process.
+
+\subsection*{Tasks Performed}
+\begin{enumerate}
+    \item Replaced Dr. Wangs name in \texttt{HourClock3.tla} and updated the date to the current date at the tiem:
+
+    \lstinputlisting[style=plaintextstyle, caption={Content from HourClock3.tla. A script \texttt{ChangeName.py} was used to accomplish this task. Please see the \textit{Scripting} section at the bottom of this report. }]{HourClock3.tla}
+    
+    \item Typeset the specification file \texttt{HourClock3.tla} into \texttt{HourClock3.pdf} (Figs. 4 \& 5).
+    \item Model-checked \texttt{HourClock3.tla} and resolved any errors encountered (Figs. 6 \& 7).
+\end{enumerate}
+
+\newpage
+\subsection*{Screenshots}
+
+\begin{enumerate}
+    \item A screenshot showing the content of the typeset file \texttt{HourClock3.pdf} (Fig. 4 ).
+    \item A screenshot displaying the results of model-checking the original \texttt{HourClock3.tla} (Fig.6).
+    \item Details of any errors found during model checking, along with the corresponding fixes.
+\end{enumerate}
+
+\begin{figure}[H]
+    \includegraphics[width=0.875\linewidth]{Screenshot 2024-03-28 at 1.20.47 PM.png} % Replace path/to/screenshot1.png with the actual file path
+    \caption{Content of unmodified typeset file HourClock3.pdf}
+    \label{fig:hourclock3pdf}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.875\linewidth]{Screenshot 2024-03-28 at 12.58.32 PM.png} % Replace path/to/screenshot1.png with the actual file path
+    \caption{Content of typeset file HourClock3.pdf}
+    \label{fig:hourclock3pdf}
+\end{figure}
+
+
+\subsection*{Error Resolution}
+\begin{enumerate}
+    \item \textbf{Error Description}: The model checking with TLC for TLA+ specifications showed invariant violation in transition of variable \texttt{hr} from 11 to 12, indicating logical error in system's design. 
+        \begin{figure}[H]
+            \includegraphics[width=\linewidth]{Model_Check_for_unmodified_HC3.png} % Replace path/to/screenshot3.png with the actual file path
+            \caption{Model-checking results of the unmodified HourClock3.tla}
+            \label{fig:hourclock3modelcheckfixed}
+        \end{figure}
+    
+    \vfill 
+    \textit{See next page for screenshot and explanation of fix...}
+    \newpage
+    \item \textbf{Fix Applied}: \textit{11} was changed to \textit{12}. The modification ensures a correct wrap-around behavior of the 12-hour clock, maintaining the invariant when \texttt{hr} transitions from its maximum to minimum value.
+    \item \textbf{Results After Fix}:
+        \begin{figure}[H]
+            \includegraphics[width=\linewidth]{Model_Check_for_Modified_HC3.png} % Replace path/to/screenshot2.png with the actual file path
+            \caption{Results of model-checking modified HourClock3.tla}
+            \label{fig:hourclock3modelcheck}
+        \end{figure}
+\end{enumerate}
+
+\subsection*{Conclusion}
+The HourClock TLA+ specification has undergone validation processes through model checking. The corrective measures resolved the invariant violation. 
+
+
+\newpage
+\section*{Scripting}
+\lstinputlisting[style=pythonstyle, caption={Content from ChangeName.py}]{ChangeName.py}
+
+
+\newpage
+\section*{References}
+\begin{enumerate}
+\item Lamport, L. (2024). \textit{The TLA+ Home Page}. Retrieved from \url{https://lamport.azurewebsites.net/tla/tla.html}
+\item Lamport, L. (n.d.). \textit{A High-Level View of TLA+}. Retrieved from \url{https://lamport.azurewebsites.net/tla/high-level-view.html}
+\item Lamport, L. (2018). \textit{Running the TLA+ Tools Standalone}. Retrieved from \url{http://lamport.azurewebsites.net/tla/standalone-tools.html?back-link=tools.html}
+\item Wikipedia Contributors. (n.d.). \textit{TLA+}. Available at \url{https://en.wikipedia.org/wiki/TLA%2B}.
+\item Learn TLA+. (n.d.). Available at \url{https://learntla.com/}.
+\end{enumerate}
+
+\vfill 
+  \section*{Academic Integrity Pledge}
+   {\color{red}\textit{“This work complies with the JMU honor code. I did not give or receive unauthorized help on this assignment.”}}
+\end{document}
