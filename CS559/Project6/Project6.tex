@@ -1,0 +1,141 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc} % for Unicode input
+\usepackage[T1]{fontenc} % for font encoding
+\usepackage{lmodern} % Latin Modern font that supports the T1 encoding
+\usepackage{textcomp} % for additional symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+% Define colors for code listing
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for the Python code listings
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+% Setup the style for plain text listings
+\lstdefinestyle{plaintextstyle}{
+    language={},
+    basicstyle=\ttfamily,
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    numbers=left,
+    numberstyle=\small,
+    numbersep=8pt,
+    showstringspaces=false,
+    tabsize=2,
+    language=bash,
+    captionpos=b
+}
+
+
+% Adjust margins as needed
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+\title{Algorithm Analysis}
+\author{Abraham J. Reines} % Replace [Your Name] with your actual name.
+\date{\today} % Use the date of document completion.
+
+\begin{document}
+
+\maketitle
+
+\section*{Task 6.3.1}
+
+Given the function \( f(n) = 10^{12}n^3 + 10^6n^2 + n + 1 \), we analyze its growth rates in terms of Big O, Small o, and Omega compared to \( g(n) = n^4 \) as \( n \) approaches infinity.
+
+\subsection*{Big O Analysis}
+The Big O notation describes an upper bound of the algorithm, meaning it grows at most at the same rate as \( g(n) \). The limit of \( \frac{f(n)}{g(n)} \) as \( n \) approaches infinity has been found to be 0, which indicates that \( f(n) \) grows no faster than \( g(n) \) and is in fact slower. Therefore, \( f(n) \) is \( O(n^4) \).
+
+\textbf{Big O:} True, because \( f(n) \) is bounded above by \( g(n) \) as \( n \) approaches infinity, and since the limit of \( \frac{f(n)}{g(n)} \) is 0, \( f(n) \) is indeed \( O(n^4) \).
+
+\subsection*{Small o Analysis}
+The Small o notation describes a stricter upper bound, meaning it grows strictly slower than \( g(n) \). The analysis shows:
+
+\textbf{Small o:} True, because the limit of \( \frac{f(n)}{g(n)} \) as \( n \) approaches infinity is 0, which confirms \( f(n) \) grows slower than \( g(n) \). Thus, \( f(n) \) is \( o(n^4) \).
+
+\subsection*{Omega Analysis}
+The Omega notation describes a lower bound, meaning the algorithm grows at least as fast as \( g(n) \). The results of our analysis are:
+
+\textbf{Omega:} False, because the limit of \( \frac{f(n)}{g(n)} \) as \( n \) approaches infinity is 0, which signifies that \( f(n) \) does not grow as fast as \( g(n) \). Therefore, \( f(n) \) is not \( \omega(n^4) \).
+
+\section*{6.3.2}
+
+\section*{Application Case:}
+\begin{itemize}
+    \item 250GB hard disk with 160GB of files.
+    \item CPU with one core, 4GHz clock speed, and 64-bit registers.
+    \item Capable of \(4 \times 10^9\) 8-character comparisons per second.
+\end{itemize}
+
+\section*{Search Time Analysis}
+
+\begin{enumerate}
+    \item \textbf{Single 1KB Signature:}
+    
+    The time required to search with a single 1KB signature is computed to be approximately 5 seconds. This duration represents the worst-case scenario, providing a concrete timeframe for completing a single search cycle. It is important to note that the Boyer-Moore algorithm will often perform faster than this worst-case estimate due to its pattern-skipping feature.
+    
+    \item \textbf{Database of 1 Million 1KB Signatures:}
+    
+    Scaling up the search to account for a database of 1 million 1KB signatures, the total time estimated for the search is approximately 57.87 days, assuming a worst-case scenario where each signature search is independent and linear. The actual performance of the Boyer-Moore algorithm is expected to be better due to its sublinear average-case performance.
+    
+    \item \textbf{Improving Efficiency:}
+    
+    To further improve the efficiency of malware/virus detection through string matching, we can utilize parallel processing by distributing the search workload across multiple CPU cores or even different machines. Additionally, implementing more advanced string matching algorithms such as Aho-Corasick, which is designed for searching multiple patterns simultaneously, can significantly reduce the time complexity. Optimizing the algorithm to take advantage of the preprocessing of the virus signatures and employing heuristic methods to skip unlikely sections of data can also enhance performance.  
+    
+\end{enumerate}
+
+%\newpage
+\section*{Scripting}
+
+\lstinputlisting[style=pythonstyle, caption={Content from CheckingLimits.py}]{CheckingLimits.py}
+
+\lstinputlisting[style=pythonstyle, caption={Content from BackofEnvelope.py}]{BackofEnvelope.py}
+
+\newpage
+\section*{References}
+
+\vfill 
+  \section*{Academic Integrity Pledge}
+   {\color{red}\textit{“This work complies with the JMU honor code. I did not give or receive unauthorized help on this assignment.”}}
+\end{document}
