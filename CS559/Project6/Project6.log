@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  2 APR 2024 19:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  8 APR 2024 15:01
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -615,18 +615,18 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 (./CheckingLimits.py
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 1.
-) [2] (./BackofEnvelope.py [3]) [4] [5] (./Project6.aux)
+) (./BackofEnvelope.py [2]) [3] [4] (./Project6.aux)
 Package rerunfilecheck Info: File `Project6.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 12780 strings out of 478994
- 181922 string characters out of 5858184
- 1109569 words of memory out of 5000000
- 29903 multiletter control sequences out of 15000+600000
+ 12766 strings out of 478994
+ 181571 string characters out of 5858184
+ 1057569 words of memory out of 5000000
+ 29899 multiletter control sequences out of 15000+600000
  464736 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,6n,74p,617b,2042s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,6n,74p,617b,2066s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
 texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/20
 21/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2021/texmf-d
@@ -644,10 +644,10 @@ l/texlive/2021/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/
 2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2021/texmf
 -dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2021/texmf-dist/fonts
 /type1/public/lm/lmtt9.pfb>
-Output written on Project6.pdf (5 pages, 255898 bytes).
+Output written on Project6.pdf (4 pages, 252878 bytes).
 PDF statistics:
- 254 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 137 named destinations out of 1000 (max. 500000)
+ 240 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
+ 127 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,7 +1,7 @@
 """
 Author: Abraham Reines
 Created: Mon Apr  1 12:55:40 PDT 2024
-Modified: Wed Apr  3 13:29:07 PDT 2024
+Modified: Mon Apr  8 15:15:03 PDT 2024
 Name of file: CheckingLimits.py
 """
 
@@ -19,25 +19,24 @@ def AsymptoteTime(f, g, n):
     g (sympy expression): g(n) comparison
     n (sympy symbol): variable with respect to limit computed
     """
+    analysis_results = {}
 
-    #  limit for conditions
-    asymptoteLimit = limit(f/g, n, oo)
+    # Calculate the limit for f(n)/g(n) as n approaches infinity
+    limit_f_over_g = limit(f/g, n, oo)
+    # Calculate the limit for g(n)/f(n) as n approaches infinity
+    limit_g_over_f = limit(g/f, n, oo)
 
-    #  Big O condition
-    BigO = asymptoteLimit.is_finite
-    BigO_result = "True" if BigO else "False"
-    print(f"Big O: {BigO_result}, because the limit of f(n)/g(n) as n approaches infinity is {asymptoteLimit}, which is finite.")
+    # Big O condition: f(n) is O(g(n)) if limit of f(n)/g(n) is finite and not zero
+    analysis_results['Big O'] = limit_f_over_g.is_finite and limit_f_over_g != 0
 
-    # small o condition
-    SmallO = asymptoteLimit == 0
-    SmallO_result = "True" if SmallO else "False"
-    print(f"Small o: {SmallO_result}, because the limit of f(n)/g(n) as n approaches infinity is {asymptoteLimit}, which confirms f(n) grows slower than g(n).")
+    # small o condition: f(n) is o(g(n)) if limit of f(n)/g(n) is zero
+    analysis_results['Small o'] = limit_f_over_g == 0
 
-    # Omegas condition for inverse of limit
-    OmegaLimit = limit(g/f, n, oo)
-    omega = OmegaLimit == 0
-    omega_result = "True" if omega else "False"
-    print(f"Omega: {omega_result}, because the limit of g(n)/f(n) as n approaches infinity is {OmegaLimit}, which confirms f(n) does not grow as fast as g(n).")
+    # Omega condition: f(n) is Ω(g(n)) if limit of g(n)/f(n) is zero
+    analysis_results['Omega'] = limit_g_over_f == 0
+
+    return analysis_results
 
 # g(n) is n**4 for comparison
-AsymptoteTime(f, n**4, n)
+results = AsymptoteTime(f, n**4, n)
+print(results)
