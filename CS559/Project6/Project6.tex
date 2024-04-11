@@ -82,22 +82,18 @@
 
 \section*{Task 6.3.1}
 
-Given the function \( f(n) = 10^{12}n^3 + 10^6n^2 + n + 1 \), we analyze its growth rates in terms of Big O, Small o, and Omega compared to \( g(n) = n^4 \) as \( n \) approaches infinity.
+In the examination of the asymptotic behavior of the function $f(n) = 10^{12}n^3 + 10^6n^2 + n + 1$ against the polynomial $g(n) = n^4$, we have applied theoretical analysis complemented by limit calculations using SymPy to derive the following conclusions:
 
-\subsection*{Big O Analysis}
-The Big O notation describes an upper bound of the algorithm, meaning it grows at most at the same rate as \( g(n) \). The limit of \( \frac{f(n)}{g(n)} \) as \( n \) approaches infinity has been found to be 0, which indicates that \( f(n) \) grows no faster than \( g(n) \) and is in fact slower. Therefore, \( f(n) \) is \( O(n^4) \).
+\begin{enumerate}
+    \item Yes. The function $f(n)$ is not $\Theta(n^4)$. This is because the highest order term $n^3$ in $f(n)$ grows at a slower rate than $n^4$, which implies that $f(n)$ cannot be tightly bounded above and below by $n^4$. The formal limit calculation $\lim_{n \to \infty} \frac{f(n)}{g(n)}$ yields a result that is not finite and non-zero, which confirms that $f(n)$ is not $\Theta(n^4)$.
+    
+    \item Yes. The function $f(n)$ is $o(n^4)$. This determination is based on the fact that the limit $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0$, which indicates that $f(n)$ grows strictly slower than $g(n)$. Therefore, $f(n)$ is considered to be of a lower order compared to $n^4$.
+    
+    \item No. The function $f(n)$ is not $\omega(n^4)$. The limit $\lim_{n \to \infty} \frac{g(n)}{f(n)}$ does not approach zero, which would be necessary for $f(n)$ to be classified as growing faster than $g(n)$. Consequently, $f(n)$ does not satisfy the conditions for the $\omega$ notation with respect to $g(n)$.
+\end{enumerate}
 
-\textbf{Big O:} True, because \( f(n) \) is bounded above by \( g(n) \) as \( n \) approaches infinity, and since the limit of \( \frac{f(n)}{g(n)} \) is 0, \( f(n) \) is indeed \( O(n^4) \).
+These findings underscore the importance of both theoretical and computational methods in the analysis of algorithmic complexity.
 
-\subsection*{Small o Analysis}
-The Small o notation describes a stricter upper bound, meaning it grows strictly slower than \( g(n) \). The analysis shows:
-
-\textbf{Small o:} True, because the limit of \( \frac{f(n)}{g(n)} \) as \( n \) approaches infinity is 0, which confirms \( f(n) \) grows slower than \( g(n) \). Thus, \( f(n) \) is \( o(n^4) \).
-
-\subsection*{Omega Analysis}
-The Omega notation describes a lower bound, meaning the algorithm grows at least as fast as \( g(n) \). The results of our analysis are:
-
-\textbf{Omega:} False, because the limit of \( \frac{f(n)}{g(n)} \) as \( n \) approaches infinity is 0, which signifies that \( f(n) \) does not grow as fast as \( g(n) \). Therefore, \( f(n) \) is not \( \omega(n^4) \).
 
 \section*{6.3.2}
 
@@ -128,9 +124,9 @@ The Omega notation describes a lower bound, meaning the algorithm grows at least
 %\newpage
 \section*{Scripting}
 
-\lstinputlisting[style=pythonstyle, caption={Content from CheckingLimits.py}]{CheckingLimits.py}
+%\lstinputlisting[style=pythonstyle, caption={Content from CheckingLimits.py}]{CheckingLimits.py}
 
-\lstinputlisting[style=pythonstyle, caption={Content from BackofEnvelope.py}]{BackofEnvelope.py}
+%\lstinputlisting[style=pythonstyle, caption={Content from BackofEnvelope.py}]{BackofEnvelope.py}
 
 \newpage
 \section*{References}
