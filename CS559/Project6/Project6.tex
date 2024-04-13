@@ -85,11 +85,14 @@
 In the examination of the asymptotic behavior of the function $f(n) = 10^{12}n^3 + 10^6n^2 + n + 1$ against the polynomial $g(n) = n^4$, we have applied theoretical analysis complemented by limit calculations using SymPy to derive the following conclusions:
 
 \begin{enumerate}
-    \item Yes. The function $f(n)$ is not $\Theta(n^4)$. This is because the highest order term $n^3$ in $f(n)$ grows at a slower rate than $n^4$, which implies that $f(n)$ cannot be tightly bounded above and below by $n^4$. The formal limit calculation $\lim_{n \to \infty} \frac{f(n)}{g(n)}$ yields a result that is not finite and non-zero, which confirms that $f(n)$ is not $\Theta(n^4)$.
-    
-    \item Yes. The function $f(n)$ is $o(n^4)$. This determination is based on the fact that the limit $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0$, which indicates that $f(n)$ grows strictly slower than $g(n)$. Therefore, $f(n)$ is considered to be of a lower order compared to $n^4$.
-    
-    \item No. The function $f(n)$ is not $\omega(n^4)$. The limit $\lim_{n \to \infty} \frac{g(n)}{f(n)}$ does not approach zero, which would be necessary for $f(n)$ to be classified as growing faster than $g(n)$. Consequently, $f(n)$ does not satisfy the conditions for the $\omega$ notation with respect to $g(n)$.
+    \item \textbf{Is \( 10^{12}n^3 + 10^6n^2 + n + 1 \) not equivalent to \( \Theta(n^4) \)?}\\
+    Yes. \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is not \( \Theta(n^4) \) because the highest order term, \( n^3 \), dictates the growth rate of the function. As \( n \) approaches infinity, the \( n^4 \) term would grow faster than the \( n^3 \) term. Hence, \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is \( \Theta(n^3) \), not \( \Theta(n^4) \).
+
+    \item \textbf{Is \( 10^{12}n^3 + 10^6n^2 + n + 1 \) equivalent to \( o(n^4) \)?}\\
+    Yes. \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is \( o(n^4) \) because as \( n \) grows, the function \( 10^{12}n^3 + 10^6n^2 + n + 1 \) increases at a slower rate than any function proportional to \( n^4 \). Thus, it can be bounded above by \( C \cdot n^4 \) for some constant \( C \) and sufficiently large \( n \).
+
+    \item \textbf{Is \( 10^{12}n^3 + 10^6n^2 + n + 1 \) equivalent to \( \omega(n^4) \)?}\\
+    No. \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is not \( \omega(n^4) \) because it does not grow faster than any function proportional to \( n^4 \). For \( f(n) \) to be \( \omega(g(n)) \), \( f(n) \) must eventually exceed \( C \cdot g(n) \) for any constant \( C \), which is not the case here as \( n^3 \) is the dominant term in \( f(n) \), and it grows slower than \( n^4 \).
 \end{enumerate}
 
 These findings underscore the importance of both theoretical and computational methods in the analysis of algorithmic complexity.
