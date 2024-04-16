@@ -82,21 +82,18 @@
 
 \section*{Task 6.3.1}
 
-In the examination of the asymptotic behavior of the function $f(n) = 10^{12}n^3 + 10^6n^2 + n + 1$ against the polynomial $g(n) = n^4$, we have applied theoretical analysis complemented by limit calculations using SymPy to derive the following conclusions:
+In the examination of behavior of function $f(n) = 10^{12}n^3 + 10^6n^2 + n + 1$ against polynomial $g(n) = n^4$, we have a theoretical analysis complemented by limit calculations both with paper and pencil and using SymPy to derive the following conclusions:
 
 \begin{enumerate}
     \item \textbf{Is \( 10^{12}n^3 + 10^6n^2 + n + 1 \) not equivalent to \( \Theta(n^4) \)?}\\
-    Yes. \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is not \( \Theta(n^4) \) because the highest order term, \( n^3 \), dictates the growth rate of the function. As \( n \) approaches infinity, the \( n^4 \) term would grow faster than the \( n^3 \) term. Hence, \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is \( \Theta(n^3) \), not \( \Theta(n^4) \).
+    Yes. \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is not \( \Theta(n^4) \) because the highest order term, \( n^3 \), says what the growth rate of the function is. As \( n \) appraoches infinity, the \( n^4 \) term would grow faster than the \( n^3 \) term. \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is \( \Theta(n^3) \), not \( \Theta(n^4) \). It cannot be bounded above and below by \( n^4 \) for a large \( n \).
 
     \item \textbf{Is \( 10^{12}n^3 + 10^6n^2 + n + 1 \) equivalent to \( o(n^4) \)?}\\
-    Yes. \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is \( o(n^4) \) because as \( n \) grows, the function \( 10^{12}n^3 + 10^6n^2 + n + 1 \) increases at a slower rate than any function proportional to \( n^4 \). Thus, it can be bounded above by \( C \cdot n^4 \) for some constant \( C \) and sufficiently large \( n \).
+    Yes. \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is \( o(n^4) \) because as \( n \) grows, the function \( 10^{12}n^3 + 10^6n^2 + n + 1 \) increase at a slower rate than a function \( n^4 \). It can be bound above by \( C \cdot n^4 \) for some constant \( C \) and sufficiently large \( n \).
 
     \item \textbf{Is \( 10^{12}n^3 + 10^6n^2 + n + 1 \) equivalent to \( \omega(n^4) \)?}\\
     No. \( 10^{12}n^3 + 10^6n^2 + n + 1 \) is not \( \omega(n^4) \) because it does not grow faster than any function proportional to \( n^4 \). For \( f(n) \) to be \( \omega(g(n)) \), \( f(n) \) must eventually exceed \( C \cdot g(n) \) for any constant \( C \), which is not the case here as \( n^3 \) is the dominant term in \( f(n) \), and it grows slower than \( n^4 \).
 \end{enumerate}
-
-These findings underscore the importance of both theoretical and computational methods in the analysis of algorithmic complexity.
-
 
 \section*{6.3.2}
 
@@ -110,29 +107,43 @@ These findings underscore the importance of both theoretical and computational m
 \section*{Search Time Analysis}
 
 \begin{enumerate}
-    \item \textbf{Single 1KB Signature:}
+    \item \textbf{ 1KB Signature:}
     
-    The time required to search with a single 1KB signature is computed to be approximately 5 seconds. This duration represents the worst-case scenario, providing a concrete timeframe for completing a single search cycle. It is important to note that the Boyer-Moore algorithm will often perform faster than this worst-case estimate due to its pattern-skipping feature.
+    The time needed to search for a 1KB signature case is 5 seconds. This is a worst case scenario, which means it is unrealistic and a Boyer-Moore calculartion will be better. 
     
     \item \textbf{Database of 1 Million 1KB Signatures:}
     
-    Scaling up the search to account for a database of 1 million 1KB signatures, the total time estimated for the search is approximately 57.87 days, assuming a worst-case scenario where each signature search is independent and linear. The actual performance of the Boyer-Moore algorithm is expected to be better due to its sublinear average-case performance.
+    For a Database with 1 million 1KB signatures, 57.87 days will approximately be a worst case scenario. This is where the signature searching is idependant and linear. THe Boyyer-Moore algorithm is going to be gaster than this with sublinear performatnce. 
     
     \item \textbf{Improving Efficiency:}
     
-    To further improve the efficiency of malware/virus detection through string matching, we can utilize parallel processing by distributing the search workload across multiple CPU cores or even different machines. Additionally, implementing more advanced string matching algorithms such as Aho-Corasick, which is designed for searching multiple patterns simultaneously, can significantly reduce the time complexity. Optimizing the algorithm to take advantage of the preprocessing of the virus signatures and employing heuristic methods to skip unlikely sections of data can also enhance performance.  
+    To further improve the efficiency of malware/virus detection through string matching, we utilize paralell processing by distributing the search workload across multiple CPU cores or even differant machines; implementing more advanced string matching algorithms such as Aho-Corasick, which is desinged for searching multiple patterns simultaneously, can significantly reduce the time complexitity. Optimizing the algorithm fo preprocessing of the virus signatures and employing hueristic methods to skip unlikely sections of data can also enhance performance.  
     
 \end{enumerate}
+\section*{Screenshots of Hand Written Calculations}
 
-%\newpage
-\section*{Scripting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Screenshot 2024-04-14 at 12.39.41 PM.png}
+\caption{Hand written calculations for task 6.3.1}
+\end{figure}
 
-%\lstinputlisting[style=pythonstyle, caption={Content from CheckingLimits.py}]{CheckingLimits.py}
-
-%\lstinputlisting[style=pythonstyle, caption={Content from BackofEnvelope.py}]{BackofEnvelope.py}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Screenshot 2024-04-14 at 12.40.02 PM.png}
+\caption{Hand written calculations for task 6.3.2}
+\end{figure}
 
 \newpage
 \section*{References}
+
+\begin{enumerate}
+    \item Wikipedia contributors. (n.d.). Boyer–Moore string-search algorithm. \textit{Wikipedia, The Free Encyclopedia}. Retrieved April 14, 2024, from \url{https://en.wikipedia.org/wiki/Boyer-Moore_string-search_algorithm}
+    \item HackerEarth. (n.d.). Boyer-Moore algorithm. \textit{HackerEarth}. Retrieved April 14, 2024, from \url{https://www.hackerearth.com/practice/algorithms/string-algorithm/string-searching/tutorial/}
+
+    \item Programiz. (n.d.). \textit{Asymptotic Analysis: Big-O Notation and More}. Retrieved April 14, 2024, from \url{https://www.programiz.com/dsa/asymptotic-notations}
+    \item Wikipedia contributors. (2024, April 13). Asymptotic analysis. In \textit{Wikipedia, The Free Encyclopedia}. Retrieved 15:00, April 14, 2024, from \url{https://en.wikipedia.org/w/index.php?title=Asymptotic_analysis&oldid=currentID}
+\end{enumerate}
 
 \vfill 
   \section*{Academic Integrity Pledge}

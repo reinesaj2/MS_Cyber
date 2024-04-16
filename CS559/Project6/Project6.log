@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  12 APR 2024 14:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  14 APR 2024 13:30
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -596,25 +596,45 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 85.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-05.
+02.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [1
+)
+<Screenshot 2024-04-14 at 12.39.41 PM.png, id=4, 826.08624pt x 726.715pt>
+File: Screenshot 2024-04-14 at 12.39.41 PM.png Graphic file (type png)
+<use Screenshot 2024-04-14 at 12.39.41 PM.png>
+Package pdftex.def Info: Screenshot 2024-04-14 at 12.39.41 PM.png  used on in
+put line 127.
+(pdftex.def)             Requested size: 483.69684pt x 425.5202pt.
+ [1
 
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
- (./Project6.aux)
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<Screenshot 2024-04-14 at 12.40.02 PM.png, id=31, 709.65125pt x 298.11375pt>
+File: Screenshot 2024-04-14 at 12.40.02 PM.png Graphic file (type png)
+<use Screenshot 2024-04-14 at 12.40.02 PM.png>
+Package pdftex.def Info: Screenshot 2024-04-14 at 12.40.02 PM.png  used on in
+put line 133.
+(pdftex.def)             Requested size: 483.69684pt x 203.19684pt.
+ [2 <./Screenshot 2024-04-14 at 12.39.41 PM.png> <./Screenshot 2024-04-14 at 
+12.40.02 PM.png>]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
+41.
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [3] (./Project6.aux)
 Package rerunfilecheck Info: File `Project6.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 12140 strings out of 478994
- 174912 string characters out of 5858184
- 491568 words of memory out of 5000000
- 29404 multiletter control sequences out of 15000+600000
- 451108 words of font info for 67 fonts, out of 8000000 for 9000
+ 12204 strings out of 478994
+ 176202 string characters out of 5858184
+ 492568 words of memory out of 5000000
+ 29455 multiletter control sequences out of 15000+600000
+ 451427 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,6n,74p,617b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,6n,74p,579b,329s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
 texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2021/
 texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2021/texmf-dist
@@ -627,11 +647,11 @@ l/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2
 ist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
 ype1/public/lm/lmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/
 lm/lmri10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy10.
-pfb>
-Output written on Project6.pdf (3 pages, 182441 bytes).
+pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on Project6.pdf (3 pages, 1301783 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 105 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
+ 23 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
