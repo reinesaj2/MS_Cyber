@@ -17,7 +17,9 @@
 /* Function Prototypes */
 void setup_server_socket(int *server_fd, struct sockaddr_in *address);
 void start_game_loop(int server_fd, int rounds);
-void handle_game_round(int socket);
+void handle_game_round(int player1_socket, int player2_socket, int round_count, int scores[]);
+int compare_moves(const char *move1, const char *move2);
+void readstr(int fd, char *str); // Make sure to define this function or link with its object file
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
@@ -44,6 +46,8 @@ void setup_server_socket(int *server_fd, struct sockaddr_in *address) {
     if ((*server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
         perror("socket failed");
         exit(EXIT_FAILURE);
+        printf("Server is set up at port %d\n", PORT);
+
     }
 
     // Bind the socket to an address
@@ -61,7 +65,10 @@ void setup_server_socket(int *server_fd, struct sockaddr_in *address) {
         perror("listen");
         exit(EXIT_FAILURE);
     }
-
+    
+    FILE *fp = fopen("ref_ready.flag", "w");
+    fprintf(fp, "ready");
+    fclose(fp);
     printf("Referee started, waiting for players...\n");
 }
 
@@ -71,30 +78,89 @@ void setup_server_socket(int *server_fd, struct sockaddr_in *address) {
  * @param rounds Number of game rounds.
  */
 void start_game_loop(int server_fd, int rounds) {
-    for (int currentRound = 0; currentRound < rounds; ++currentRound) {
-        printf("Round %d of %d\n", currentRound + 1, rounds);
-        
-        int player_socket;
-        struct sockaddr_in player_address;
-        int addrlen = sizeof(player_address);
+    int player1_socket, player2_socket;
+    struct sockaddr_in player_address;
+    socklen_t addrlen = sizeof(player_address);
+    int scores[2] = {0, 0}; // Initialize scores for two players
 
-        if ((player_socket = accept(server_fd, (struct sockaddr *)&player_address, (socklen_t*)&addrlen)) < 0) {
-            perror("accept");
-            exit(EXIT_FAILURE);
-        }
-
-        handle_game_round(player_socket);
-        // Close the player socket after handling the round
-        close(player_socket);
+    // Accept connections from both players
+    player1_socket = accept(server_fd, (struct sockaddr *)&player_address, &addrlen);
+    if (player1_socket < 0) {
+        perror("accept player 1");
+        exit(EXIT_FAILURE);
+    }
+    player2_socket = accept(server_fd, (struct sockaddr *)&player_address, &addrlen);
+    if (player2_socket < 0) {
+        perror("accept player 2");
+        exit(EXIT_FAILURE);
     }
 
-    printf("Game over. Final scores: ...\n"); // Implement score tracking and display
+    // Start the game loop for the specified number of rounds
+    for (int currentRound = 0; currentRound < rounds; ++currentRound) {
+        handle_game_round(player1_socket, player2_socket, currentRound, scores);
+    }
+
+    // Close player sockets after the game
+    close(player1_socket);
+    close(player2_socket);
+
+    printf("Game over. Final scores: Player 1 - %d, Player 2 - %d\n", scores[0], scores[1]);
 }
 
 /**
- * Handles a single game round communication with the player.
- * @param socket Player socket file descriptor.
+ * Handles a single game round communication with both players.
+ * @param player1_socket First player's socket file descriptor.
+ * @param player2_socket Second player's socket file descriptor.
+ * @param round_count Current round number.
+ * @param scores Array holding the scores of the players.
  */
-void handle_game_round(int socket) {
-    // Placeholder for communication with players, determining the winner, and score management.
+void handle_game_round(int player1_socket, int player2_socket, int round_count, int scores[]) {
+    char move1[10], move2[10];
+
+    // Announce round
+    printf("Go Players [%d]\n", round_count + 1);
+
+    printf("Sending 'GO' to players\n");
+    send(player1_socket, "GO\n", 3, 0);
+    send(player2_socket, "GO\n", 3, 0);
+    printf("Reading moves from players\n");
+    readstr(player1_socket, move1);
+    readstr(player2_socket, move2);
+    printf("Player 1: %s\nPlayer 2: %s\n", move1, move2);
+
+
+    // Process moves and determine the winner
+    int result = compare_moves(move1, move2);
+    switch (result) {
+        case 0: // Tie
+            printf("Players Draw\n");
+            break;
+        case 1: // Player 1 wins
+            scores[0]++;
+            printf("Player 1 Wins\n");
+            break;
+        case 2: // Player 2 wins
+            scores[1]++;
+            printf("Player 2 Wins\n");
+            break;
+    }
+}
+
+/**
+ * Compares the moves of both players and determines the winner.
+ * @param move1 First player's move.
+ * @param move2 Second player's move.
+ * @return Result of comparison: 0 for tie, 1 if player 1 wins, 2 if player 2 wins.
+ */
+int compare_moves(const char *move1, const char *move2) {
+    // This is a simple comparison function that assumes valid moves are provided.
+    if (strcmp(move1, move2) == 0) {
+        return 0; // Tie
+    }
+    if ((strcmp(move1, "ROCK") == 0 && strcmp(move2, "SCISSORS") == 0) ||
+        (strcmp(move1, "SCISSORS") == 0 && strcmp(move2, "PAPER") == 0) ||
+        (strcmp(move1, "PAPER") == 0 && strcmp(move2, "ROCK") == 0)) {
+        return 1; // Player 1 wins
+    }
+    return 2; // Player 2 wins
 }

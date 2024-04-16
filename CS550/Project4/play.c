@@ -24,10 +24,8 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    int turns = atoi(argv[1]);
-
-    // Initialize socket communication
-    initiate_socket_communication();
+    printf("Written by: Abraham J. Reines\n");
+    printf("Paper, Scissors, Rock: %s iterations\n", argv[1]);
 
     // Launch referee process
     launch_referee(argv[1]);
@@ -40,14 +38,12 @@ int main(int argc, char *argv[]) {
     // Wait for all child processes to complete
     wait_for_children();
 
+    // Assuming you have a way to fetch final scores
+    printf("Final Score:\n");
+    printf("Player 1: X\n");  // Replace X and Y with actual scores fetched from the game logic
+    printf("Player 2: Y\n");
+    
     return EXIT_SUCCESS;
-}
-
-/**
- * Initializes the socket communication between the coordinator, players, and the referee.
- */
-void initiate_socket_communication() {
-    // Placeholder for socket initialization code
 }
 
 /**
