@@ -18,41 +18,44 @@
 #define SERVER_IP "127.0.0.1"
 
 /* Function Prototypes */
-void connect_to_referee(int *sockfd, struct sockaddr_in *serv_addr);
+void connect_to_referee(int *sockfd, struct sockaddr_in *serv_addr, int player_id);
 void play_game(int sockfd);
-char *choose_move();
+char *choose_move(int sockfd);
 
-int main() {
-    int sockfd = 0;
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <player_id>\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+    int player_id = atoi(argv[1]);
+
+    int sockfd;
     struct sockaddr_in serv_addr;
 
     // Initialize random number generator
     srand(time(NULL));
 
-    connect_to_referee(&sockfd, &serv_addr);
+    // Pass player_id to the connect_to_referee function
+    connect_to_referee(&sockfd, &serv_addr, player_id);
     play_game(sockfd);
 
     close(sockfd);
-    return 0;
+    return EXIT_SUCCESS;
 }
 
-/**
- * Establishes a connection to the referee's server socket.
- * @param sockfd Pointer to the socket file descriptor.
- * @param serv_addr Pointer to the sockaddr_in structure for the server.
- */
-void connect_to_referee(int *sockfd, struct sockaddr_in *serv_addr) {
-    if ((*sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+void connect_to_referee(int *sockfd, struct sockaddr_in *serv_addr, int player_id) {
+    *sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (*sockfd < 0) {
         perror("Error creating socket");
         exit(EXIT_FAILURE);
     }
 
-    memset(serv_addr, '0', sizeof(*serv_addr));
+    memset(serv_addr, 0, sizeof(*serv_addr));
     serv_addr->sin_family = AF_INET;
     serv_addr->sin_port = htons(PORT);
 
     if (inet_pton(AF_INET, SERVER_IP, &serv_addr->sin_addr) <= 0) {
-        perror("Invalid address/ Address not supported");
+        perror("Invalid address/Address not supported");
         exit(EXIT_FAILURE);
     }
 
@@ -63,36 +66,53 @@ void connect_to_referee(int *sockfd, struct sockaddr_in *serv_addr) {
 
     // Send initial "READY" message
     send(*sockfd, "READY", strlen("READY"), 0);
+
+    // After sending "READY" message
+    fflush(stdout);  // Make sure the "Ready" message is printed out immediately
+
+
+    // Print ready message without socket number
+    printf("Player %d: Ready\n", player_id);
 }
 
-/**
- * The main game loop, handling communications with the referee.
- * @param sockfd Socket file descriptor.
- */
+char *choose_move(int sockfd) {
+    static char *moves[] = {"PAPER", "SCISSORS", "ROCK"};
+    int choice = rand() % 3;
+
+    return moves[choice];
+}
+
 void play_game(int sockfd) {
-    char buffer[1024] = {0};
+    char buffer[1024];
+    
     while (1) {
         memset(buffer, 0, sizeof(buffer));
-        if (read(sockfd, buffer, sizeof(buffer)) < 0) {
-            perror("Read error");
+        // Removed the delay for Player 2
+        
+        if (read(sockfd, buffer, sizeof(buffer)) <= 0) {
+            perror("Read error or connection closed by server");
             exit(EXIT_FAILURE);
         }
 
+        ssize_t numBytes = read(sockfd, buffer, sizeof(buffer) - 1);
+        if (numBytes <= 0) {
+            perror("Read error or connection closed by server");
+            exit(EXIT_FAILURE);
+        }
+
+        buffer[numBytes] = '\0'; // Null-terminate the string
+
         if (strcmp(buffer, "GO") == 0) {
             char *move = choose_move();
-            send(sockfd, move, strlen(move), 0);
-        } else if (strcmp(buffer, "STOP") == 0) {
+            printf("%s\n", move); // This line is for debugging purposes only
+            fflush(stdout);
+            if (send(sockfd, move, strlen(move), 0) < 0) {
+                perror("Error sending move");
+                exit(EXIT_FAILURE);
+            }
+        } else if (strcmp(buffer, "END") == 0) {
+            // Handle 'END' command
             break;
         }
     }
-}
-
-/**
- * Chooses a move randomly between "PAPER", "SCISSORS", and "ROCK".
- * @return The chosen move.
- */
-char *choose_move() {
-    char *moves[] = {"PAPER", "SCISSORS", "ROCK"};
-    int choice = rand() % 3;
-    return moves[choice];
 }
