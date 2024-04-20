@@ -1,118 +1,69 @@
-/**
- * @file player.c
- * @brief Player for a Paper Scissors Rock game using UNIX socket programming.
- * @author Abraham Reines
- * @date Mon Apr  8 15:47:11 PDT 2024
- */
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
 #include <sys/socket.h>
+#include <stdlib.h>
 #include <netinet/in.h>
+#include <string.h>
+#include <unistd.h>
 #include <arpa/inet.h>
 #include <time.h>
 
 #define PORT 4444
 #define SERVER_IP "127.0.0.1"
 
-/* Function Prototypes */
-void connect_to_referee(int *sockfd, struct sockaddr_in *serv_addr, int player_id);
-void play_game(int sockfd);
-char *choose_move(int sockfd);
+void error(const char *msg) {
+    perror(msg);
+    exit(1);
+}
+
+const char* getRandomMove() {
+    const char *moves[3] = {"ROCK", "PAPER", "SCISSORS"};
+    return moves[rand() % 3];
+}
 
 int main(int argc, char *argv[]) {
-    if (argc != 2) {
-        fprintf(stderr, "Usage: %s <player_id>\n", argv[0]);
-        exit(EXIT_FAILURE);
-    }
-    int player_id = atoi(argv[1]);
-
     int sockfd;
     struct sockaddr_in serv_addr;
+    char buffer[256];
 
-    // Initialize random number generator
-    srand(time(NULL));
+    srand(time(NULL));  // Seed the random number generator
 
-    // Pass player_id to the connect_to_referee function
-    connect_to_referee(&sockfd, &serv_addr, player_id);
-    play_game(sockfd);
+    // Creating the socket
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd < 0) 
+        error("ERROR opening socket");
 
-    close(sockfd);
-    return EXIT_SUCCESS;
-}
+    // Define the server address
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(PORT);
+    serv_addr.sin_addr.s_addr = inet_addr(SERVER_IP);
 
-void connect_to_referee(int *sockfd, struct sockaddr_in *serv_addr, int player_id) {
-    *sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (*sockfd < 0) {
-        perror("Error creating socket");
-        exit(EXIT_FAILURE);
-    }
+    // Connect to the server
+    if (connect(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
+        error("ERROR connecting");
 
-    memset(serv_addr, 0, sizeof(*serv_addr));
-    serv_addr->sin_family = AF_INET;
-    serv_addr->sin_port = htons(PORT);
+    // printf("Connected successfully to the referee.\n");
 
-    if (inet_pton(AF_INET, SERVER_IP, &serv_addr->sin_addr) <= 0) {
-        perror("Invalid address/Address not supported");
-        exit(EXIT_FAILURE);
-    }
-
-    if (connect(*sockfd, (struct sockaddr *)serv_addr, sizeof(*serv_addr)) < 0) {
-        perror("Connection Failed");
-        exit(EXIT_FAILURE);
-    }
-
-    // Send initial "READY" message
-    send(*sockfd, "READY", strlen("READY"), 0);
-
-    // After sending "READY" message
-    fflush(stdout);  // Make sure the "Ready" message is printed out immediately
-
-
-    // Print ready message without socket number
-    printf("Player %d: Ready\n", player_id);
-}
-
-char *choose_move(int sockfd) {
-    static char *moves[] = {"PAPER", "SCISSORS", "ROCK"};
-    int choice = rand() % 3;
-
-    return moves[choice];
-}
-
-void play_game(int sockfd) {
-    char buffer[1024];
-    
+    // Main loop to listen for commands from the referee
     while (1) {
-        memset(buffer, 0, sizeof(buffer));
-        // Removed the delay for Player 2
-        
-        if (read(sockfd, buffer, sizeof(buffer)) <= 0) {
-            perror("Read error or connection closed by server");
-            exit(EXIT_FAILURE);
-        }
+        bzero(buffer, 256);
+        if (read(sockfd, buffer, 255) < 0) 
+            error("ERROR reading from socket");
 
-        ssize_t numBytes = read(sockfd, buffer, sizeof(buffer) - 1);
-        if (numBytes <= 0) {
-            perror("Read error or connection closed by server");
-            exit(EXIT_FAILURE);
-        }
-
-        buffer[numBytes] = '\0'; // Null-terminate the string
+        printf("Message from referee: %s\n", buffer);
 
         if (strcmp(buffer, "GO") == 0) {
-            char *move = choose_move();
-            printf("%s\n", move); // This line is for debugging purposes only
-            fflush(stdout);
-            if (send(sockfd, move, strlen(move), 0) < 0) {
-                perror("Error sending move");
-                exit(EXIT_FAILURE);
-            }
-        } else if (strcmp(buffer, "END") == 0) {
-            // Handle 'END' command
+            // If received GO, decide on a move
+            const char *move = getRandomMove();  // Get a random move
+            printf("Chose: %s\n", move);
+            if (write(sockfd, move, strlen(move)) < 0)
+                error("ERROR writing to socket");
+        } else if (strcmp(buffer, "STOP") == 0) {
+            // If received STOP, terminate
+            printf("Received STOP. Closing connection.\n");
             break;
         }
     }
+
+    close(sockfd);  // Close the socket
+    return 0;
 }
