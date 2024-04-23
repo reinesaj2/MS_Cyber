@@ -1,0 +1,5 @@
+List of IP Addresses # of events in each log file respectively Combined # of events
+134.126.120.54       7933                                     7942           
+146.190.129.170      7                                        7942           
+94.156.71.154        1                                        7942           
+103.139.17.127       1                                        7942           

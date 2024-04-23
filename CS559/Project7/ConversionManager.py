@@ -4,7 +4,7 @@ from concurrent.futures import ProcessPoolExecutor
 from EVTXConverter import EVTXConverter
 
 def setup_logging():
-    """Configure the global logging setup."""
+    """global logging setup"""
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
@@ -15,23 +15,39 @@ def setup_logging():
     )
 
 class ConversionManager:
-    """Manages the conversion process of multiple EVTX files using multiprocessing."""
+    """conversion process of multiple EVTX files concurrently"""
     def __init__(self, directory):
         self.directory = directory
 
     def convert_files(self):
-        """Convert all EVTX files in the directory."""
-        files_to_convert = [
-            (os.path.join(self.directory, f), os.path.join(self.directory, f"{os.path.splitext(f)[0]}.xml"))
-            for f in os.listdir(self.directory) if f.lower().endswith('.evtx')
-        ]
+            """
+            Converts all .evtx files in the relative directory to .xml format.
 
-        with ProcessPoolExecutor() as executor:
-            executor.map(self.worker, files_to_convert)
+            Returns:
+                None
+            """
+            files_to_convert = [
+                (os.path.join(self.directory, f), os.path.join(self.directory, f"{os.path.splitext(f)[0]}.xml"))
+                for f in os.listdir(self.directory) if f.lower().endswith('.evtx')
+            ]
+
+            with ProcessPoolExecutor() as executor:
+                executor.map(self.worker, files_to_convert)
 
     @staticmethod
     def worker(file_tuple):
-        """Static method to handle file conversion."""
+        """
+        Process the file tuple using the EVTXConverter: 
+
+        Args:
+            file_tuple (tuple): A tuple containing the file information.
+
+        Raises:
+            Exception: If there is an error processing the file.
+
+        Returns:
+            None
+        """
         try:
             converter = EVTXConverter(*file_tuple)
             converter.convert()

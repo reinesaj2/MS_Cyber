@@ -1,0 +1,80 @@
+auth.log:
+--------------------
+Number of events per app:
+CRON: 3138
+dbus-daemon: 15
+sshd: 371
+sudo: 58
+systemd: 15
+systemd-logind: 72
+useradd: 12
+
+kern.log:
+--------------------
+Number of events per app:
+kernel: 45663
+
+syslog:
+--------------------
+Number of events per app:
+CRON: 1569
+ModemManager: 30
+NetworkManager: 322
+PackageKit: 6
+accounts-daemon: 6
+acpid: 18
+alsactl: 6
+anacron: 224
+apachectl: 22
+apport: 12
+avahi-daemon: 14966
+colord: 6
+cracklib: 6
+cron: 12
+dbus-daemon: 513
+fwupdmgr: 135
+gdm3: 12
+geoclue: 6
+gnome-session: 12
+gnome-session-binary: 18
+gnome-shell: 118
+goa-daemon: 15
+gsd-color: 114
+gsd-media-keys: 12
+gsd-sharing: 12
+gvfsd: 7
+ibus-daemon: 4
+ifup: 24
+kernel: 45988
+mtp-probe: 12
+networkd-dispatcher: 174
+nm-dispatcher: 6
+ntpd: 454
+pipewire: 36
+pipewire-media-session: 18
+polkitd: 6
+postfix: 21
+pulseaudio: 30
+rsyslogd: 25
+rtkit-daemon: 195
+sensors: 36
+sh: 30
+snapd: 55
+snapd-apparmor: 18
+spice-vdagent: 6
+sshd: 60
+systemd: 5881
+systemd-modules-load: 30
+systemd-resolved: 26
+systemd-udevd: 84
+systemd-xdg-autostart-generator: 120
+tracker-miner-f: 54
+tracker-miner-fs-3: 8
+udisksd: 24
+vboxadd: 54
+vboxadd-service: 6
+whoopsie: 6
+wpa_supplicant: 6
+xrdp: 316
+xrdp-sesman: 6
+
