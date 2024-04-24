@@ -58,6 +58,9 @@ def display_results(ip_event_count, log_file_path):
   result_file_path = log_file_path.replace('.7', '_results.txt')
   with open(result_file_path, 'w') as file:
     file.write("{:<20} {:<40} {:<15}\n".format('List of IP Addresses', '# of events in each log file respectively', 'Combined # of events'))
+    file.write("Originated from: {}\n".format(log_file_path))  # Print the file path the events originated from
+    for ip, counts in ip_event_count.items():
+      file.write("{:<20} {:<40} {:<15}\n".format(ip, counts[0], counts[1]))
     for ip, counts in ip_event_count.items():
       file.write("{:<20} {:<40} {:<15}\n".format(ip, counts[0], counts[1]))
   print(f"Results saved to {result_file_path}")
