@@ -1,0 +1,20 @@
+          Player 1: Ready
+          Player 2: Ready
+Go Players [1]:
+          Player 1: Rock
+          Player 2: Scissors
+          Player 1 Wins
+Go Players [2]:
+          Player 1: Scissors
+          Player 2: Rock
+          Player 2 Wins
+Go Players [3]:
+          Player 1: Rock
+          Player 2: Rock
+          Players Draw
+Final Score: 
+          Player 1: 1 
+          Player 2: 1
+Players Draw
+Written by: Abraham J. Reines
+Paper, Scissors, Rock: 3 iterations

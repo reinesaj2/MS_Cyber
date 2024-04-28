@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs, longtable}
+\usepackage{enumitem}
+\usepackage{setspace}
+
+% Color definitions for listings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Listing style for C code
+\lstdefinestyle{cstyle}{
+    language=C,
+    backgroundcolor=\color{backcolour},    % Light grey background
+    commentstyle=\color{codegreen},        % Green for comments
+    keywordstyle=\color{magenta},          % Magenta for keywords
+    numberstyle=\tiny\color{codegray},     % Grey for line numbers
+    stringstyle=\color{codepurple},        % Purple for strings
+    basicstyle=\ttfamily\small,            % Small typewriter font
+    breakatwhitespace=false,               % Allows breaking at whitespace
+    breaklines=true,                       % Automatic line breaking
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},  % Arrow for line continuation
+    captionpos=b,                          % Caption position at bottom
+    keepspaces=true,                       % Keeps spaces for alignment
+    numbers=left,                          % Line numbers on left
+    numbersep=5pt,                         % Space between line numbers and code
+    showspaces=false,                      % Do not show spaces with special characters
+    showstringspaces=false,                % Do not show spaces within strings
+    showtabs=false,                        % Do not show tabs within strings
+    tabsize=2                              % Tab size of 2 spaces
+}
+
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=20mm,
+    top=20mm,
+}
+
+\title{Paper, Scissors, Rock Project}
+\author{Abraham J. Reines}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Project Overview}
+This project has concurrent programming to simulate game "Paper, Scissors, Rock" using multiple processes in Unix. system has three components: `play` program, `referee` program, and multiple `player` programs. 
+
+\section{Implementation Details}
+\subsection{Play Program}
+`play` program initiates game by creating player processes and a referee process. All processes are correctly synchronized and communicates game results.
+
+\subsection{Referee Program}
+referee program controls game flow, receives choices from players, determines winner, and sends results back to play program.
+
+\subsection{Player Programs}
+Each player program represents a participant in game. These programs send their game choices to referee and wait for results.
+
+\section{Execution}
+\subsection{Compiling Programs}
+To compile programs use GNU Compiler Collection (gcc). 
+
+\begin{lstlisting}[language=bash]
+make -f makefile.mak
+\end{lstlisting}
+
+\subsection{Running Simulation}
+To run simulation open terminal windows. execute programs different terminals:
+
+\begin{enumerate}
+    \item \textbf{Terminal 1: Start Play Program}
+    In first terminal, 
+    \begin{lstlisting}[language=bash]
+    ./play
+    \end{lstlisting}
+
+    \item \textbf{Terminal 2: Start Referee Program}
+    Open a second terminal and start `referee` program:
+    \begin{lstlisting}[language=bash]
+    ./referee
+    \end{lstlisting}
+
+    \item \textbf{Terminal 3 : Start Player Programs}
+    Each player will run in a separate terminal. 
+    \begin{lstlisting}[language=bash]
+    ./player
+    \end{lstlisting}
+    Repeat this step in each new terminal for additional players.
+\end{enumerate}
+
+\textbf{Note:}  `play` program is executed before `referee` and `player` programs.
+
+\section{Project Execution and Compliance Report}
+
+\subsection{Execution on 'stu'}
+This project was tested to compile and run without errors on 'stu' platform. 
+
+\subsection{Project Specifications}
+Project adheres to specifications. socket programming for client/server model and creation of sub-processes for Paper Scissors Rock (PSR) game, conform with project requirements.
+
+\subsection{Development and Debugging Process}
+Throughout development process, no significant issues were encountered. 
+
+\section{Code Listings}
+\subsection{Play Program}
+\lstinputlisting[style=cstyle, caption={play.c}]{play.c}
+
+\subsection{Referee Program}
+\lstinputlisting[style=cstyle, caption={referee.c}]{referee.c}
+
+\subsection{Player Program}
+\lstinputlisting[style=cstyle, caption={player.c}]{player.c}
+
+\subsection{Readstr Function}
+\lstinputlisting[style=cstyle, caption={readstr.c}]{readstr.c}
+
+\subsection{MakeFile}
+\lstinputlisting[style=cstyle, caption={Makefile}]{Makefile.mak}
+
+\section*{References}
+
+\begin{enumerate}
+  \item Robbins, K. A., \& Robbins, S. (n.d.). \textit{Unix™ Systems Programming: Communication, Concurrency, and Threads}. O'Reilly Media. Retrieved from https://www.oreilly.com
+  \item Toptal®. (n.d.). \textit{Beginner's Guide to Concurrent Programming}. Retrieved from https://www.toptal.com
+  \item (n.d.). \textit{Start Concurrent: A Gentle Introduction to Concurrent Programming}. Retrieved from https://start-concurrent.github.io
+\end{enumerate}
+
+\vfill
+\section*{Academic Integrity Pledge}
+{\color{red}\textit{“This work complies with JMU honor code. I did not give or receive unauthorized help on this assignment.”}}
+
+\end{document}

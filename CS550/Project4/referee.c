@@ -8,30 +8,42 @@
 
 #define PORT 4444
 
-void send_message(int socket, char *message) {
-    if (send(socket, message, strlen(message), 0) < 0) {
+/**
+ * Sends a message to specified socket.
+ * 
+ * @param socket socket to send message to.
+ * @param message message to send.
+ */
+void send_player_messages(int socket, char *message) {
+    char formatted_message[1024];
+    snprintf(formatted_message, sizeof(formatted_message), "%s\n", message);
+    if (send(socket, formatted_message, strlen(formatted_message), 0) < 0) {
         perror("send failed");
         exit(EXIT_FAILURE);
     }
-    // printf("Sent to player socket %d: %s\n", socket, message);
 }
 
-int main(int argc, char *argv[]) {
-    if (argc != 2) {
-        fprintf(stderr, "Usage: %s <number_of_rounds>\n", argv[0]);
+/**
+ * main function of referee program.
+ * 
+ * @param arg1  number of command-line arguments.
+ * @param arg2  array of command-line arguments.
+ * @return  exit status of program.
+ */
+int main(int arg1, char *arg2[]) {
+    if (arg1 != 2) {
+        fprintf(stderr, "Usage: %s <number_of_rounds>\n", arg2[0]);
         exit(EXIT_FAILURE);
     }
 
-    int rounds = atoi(argv[1]);
-    int server_fd, player_socket[2];
+    int rounds = atoi(arg2[1]);
+    int server_fd, player_needs_sock[2];
     struct sockaddr_in address;
     int opt = 1;
     int addrlen = sizeof(address);
-    char choices[2][10];  // Added to store choices from both players
+    char choices[2][10];  // store choices from both players
+    int scores[2] = {0, 0};  // Score player 1 and player 2
 
-    // printf("Setting up server on port %d...\n", PORT);
-
-    // Setup the server socket
     server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd < 0) {
         perror("socket failed");
@@ -53,67 +65,70 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    // printf("Server is listening...\n");
-
-    // Accept connections from two players
     for (int i = 0; i < 2; i++) {
-        player_socket[i] = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen);
-        if (player_socket[i] < 0) {
+        player_needs_sock[i] = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen);
+        if (player_needs_sock[i] < 0) {
             perror("accept");
             exit(EXIT_FAILURE);
         }
-        printf("Player %d connected.\n", i + 1);
-        send_message(player_socket[i], "READY");
+        printf("          Player %d: Ready\n", i + 1);
+        send_player_messages(player_needs_sock[i], "READY");
     }
 
-    // Main game loop
     for (int round = 0; round < rounds; round++) {
-        printf("Starting Round %d:\n", round + 1);
+        printf("Go Players [%d]:\n", round + 1);
         for (int j = 0; j < 2; j++) {
-            send_message(player_socket[j], "GO");
-            memset(choices[j], 0, sizeof(choices[j]));  // Clear previous choice
-            if (recv(player_socket[j], choices[j], sizeof(choices[j]), 0) < 0) {
+            send_player_messages(player_needs_sock[j], "GO");
+            memset(choices[j], 0, sizeof(choices[j]));
+            if (recv(player_needs_sock[j], choices[j], sizeof(choices[j]), 0) < 0) {
                 perror("recv failed");
                 exit(EXIT_FAILURE);
             }
-            printf("Player %d chose: %s\n", j + 1, choices[j]);
+            printf("          Player %d: %s\n", j + 1, choices[j]);
         }
 
-        // Game decision logic
-        int result = 0; // 0 = draw, 1 = player 1 wins, 2 = player 2 wins
+        int result = 0; // 0 = Draw, 1 = player 1 Wins, 2 = player 2 Wins
         if (strcmp(choices[0], choices[1]) == 0) {
-            printf("Result: Draw\n");
-            result = 0; // Draw
-        } else if ((strcmp(choices[0], "ROCK") == 0 && strcmp(choices[1], "SCISSORS") == 0) ||
-                   (strcmp(choices[0], "SCISSORS") == 0 && strcmp(choices[1], "PAPER") == 0) ||
-                   (strcmp(choices[0], "PAPER") == 0 && strcmp(choices[1], "ROCK") == 0)) {
-            printf("Player 1 wins\n");
-            result = 1; // Player 1 wins
+            printf("          Players Draw\n");
+        } else if ((strcmp(choices[0], "Rock") == 0 && strcmp(choices[1], "Scissors") == 0) ||
+                   (strcmp(choices[0], "Scissors") == 0 && strcmp(choices[1], "Paper") == 0) ||
+                   (strcmp(choices[0], "Paper") == 0 && strcmp(choices[1], "Rock") == 0)) {
+            printf("          Player 1 Wins\n");
+            scores[0]++;
+            result = 1;
         } else {
-            printf("Player 2 wins\n");
-            result = 2; // Player 2 wins
+            printf("          Player 2 Wins\n");
+            scores[1]++;
+            result = 2;
         }
 
-        // Send results back to players
         if (result == 0) {
-            send_message(player_socket[0], "DRAW");
-            send_message(player_socket[1], "DRAW");
+            send_player_messages(player_needs_sock[0], "Draw");
+            send_player_messages(player_needs_sock[1], "Draw");
         } else if (result == 1) {
-            send_message(player_socket[0], "WIN");
-            send_message(player_socket[1], "LOSE");
+            send_player_messages(player_needs_sock[0], "Win");
+            send_player_messages(player_needs_sock[1], "Lose");
         } else {
-            send_message(player_socket[0], "LOSE");
-            send_message(player_socket[1], "WIN");
+            send_player_messages(player_needs_sock[0], "Lose");
+            send_player_messages(player_needs_sock[1], "Win");
         }
     }
 
-    // Send STOP message to players and close sockets
-    for (int i = 0; i < 2; i++) {
-        send_message(player_socket[i], "STOP");
-        close(player_socket[i]);
+    printf("Final Score: \n          Player 1: %d \n          Player 2: %d\n", scores[0], scores[1]);
+    if (scores[0] > scores[1]) {
+        printf("Winner is Player 1!\n");
+    } else if (scores[1] > scores[0]) {
+        printf("Winner is Player 2!\n");
+    } else {
+        printf("Players Draw\n");
     }
 
-    printf("Game completed, server shutting down.\n");
+    for (int i = 0; i < 2; i++) {
+        send_player_messages(player_needs_sock[i], "STOP");
+        close(player_needs_sock[i]);
+    }
+
+    // printf("Game completed, server shutting down.\n");
     close(server_fd);
     return 0;
 }

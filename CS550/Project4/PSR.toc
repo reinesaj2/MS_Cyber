@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}Project Structure}{2}{}%
+\contentsline {section}{\numberline {2}Implementation Details}{2}{}%
+\contentsline {subsection}{\numberline {2.1}The Play Program}{2}{}%
+\contentsline {subsection}{\numberline {2.2}The Referee Program}{2}{}%
+\contentsline {subsection}{\numberline {2.3}The Player Program}{2}{}%
+\contentsline {subsection}{\numberline {2.4}The Readstr Utility}{3}{}%
+\contentsline {section}{\numberline {3}Make Utility and Compilation}{3}{}%
+\contentsline {section}{\numberline {4}Testing and Expected Output}{3}{}%
+\contentsline {section}{\numberline {5}Conclusion}{3}{}%
