@@ -1,0 +1,196 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc} % for Unicode input
+\usepackage[T1]{fontenc} % for font encoding
+\usepackage{lmodern} % Latin Modern font that supports the T1 encoding
+\usepackage{textcomp} % for additional symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{array} % For table wrapping and advanced features
+
+% Define colors for code listing
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for the Python code listings
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+% Setup the style for plain text listings
+\lstdefinestyle{plaintextstyle}{
+    language={},
+    basicstyle=\ttfamily,
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    numbers=left,
+    numberstyle=\small,
+    numbersep=8pt,
+    showstringspaces=false,
+    tabsize=2,
+    language=bash,
+    captionpos=b
+}
+
+
+% Adjust margins as needed
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+\title{Algorithm Analysis}
+\author{Abraham J. Reines} % Replace [Your Name] with your actual name.
+\date{\today} % Use the date of document completion.
+
+\begin{document}
+
+\maketitle
+
+\section*{Results}
+
+{\color{red}Please find all results in the .txt files of the assignment submisstion. }
+
+\section*{Task 7.6.1}
+
+\subsection*{Results}
+
+\begin{table}[htb!]
+\centering
+\renewcommand{\arraystretch}{1.5} % Adds vertical spacing between rows
+\setlength{\tabcolsep}{4pt} % Adjusts the horizontal padding between columns
+\begin{tabular}{|>{\centering\arraybackslash}p{7cm}|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{3cm}|}
+\hline
+\textbf{Log File Name} & \textbf{Total Events} & \textbf{Error Events} & \textbf{Critical Events} & \textbf{Process IDs Reporting Events} \\
+\hline
+XUNHUA2023OFFIC\_Setup\_log.evtx & 94 & 0 & 0 & 18412, 12536, \ldots 15492 (Truncated) \\
+\hline
+DESKTOP-KUHNMLA\_Setup\_log.evtx & 366 & 0 & 0 & 3884, 1824, \ldots 2892 (Truncated) \\
+\hline
+XUNHUA2023OFFIC\_System\_log.evtx & 29692 & 321 & 8 & 5412, 2780, \ldots 15484 (Truncated) \\
+\hline
+XUNHUA2023OFFIC\_Security\_log.evtx & 22782 & 0 & 0 & 3596, 3632, \ldots 1416 \\
+\hline
+DESKTOP-KUHNMLA\_System\_log.evtx & 44357 & 249 & 8 & 5412, 5000, \ldots 9936 (Truncated) \\
+\hline
+\end{tabular}
+\caption{Statistical Analysis of Windows Log Files}
+\end{table}
+
+Please note the results are captured by the \texttt{'log\_statistics.txt'} file. This file will be uploaded alogn tside this PDF.
+
+\subsection*{Script}
+ 
+\lstinputlisting[style=pythonstyle, caption={Code to analyze statistics of Windows log files. }]{WindowsLogAnalyzer.py}
+
+\section*{Task 7.6.2}
+
+\subsection*{Results}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Adds vertical spacing between rows
+\setlength{\tabcolsep}{4pt} % Adjusts the horizontal padding between columns
+\begin{tabular}{
+  |>{\centering\arraybackslash}p{2.5cm}
+  |>{\centering\arraybackslash}p{6.5cm}
+  |>{\centering\arraybackslash}p{3.5cm}|}
+\hline
+\textbf{Log File} & \textbf{List of Applications} & \textbf{\# of Events for Each Application} \\
+\hline
+auth.log & CRON, dbus-daemon, sshd, ...(Truncated) & 3138, 15, 371, ...(Truncated) \\
+\hline
+kern.log & kernel & 45663 \\
+\hline
+syslog & CRON, ModemManager, NetworkManager, ...(Truncated) & 1569, 30, 322, ... (Truncated)\\
+\hline
+\end{tabular}
+\caption{Analysis of Ubuntu Log Files}
+\end{table}
+
+Please note the results are captured by the \texttt{'UbuntuLoggingResults.txt'} file. This file will be uploaded alogn tside this PDF.
+
+\subsection*{Script}
+\lstinputlisting[style=pythonstyle, caption={Code to analyze statistics of Ubuntu log files. }]{UbuntuLogging.py}
+
+\section*{Task 7.6.3}
+
+\subsection*{Results}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Adds vertical spacing between rows
+\setlength{\tabcolsep}{4pt} % Adjusts the horizontal padding between columns
+\begin{tabular}{
+  |>{\centering\arraybackslash}p{3.5cm}
+  |>{\centering\arraybackslash}p{8cm}
+  |>{\centering\arraybackslash}p{2.5cm}|}
+\hline
+\textbf{List of IP Addresses} & \textbf{\# of Events in Each Log File Respectively} & \textbf{Combined \# of Events} \\
+\hline
+52.167.144.55 & 1, -, - & 5114 \\
+40.77.167.15 & 1, -, - & 5114 \\
+134.126.120.54 & 5076, 7411, 7933 & 5114, 7504, 7942 \\
+... & ... & ... \\
+146.190.129.170 & 24, -, 7 & 5114, -, 7942 \\
+... & ... & ... \\
+\hline
+\end{tabular}
+\caption{Statistical Analysis of Apache Log Files}
+\end{table}
+
+Please note the results are captured by the result files for the Apache analysis. This file will be uploaded alogn tside this PDF.
+
+\subsection*{Script}
+\lstinputlisting[style=pythonstyle, caption={Code to analyze statistics of Apache log files. }]{ApacheLogging.py}
+
+\section*{References}
+
+\begin{enumerate}
+  \item Real Python. (n.d.). \textit{Speed Up Your Python Program With Concurrency}. Retrieved from https://realpython.com
+  \item Pascariu, C. (2022, September 13). \textit{Log File Analysis with Python}. Pluralsight. Retrieved from 
+  https://www.pluralsight.com
+  \item Toptal®. (n.d.). \textit{Python Multithreading Tutorial: Concurrency and Parallelism}. Retrieved from 
+  https://www.toptal.com
+  \item HuangYiwei. (2019, December 30). \textit{concurrent-log}. PyPI. Retrieved from https://pypi.org/project/concurrent-log/
+\end{enumerate}
+
+
+\vfill 
+  \section*{Academic Integrity Pledge}
+   {\color{red}\textit{“This work complies with the JMU honor code. I did not give or receive unauthorized help on this assignment.”}}
+\end{document}

@@ -6,69 +6,65 @@ from collections import defaultdict
 # Date: April 22, 2024
 
 # Determine directory of current script
-script_dir = os.path.dirname(__file__)
+Wheres_that_script = os.path.dirname(__file__)
 # Compute directory path for logs
-log_dir = os.path.join(script_dir, '')
+Dir_loc = os.path.join(Wheres_that_script, '')
 
 # Define a function to parse log file
-def analyze_log_file(log_file_path):
+def analyze_s0me_logs(Wheres_those_logs):
   """
-  Parses given Apache log file and compiles statistics about IP addresses and number of events.
+  Parses Apache log file; compiles statistics for IP addresses and number of events.
   
   Args:
-    log_file_path (str): path to log file.
+    Wheres_those_logs (str): path to log file.
   
   Returns:
-    dict: A dictionary with IP addresses as keys and a list of event counts as values.
+    dict: dictionary with IP addresses as keys and a list of event counts as values.
   """
-  ip_event_count = defaultdict(lambda: [0, 0])  # Dictionary to store IP: [individual file event count, total event count]
+  How_many_IPs = defaultdict(lambda: [0, 0])  # Dictionary to store IP
   total_events = 0
   
-  # Regular expression to match IP addresses at start of log line
-  ip_regex = re.compile(r'^(\d+\.\d+\.\d+\.\d+)')
+  # Regex match IP addresses
+  RegexIPs = re.compile(r'^(\d+\.\d+\.\d+\.\d+)')
   
-  try:
-    with open(log_file_path, 'r') as file:
+  try: 
+    with open(Wheres_those_logs, 'r', encoding='ISO-8859-1') as file:
       for line in file:
-        ip_match = ip_regex.match(line)
-        if ip_match:
-          ip_address = ip_match.group(1)
-          ip_event_count[ip_address][0] += 1
+        Found_match = RegexIPs.match(line)
+        if Found_match:
+          LocalizeIPs = Found_match.group(1)
+          How_many_IPs[LocalizeIPs][0] += 1
           total_events += 1
           
     # Update total event counts
-    for ip in ip_event_count:
-      ip_event_count[ip][1] = total_events
+    for ip in How_many_IPs:
+      How_many_IPs[ip][1] = total_events
       
-    return ip_event_count
+    return How_many_IPs
   except FileNotFoundError:
-    print(f"log file {log_file_path} was not found.")
+    print(f"log file {Wheres_those_logs} was not found.")
     return {}
 
-# Function to display results
-def display_results(ip_event_count, log_file_path):
+def Show_results(How_many_IPs, Wheres_those_logs):
   """
-  Displays results of log analysis in specified tabular format.
-  Saves results to a text file with same name as log file.
+  Displays results of log analysis
   
   Args:
-    ip_event_count (dict): dictionary containing IP event counts.
-    log_file_path (str): path to log file.
+    How_many_IPs (dict): containing IP event counts.
+    Wheres_those_logs (str): path to log file.
   """
-  result_file_path = log_file_path.replace('.7', '_results.txt')
+  result_file_path = Wheres_those_logs.replace('.7', '_results.txt')
   with open(result_file_path, 'w') as file:
     file.write("{:<20} {:<40} {:<15}\n".format('List of IP Addresses', '# of events in each log file respectively', 'Combined # of events'))
-    file.write("Originated from: {}\n".format(log_file_path))  # Print the file path the events originated from
-    for ip, counts in ip_event_count.items():
-      file.write("{:<20} {:<40} {:<15}\n".format(ip, counts[0], counts[1]))
-    for ip, counts in ip_event_count.items():
+    for ip, counts in How_many_IPs.items():
       file.write("{:<20} {:<40} {:<15}\n".format(ip, counts[0], counts[1]))
   print(f"Results saved to {result_file_path}")
 
 # Path to log file
-log_files = [file for file in os.listdir(log_dir) if file.endswith('.7')]
-for log_file in log_files:
-  log_file_path = os.path.join(log_dir, log_file)
+Files_with_logs = [file for file in os.listdir(Dir_loc) if file.endswith('.7')]
+for log_file in Files_with_logs:
+  Wheres_those_logs = os.path.join(Dir_loc, log_file)
   # Analyze log file and display results
-  ip_event_counts = analyze_log_file(log_file_path)
-  display_results(ip_event_counts, log_file_path)
+  How_many_IPs = analyze_s0me_logs(Wheres_those_logs)
+  Show_results(How_many_IPs, Wheres_those_logs)
+  print("Done!")
