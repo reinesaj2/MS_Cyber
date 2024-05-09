@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc} % for Unicode input
+\usepackage[T1]{fontenc} % for font encoding
+\usepackage{lmodern} % Latin Modern font that supports the T1 encoding
+\usepackage{textcomp} % for additional symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{listings} % For code listing
+\usepackage{hyperref}
+\usepackage{mdframed}
+\usepackage{alltt}
+
+% Custom colors for code highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Set listings configuration
+\lstset{
+  basicstyle=\ttfamily,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+  numbers=left,
+  numberstyle=\small,
+  numbersep=8pt,
+  showstringspaces=false,
+  tabsize=2,
+  language=bash,
+  captionpos=b
+}
+
+% Adjust margins as needed
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+\title{Databases and Database Security}
+\author{Abraham J. Reines}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{5.4.1 - Typesetting and Model-Checking HourClock}
+
+\subsection*{Replacing Author and Date}
+\begin{mdframed}[innertopmargin=10pt, innerbottommargin=10pt, innerleftmargin=10pt, innerrightmargin=10pt, backgroundcolor=gray!10, roundcorner=10pt, shadow=true, shadowsize=6, shadowcolor=black!50, frametitle={Module Replacement:}, frametitlebackgroundcolor=gray!20]
+\begin{alltt}
+\textbf{---------------------- MODULE HourClock3 ----------------------}
+\textbf{EXTENDS Naturals}
+\textit{(* Abraham J. Reines, 03/20/2024 *)}
+\textbf{VARIABLE hr}
+\textbf{HCini  ==  hr \(\in\) (1 .. 11)}
+\textbf{HCnxt  ==  hr' = IF hr \(\neq\) 12 THEN hr + 1 ELSE 1}
+\textbf{HC  ==  HCini /\ \(\Box\)[HCnxt]\_hr}
+\textbf{--------------------------------------------------------------}
+\textbf{THEOREM  HC => \(\Box\)HCini}
+\textbf{==============================================================}
+\end{alltt}
+\end{mdframed}
+
+
+\subsection*{System Specification Explanation}
+The system specification of the \texttt{HourClock.tla} is explained as follows:
+
+\begin{itemize}
+    \item The module, named \texttt{HourClock3}, employs natural numbers from the extended module \texttt{Naturals}.
+    \item Authored by Abraham J. Reines on March 20, 2024, it defines a variable \texttt{hr} representing the clock's hour.
+    \item \texttt{HCini} sets the initial condition, constraining \texttt{hr} to be within 1 to 11, indicating the starting range for the clock.
+    \item The transition function \texttt{HCnxt} describes the clock's behavior for the subsequent state. Should \texttt{hr} not equal 12, it increments by 1; otherwise, it cycles back to 1.
+    \item The clock's behavior is encapsulated in \texttt{HC}, which asserts that the clock starts with \texttt{HCini} and consistently adheres to \texttt{HCnxt} for all following states.
+    \item Lastly, a theorem \texttt{HC \(\Rightarrow\) []HCini} is posited, claiming that if \texttt{HC} is valid, then \texttt{HCini} invariably remains true, suggesting that the clock should perpetually stay within the 1 to 11 range, which contradicts the inclusive nature of a 12-hour cycle.
+\end{itemize}
+
+It should be noted that the specification appears to improperly represent the 12-hour mark, as the initial condition excludes 12 and the theorem implies the clock should never indicate 12, which is inconsistent with standard 12-hour clock behavior.
+
+\subsection*{Typeset Specification}
+The typeset specification of \texttt{HourClock.tla} can be found in Figure~\ref{fig:typeset-hourclock}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Screenshot 2024-03-22 at 12.15.02 PM}
+\caption{Typeset \texttt{HourClock.tla} specification.}
+\label{fig:typeset-hourclock}
+\end{figure}
+
+\subsection*{Model-Checking Results}
+The results of the model-checking on \texttt{HourClock.tla} are presented in Figure~\ref{fig:model-check-hourclock}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Screenshot 2024-03-20 at 2.51.28 PM.png}
+\caption{Model-checking results of \texttt{HourClock.tla}.}
+\label{fig:model-check-hourclock}
+\end{figure}
+
+\vfill
+  \section*{Academic Integrity Pledge}
+    {\color{red}\textit{“This work complies with the JMU honor code. I did not give or receive unauthorized help on this assignment.”}}
+    
+\newpage
+\section*{References}
+
+\begin{enumerate}
+  \item blah
+\end{enumerate}
+
+\end{document}
