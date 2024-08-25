@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{amsmath}
+
+\title{CS610 - Project 1: QKD-Encrypted LLM for Secure Local Use}
+\author{Abraham J. Reines}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+This project involves deploying a small pre-trained language model (GPT-Neo) on the `stu.cs.jmu.edu` server and using Quantum Key Distribution (QKD) to securely encrypt communications between any client device and the server. The goal is to explore advanced cryptographic techniques and their application in secure communications, aligning with the course's focus on networking and security.
+
+\section{High-Level Design}
+
+\subsection{System Architecture}
+The system is designed as a client-server architecture:
+\begin{itemize}
+    \item \textbf{Server Side:} The server hosts the pre-trained LLM (GPT-Neo) and handles encrypted communication with clients. It runs on `stu.cs.jmu.edu`.
+    \item \textbf{Client Side:} Clients communicate with the server over a secure network. They use QKD to exchange encryption keys, which are then used to encrypt and decrypt communications.
+\end{itemize}
+
+\subsection{Quantum Key Distribution (QKD) Simulation}
+A QKD simulation will be implemented to securely exchange encryption keys between the client and server. This simulation mimics the key exchange process in a quantum communication channel, ensuring the security of the encryption keys even against quantum attacks.
+
+\subsection{Encryption and Decryption}
+\begin{itemize}
+    \item The LLM model is stored in an encrypted format on the server. 
+    \item When a client connects, the QKD process is initiated to securely exchange the encryption key.
+    \item The client uses the key to decrypt the LLM model for local use, and all subsequent communications are encrypted with this key.
+\end{itemize}
+
+\section{Implementation Details}
+
+\subsection{Programming Language}
+The project is implemented in Python, which is supported on `stu.cs.jmu.edu`. Python is chosen due to its rich ecosystem of libraries for both machine learning and cryptography.
+
+\subsection{Specialized Libraries}
+\begin{itemize}
+    \item \textbf{Hugging Face Transformers:} Used to deploy the GPT-Neo model.
+    \item \textbf{PyCryptodome:} Used for encryption and decryption processes.
+    \item \textbf{Qiskit:} Used to simulate the QKD process.
+\end{itemize}
+
+\subsection{Key Modules}
+\begin{itemize}
+    \item \textbf{server.py:} Manages the LLM and handles client connections.
+    \item \textbf{client.py:} Initiates connections with the server, handles QKD, and decrypts the LLM model for use.
+    \item \textbf{qkd.py:} Implements the QKD simulation, ensuring secure key exchange between client and server.
+\end{itemize}
+
+\section{Compiling and Running the Project}
+
+\subsection{Setup Instructions}
+\begin{itemize}
+    \item Ensure Python is installed on both the server and client machines.
+    \item Install the required libraries using pip:
+    \begin{verbatim}
+    pip install transformers pycryptodome qiskit
+    \end{verbatim}
+    \item Place the `server.py`, `client.py`, and `qkd.py` files in the appropriate directories on the server and client machines.
+\end{itemize}
+
+\subsection{Running the Server}
+\begin{verbatim}
+python server.py
+\end{verbatim}
+
+\subsection{Running the Client}
+\begin{verbatim}
+python client.py
+\end{verbatim}
+
+\section{Known Issues}
+\begin{itemize}
+    \item The QKD simulation may not be fully accurate due to limitations in classical computing environments.
+    \item The model decryption process may introduce some latency, depending on the size of the LLM and the computational power of the client machine.
+\end{itemize}
+
+\section{Conclusion}
+This project successfully integrates cutting-edge cryptographic techniques with machine learning, offering a secure and innovative approach to deploying and utilizing LLMs in a networked environment. The use of QKD ensures that the system remains secure even in the face of future quantum computing threats.
+
+\end{document}
