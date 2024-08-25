@@ -1,6 +1,3 @@
-Here’s the updated `README.md` file for your project:
-
-```markdown
 # CS610 Project 1: QKD-Encrypted LLM for Secure Local Use
 
 ## Project Overview
@@ -57,10 +54,3 @@ This project demonstrates the integration of modern cryptographic techniques wit
 
 ## Contact
 For any questions or issues, please reach out to Abraham J. Reines at abrahamreines@jmu.edu.
-```
-
-### Updates:
-- The instructions were slightly clarified for running the server and client scripts by specifying `python3` instead of `python`, ensuring compatibility with environments where Python 2 might still be the default.
-- The Known Issues section now explicitly mentions ensuring the server is running before attempting client connections.
-
-This `README.md` now fully documents your project and should be included with your submission.
