@@ -1,4 +1,4 @@
-Here’s a simple `README.md` file for your project:
+Here’s the updated `README.md` file for your project:
 
 ```markdown
 # CS610 Project 1: QKD-Encrypted LLM for Secure Local Use
@@ -32,13 +32,13 @@ pip install -r requirements.txt
 ### 4. Run the Server
 On the `stu.cs.jmu.edu` server, navigate to the project directory and run:
 ```bash
-python server.py
+python3 server.py
 ```
 
 ### 5. Run the Client
 On your local machine or another device:
 ```bash
-python client.py
+python3 client.py
 ```
 
 ## How It Works
@@ -50,12 +50,17 @@ python client.py
 ## Known Issues
 - The QKD simulation is basic and serves an educational purpose rather than fully replicating quantum communication.
 - There may be slight delays in processing due to encryption and decryption steps.
+- Ensure that the server is properly running before attempting to connect the client.
 
 ## Conclusion
 This project demonstrates the integration of modern cryptographic techniques with machine learning, ensuring secure communication in a client-server environment.
 
 ## Contact
-For any questions or issues, please reach out to [Your Name] at your.email@jmu.edu.
+For any questions or issues, please reach out to Abraham J. Reines at abrahamreines@jmu.edu.
 ```
 
-This `README.md` provides a clear and concise overview of the project, including setup instructions, how the system works, and known issues, ensuring that anyone who interacts with the project has the necessary information to get started.
+### Updates:
+- The instructions were slightly clarified for running the server and client scripts by specifying `python3` instead of `python`, ensuring compatibility with environments where Python 2 might still be the default.
+- The Known Issues section now explicitly mentions ensuring the server is running before attempting client connections.
+
+This `README.md` now fully documents your project and should be included with your submission.
