@@ -1,7 +1,8 @@
 import requests
 from qkd import simulate_qkd_exchange, xor_strings
 
-server_url = 'http://stu.cs.jmu.edu:5000/generate'
+# Update the server URL with the correct IP address
+server_url = 'http://134.126.141.221:5000/generate'
 
 def main():
     # Simulate QKD key exchange
