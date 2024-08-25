@@ -1,15 +1,15 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
-\contentsline {section}{\numberline {2}High-Level Design}{1}{section.2}%
-\contentsline {subsection}{\numberline {2.1}System Architecture}{1}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Quantum Key Distribution (QKD) Simulation}{1}{subsection.2.2}%
+\contentsline {section}{\numberline {2}High-Level Design}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}System Architecture}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Quantum Key Distribution (QKD) Simulation}{2}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Encryption and Decryption}{2}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Implementation Details}{2}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Programming Language}{2}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Specialized Libraries}{2}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Key Modules}{2}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Compiling and Running the Project}{2}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Setup Instructions}{2}{subsection.4.1}%
+\contentsline {subsection}{\numberline {3.3}Key Modules}{3}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Compiling and Running the Project}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Setup Instructions}{3}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Running the Server}{3}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Running the Client}{3}{subsection.4.3}%
 \contentsline {section}{\numberline {5}Known Issues}{3}{section.5}%
-\contentsline {section}{\numberline {6}Conclusion}{3}{section.6}%
+\contentsline {section}{\numberline {6}Conclusion}{4}{section.6}%

@@ -53,4 +53,4 @@ python3 client.py
 This project demonstrates the integration of modern cryptographic techniques with machine learning, ensuring secure communication in a client-server environment.
 
 ## Contact
-For any questions or issues, please reach out to Abraham J. Reines at abrahamreines@jmu.edu.
+For any questions or issues, please reach out to Abraham J. Reines at reinesaj@dukes.jmu.edu.
