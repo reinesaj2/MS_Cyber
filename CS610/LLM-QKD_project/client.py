@@ -21,4 +21,4 @@ def main():
     print(f"Server Response: {decrypted_response}")
 
 if __name__ == '__main__':
-    main()
+    main() 
