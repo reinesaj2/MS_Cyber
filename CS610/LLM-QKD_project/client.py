@@ -12,6 +12,7 @@ class QKDClient:
         alice_bits = self.qkd.measure_quantum_state()
         alice_bases = self.qkd.basis
         response = requests.post(self.server_url, json={'alice_bits': alice_bits, 'alice_bases': alice_bases})
+        print(f"Server response content: {response.content}")  # Debugging line
         data = response.json()
         self.shared_key = self.qkd.generate_shared_key(alice_bits, alice_bases, data['bob_bases'], data['bob_results'])
 
