@@ -1,24 +1,33 @@
 import requests
-from qkd import simulate_qkd_exchange, xor_strings
+from qkd import QuantumProcessor
 
-# Update the server URL with the correct IP address
-server_url = 'http://134.126.141.221:5000/generate'
+class QKDClient:
+    def __init__(self, server_url='http://127.0.0.1:5000/qkd'):
+        self.server_url = server_url
+        self.shared_key = None
+        self.qkd = QuantumProcessor()
 
-def main():
-    # Simulate QKD key exchange
-    qkd_key = simulate_qkd_exchange()
+    def initiate_qkd(self):
+        self.qkd.prepare_quantum_state()
+        alice_bits = self.qkd.measure_quantum_state()
+        alice_bases = self.qkd.basis
+        response = requests.post(self.server_url, json={'alice_bits': alice_bits, 'alice_bases': alice_bases})
+        data = response.json()
+        self.shared_key = self.qkd.generate_shared_key(alice_bits, alice_bases, data['bob_bases'], data['bob_results'])
 
-    # Encrypt the message using XOR with QKD key
-    message = "Hello, GPT-2!"
-    encrypted_message = xor_strings(message, qkd_key)
+    def encrypt_message(self, message):
+        return ''.join(chr(ord(c) ^ int(self.shared_key[i % len(self.shared_key)], 2)) for i, c in enumerate(message))
 
-    # Send the encrypted message to the server
-    response = requests.post(server_url, json={'text': encrypted_message})
-    encrypted_response = response.json().get('response', '')
-
-    # Decrypt the server's response
-    decrypted_response = xor_strings(encrypted_response, qkd_key)
-    print(f"Server Response: {decrypted_response}")
+    def send_encrypted_message(self, message):
+        encrypted_message = self.encrypt_message(message)
+        response = requests.post(f"{self.server_url.replace('/qkd', '')}/generate", json={'text': encrypted_message})
+        encrypted_response = response.json().get('response', '')
+        return self.encrypt_message(encrypted_response)
 
 if __name__ == '__main__':
-    main() 
+    client = QKDClient()
+    client.initiate_qkd()
+    
+    message = "Hello, GPT-2!"
+    decrypted_response = client.send_encrypted_message(message)
+    print(f"Server Response: {decrypted_response}")
