@@ -1,42 +1,75 @@
+import os
+
+os.environ["TOKENIZERS_PARALLELISM"] = "false"  # Disable tokenizers parallelism
+
 from flask import Flask, request, jsonify
+from asgiref.wsgi import WsgiToAsgi
+import warnings
+import atexit
+
 from model import GPT2Model
 from qkd import QuantumProcessor
 
-class QKDServer:
-    def __init__(self):
-        self.app = Flask(__name__)
-        self.model = GPT2Model()
-        self.qkd = QuantumProcessor()
+# Suppress the FutureWarning
+warnings.filterwarnings(
+    "ignore", category=FutureWarning, module="transformers.tokenization_utils_base"
+)
 
-        # Define routes
-        self.app.add_url_rule('/qkd', 'qkd_exchange', self.qkd_exchange, methods=['POST'])
-        self.app.add_url_rule('/generate', 'generate', self.generate_response, methods=['POST'])
+app = Flask(__name__)  # Expose app at the module level
 
-    def qkd_exchange(self):
-        data = request.json
-        print(f"Received data: {data}")  # Debugging line
-        alice_bits = data.get('alice_bits')
-        alice_bases = data.get('alice_bases')
-        # Simulate Bob's process
-        bob_bases = 'BobBases'  # Replace with actual logic
-        bob_results = 'BobResults'  # Replace with actual logic
-        response = {'bob_bases': bob_bases, 'bob_results': bob_results}
-        print(f"Response data: {response}")  # Debugging line
-        return jsonify(response)
+# Instantiate your server components at the module level
+model = GPT2Model()
+qkd = QuantumProcessor()
 
-    def generate_response(self):
-        data = request.json
-        decrypted_text = data.get('text', '')  # Decrypt using shared key logic
-        response_text = self.model.generate_response(decrypted_text)
-        encrypted_response = response_text  # Encrypt using shared key logic
-        return jsonify({'response': encrypted_response})
 
-    def run(self):
-        self.app.run(host='0.0.0.0', port=8000)
+@app.route("/qkd", methods=["POST"])
+def qkd_exchange():
+    data = request.json
+    print(f"Received data: {data}")  # Debugging line
+    alice_bits = data.get("alice_bits")
+    alice_bases = data.get("alice_bases")
+    # Simulate Bob's process
+    bob_bases = "BobBases"  # Replace with actual logic
+    bob_results = "BobResults"  # Replace with actual logic
+    qkd.shared_key = qkd.generate_shared_key(
+        alice_bits, alice_bases, bob_bases, bob_results
+    )
+    response = {"bob_bases": bob_bases, "bob_results": bob_results}
+    print(f"Response data: {response}")  # Debugging line
+    return jsonify(response)
 
-if __name__ == '__main__':
-    server = QKDServer()
-    server.app.run(host='0.0.0.0', port=8000, debug=True)
-    
-    # Curl the 'stu' server 
-    # curl -X POST http://134.126.141.221:8000/generate -H "Content-Type: application/json" -d '{"text": "Once upon a time"}' --max-time 120
+
+@app.route("/generate", methods=["POST"])
+def generate_response():
+    data = request.json
+    encrypted_text = data.get("text", "")
+    print(f"Encrypted text received: {encrypted_text}")  # Debugging line
+    print(f"Shared key before decryption: {qkd.shared_key}")  # Debugging line
+    decrypted_text = qkd.decrypt_message(
+        encrypted_text
+    )  # Decrypt using shared key logic
+    print(f"Decrypted text: {decrypted_text}")  # Debugging line
+    if decrypted_text is None:
+        return jsonify({"error": "Decryption failed"}), 400
+    response_text = model.generate_response(decrypted_text)
+    print(f"Response text: {response_text}")  # Debugging line
+    if response_text is None:
+        return jsonify({"error": "Model response generation failed"}), 500
+    encrypted_response = qkd.encrypt_message(
+        response_text
+    )  # Encrypt using shared key logic
+    print(f"Encrypted response: {encrypted_response}")  # Debugging line
+    return jsonify({"response": encrypted_response})
+
+
+def cleanup_resources():
+    model.cleanup()
+    qkd.cleanup()
+
+
+atexit.register(cleanup_resources)
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -1,10 +1,70 @@
 \documentclass{article}
-\usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
 \usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc} % for Unicode input
+\usepackage[T1]{fontenc} % for font encoding
+\usepackage{lmodern} % Latin Modern font that supports the T1 encoding
+\usepackage{textcomp} % for additional symbols
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{array} % For table wrapping and advanced features
 
-\title{CS610 - Project 1: QKD-Encrypted LLM for Secure Local Use}
+% Define colors for code listing
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for the Python code listings
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+% Setup the style for plain text listings
+\lstdefinestyle{plaintextstyle}{
+    language={},
+    basicstyle=\ttfamily,
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    numbers=left,
+    numberstyle=\small,
+    numbersep=8pt,
+    showstringspaces=false,
+    tabsize=2,
+    language=bash,
+    captionpos=b
+}
+
+\title{CS610 - Project 1: QKD-Encrypted LLM}
 \author{Abraham J. Reines}
 \date{\today}
 
@@ -15,7 +75,7 @@
 \tableofcontents
 
 \section{Introduction}
-This project involves deploying a small pre-trained language model (GPT-2) on the `stu.cs.jmu.edu` server and using Quantum Key Distribution (QKD) to securely encrypt communications between any client device and the server. The goal is to explore advanced cryptographic techniques and their application in secure communications, aligning with the course's focus on networking and security.
+This project deploys a small pre-trained language model (GPT-2) on the `stu.cs.jmu.edu` server. It also uses a Quantum Key Distribution (QKD) to encrypt communications between any client device and server. The goal is to explore quantum cryptographic techniques and their application in modern systems for secure communications, aligning with the course's focus on networking and security.
 
 \section{High-Level Design}
 
@@ -23,11 +83,11 @@ This project involves deploying a small pre-trained language model (GPT-2) on th
 The system is designed as a client-server architecture:
 \begin{itemize}
     \item \textbf{Server Side:} The server hosts the pre-trained LLM (GPT-2) and handles encrypted communication with clients. It runs on `stu.cs.jmu.edu`.
-    \item \textbf{Client Side:} Clients communicate with the server over a secure network. They use QKD to exchange encryption keys, which are then used to encrypt and decrypt communications.
+    \item \textbf{Client Side:} Clients communicate with the server over a secure network. They use QKD to exchange encryption keys, which are used to encrypt and decrypt communications.
 \end{itemize}
 
-\subsection{Quantum Key Distribution (QKD) Simulation}
-A QKD simulation is implemented to securely exchange encryption keys between the client and server. This simulation mimics the key exchange process in a quantum communication channel, ensuring the security of the encryption keys even against quantum attacks.
+\subsection{Quantum Key Distribution (QKD)}
+A QKD module is implemented to securely exchange encryption keys between the client and server.
 
 \subsection{Encryption and Decryption}
 \begin{itemize}
@@ -39,7 +99,7 @@ A QKD simulation is implemented to securely exchange encryption keys between the
 \section{Implementation Details}
 
 \subsection{Programming Language}
-The project is implemented in Python, which is supported on `stu.cs.jmu.edu`. Python is chosen due to its rich ecosystem of libraries for both machine learning and cryptography.
+The project is implemented in Python, which is supported on `stu.cs.jmu.edu`. Python is chosen for its machine learning and cryptography libraries.
 
 \subsection{Specialized Libraries}
 \begin{itemize}
@@ -49,10 +109,16 @@ The project is implemented in Python, which is supported on `stu.cs.jmu.edu`. Py
 
 \subsection{Key Modules}
 \begin{itemize}
-    \item \textbf{server.py:} Manages the LLM and handles client connections.
-    \item \textbf{client.py:} Initiates connections with the server, handles QKD, and decrypts the LLM model responses for use.
-    \item \textbf{qkd.py:} Implements the QKD simulation, ensuring secure key exchange between client and server.
+    \item \textbf{server.py:} Manages the LLM. Handles client connections.
+    \item \textbf{client.py:} Initiates connections with the server, handles QKD, and decrypts the LLM model responses.
+    \item \textbf{model.py:} A GPT-2 module is implemented as a stand-in for more sophisticated/larger models such as Ollama. This component is intended to be "proof of concept".
+    \item \textbf{qkd.py:} Implements the QKD simulation, ensuring key exchange between client and server.
 \end{itemize}
+
+\lstinputlisting[style=pythonstyle, caption={QKD Module}]{LLM-QKD_project/qkd.py}
+\lstinputlisting[style=pythonstyle, caption={LLM Module}]{LLM-QKD_project/model.py}
+\lstinputlisting[style=pythonstyle, caption={Client Module}]{LLM-QKD_project/client.py}
+\lstinputlisting[style=pythonstyle, caption={Server Module}]{LLM-QKD_project/server.py}
 
 \section{Compiling and Running the Project}
 
@@ -72,22 +138,26 @@ The project is implemented in Python, which is supported on `stu.cs.jmu.edu`. Py
 \end{itemize}
 
 \subsection{Running the Server}
+
+Run on 'stu' server:
 \begin{verbatim}
 python3 server.py
 \end{verbatim}
 
 \subsection{Running the Client}
+
+Run on client system:
 \begin{verbatim}
 python3 client.py
 \end{verbatim}
 
 \section{Known Issues}
 \begin{itemize}
-    \item The QKD simulation is basic and serves educational purposes rather than fully replicating quantum communication.
+    \item Next steps will be to implement the QKD explicitly, potentially leveraging the 'Qiskit' python library. This remains untested. 
     \item The model response decryption process may introduce some latency, depending on the size of the LLM and the computational power of the client machine.
 \end{itemize}
 
 \section{Conclusion}
-This project successfully integrates cutting-edge cryptographic techniques with machine learning, offering a secure and innovative approach to deploying and utilizing LLMs in a networked environment. The use of QKD ensures that the system remains secure even in the face of future quantum computing threats.
+This project successfully integrates quantum cryptographic techniques with machine learning, offering a secure approach to deploying LLMs in a networked environment. By incorporating Quantum Key Distribution (QKD), the system is fortified against emerging quantum computing threats, ensuring the confidentiality and integrity of data even in advanced threat landscapes. The implications of this project extend beyond academic exploration; it introduces the potential for highly secure, custom-trained LLM responses leveraged by Special Operations Forces (SOF) and U.S. government agencies. This application could play a critical role in enhancing secure communications, intelligence analysis, and decision-making processes in sensitive and mission-critical operations, with robust and secure functionality. 
 
 \end{document}
