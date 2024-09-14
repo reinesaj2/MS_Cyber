@@ -24,7 +24,7 @@ cd Deliverable1-CS610
 The dependencies for this project current require python3.10.12:
 ```bash
 pip install python3.10.12 && python3.10 -m venv QKD-LLM_env && source QKD-LLM_env/bin/activate && pip install -r requirements.txt
-```equirements.txt
+requirements.txt
 ```
 
 ### 4. Run the Server
@@ -41,14 +41,12 @@ To securely access the server from your local machine, you can use SSH tunneling
     ssh -L 8000:134.126.141.221:8000 reinesaj@student.cs.jmu.edu
     ```
 
-2. In a third terminal (locally), use `curl` to send a POST request to the server:
-    For establishing a secure key:
+2. In a third terminal (locally), use `curl` to send a POST request to the server.
     ```bash
     curl -X POST http://127.0.0.1:8000/qkd \
         -H "Content-Type: application/json" \
         -d '{"alice_bits": "101010", "alice_bases": "010101"}'
     ```
-    For generating LLM responses:
     ```bash
     curl -X POST http://127.0.0.1:8000/generate \
         -H "Content-Type: application/json" \
