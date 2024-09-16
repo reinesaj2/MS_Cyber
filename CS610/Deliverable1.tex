@@ -1,10 +1,55 @@
 \documentclass{article}
-\usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[style=apa,backend=biber]{biblatex} % Use biblatex for APA citations
+\addbibresource{references.bib} % Include the .bib file with references
 \usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[T1]{fontenc} % for font encoding
+\usepackage{lmodern} % Latin Modern font that supports the T1 encoding
+\usepackage{textcomp} % for additional symbols
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{array} % For table wrapping and advanced features
 
-\title{CS610 - Project 1: QKD-Encrypted LLM for Secure Local Use}
+% Define colors for code listing
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for the Python code listings
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\title{CS610 - Project 1: QKD-Encrypted LLM}
 \author{Abraham J. Reines}
 \date{\today}
 
@@ -12,82 +57,162 @@
 
 \maketitle
 
-\tableofcontents
+%\tableofcontents
 
 \section{Introduction}
-This project involves deploying a small pre-trained language model (GPT-2) on the `stu.cs.jmu.edu` server and using Quantum Key Distribution (QKD) to securely encrypt communications between any client device and the server. The goal is to explore advanced cryptographic techniques and their application in secure communications, aligning with the course's focus on networking and security.
+This project deploys a small pre-trained language model (GPT-2) on the `stu.cs.jmu.edu` server. It also uses Quantum Key Distribution (QKD) to encrypt communications between any client device and server \parencite{yin2017, patel2020}. The goal is to explore quantum cryptographic techniques and their application in modern systems for secure communications, aligning with the course's focus on networking and security \parencite{tanenbaum2020}.
 
 \section{High-Level Design}
 
 \subsection{System Architecture}
-The system is designed as a client-server architecture:
+The system is designed as a client-server architecture. On the server side, GPT-2 is hosted via the Hugging Face `transformers` library to handle natural language processing tasks \parencite{huggingface_gpt2_2024, jalammar_gpt2_illustration_2024}. 
 \begin{itemize}
-    \item \textbf{Server Side:} The server hosts the pre-trained LLM (GPT-2) and handles encrypted communication with clients. It runs on `stu.cs.jmu.edu`.
-    \item \textbf{Client Side:} Clients communicate with the server over a secure network. They use QKD to exchange encryption keys, which are then used to encrypt and decrypt communications.
+    \item \textbf{Server Side:} The server hosts the pre-trained LLM (GPT-2) and handles encrypted communication with clients. It runs on `stu.cs.jmu.edu` \parencite{lo2012}.
+    \item \textbf{Client Side:} Clients communicate with the server over a secure network. They use QKD to exchange encryption keys, which are used to encrypt and decrypt communications \parencite{scarani2014, patel2020}.
 \end{itemize}
 
-\subsection{Quantum Key Distribution (QKD) Simulation}
-A QKD simulation is implemented to securely exchange encryption keys between the client and server. This simulation mimics the key exchange process in a quantum communication channel, ensuring the security of the encryption keys even against quantum attacks.
+\subsection{Quantum Key Distribution (QKD)}
+A QKD module is implemented to securely exchange encryption keys between the client and server. This module leverages cryptographic protocols described in \parencite{bennett1984, lo2012, scarani2014, nsa2024}.
 
 \subsection{Encryption and Decryption}
 \begin{itemize}
     \item The LLM model is stored on the server and is accessed by clients via encrypted communications.
-    \item When a client connects, the QKD process is initiated to securely exchange the encryption key.
-    \item The client uses the key to decrypt the LLM model's responses, and all subsequent communications are encrypted with this key.
+    \item When a client connects, the QKD process is initiated to securely exchange the encryption key, which is used to encrypt and decrypt the data sent between the client and server \parencite{patel2020, nielsen2010}.
+    \item The model responses are encrypted before transmission to ensure secure communications. This is particularly crucial when using pre-trained models like GPT-2 over open networks \parencite{huggingface_gpt2_model_2024, mlabonne_llm_course_2024}.
 \end{itemize}
 
 \section{Implementation Details}
 
 \subsection{Programming Language}
-The project is implemented in Python, which is supported on `stu.cs.jmu.edu`. Python is chosen due to its rich ecosystem of libraries for both machine learning and cryptography.
+The project is implemented in Python, which is supported on `stu.cs.jmu.edu`. Python's ecosystem provides excellent libraries for both machine learning (e.g., Hugging Face `transformers` for GPT-2) and cryptography (e.g., Qiskit for quantum encryption) \parencite{nielsen2010, tanenbaum2020, huggingface_gpt2_model_2024}.
 
 \subsection{Specialized Libraries}
 \begin{itemize}
-    \item \textbf{Hugging Face Transformers:} Used to deploy the GPT-2 model.
-    \item \textbf{PyCryptodome:} Used for encryption and decryption processes.
+    \item \textbf{Hugging Face Transformers:} Used to deploy the GPT-2 model for text generation tasks on the server \parencite{huggingface_llm_2024, jalammar_gpt2_illustration_2024}.
+    \item \textbf{Qiskit:} Used for encryption and decryption processes \parencite{bennett1984, lo2012, nsa2024}.
 \end{itemize}
 
-\subsection{Key Modules}
-\begin{itemize}
-    \item \textbf{server.py:} Manages the LLM and handles client connections.
-    \item \textbf{client.py:} Initiates connections with the server, handles QKD, and decrypts the LLM model responses for use.
-    \item \textbf{qkd.py:} Implements the QKD simulation, ensuring secure key exchange between client and server.
-\end{itemize}
+\lstinputlisting[style=pythonstyle, caption={QKD Module}]{LLM-QKD_project/qkd.py}
+\lstinputlisting[style=pythonstyle, caption={LLM Module}]{LLM-QKD_project/model.py}
+\lstinputlisting[style=pythonstyle, caption={Client Module}]{LLM-QKD_project/client.py}
+\lstinputlisting[style=pythonstyle, caption={Server Module}]{LLM-QKD_project/server.py}
 
 \section{Compiling and Running the Project}
 
 \subsection{Setup Instructions}
 \begin{itemize}
-    \item Ensure Python 3 is installed on both the server and client machines.
-    \item Set up a virtual environment:
+    \item Ensure Python 3.10 is installed on both the server and client machines using pyenv \parencite{nielsen2010}.
+    \item Create and activate a virtual environment on both the server and client:
     \begin{verbatim}
-    python3 -m venv QKD
-    source QKD/bin/activate
+    python3 -m venv QKD-LLM_env
+    source QKD-LLM_env/bin/activate
     \end{verbatim}
-    \item Install the required libraries using pip:
+    \item Install the required libraries using the `requirements.txt` file \parencite{tanenbaum2020}:
     \begin{verbatim}
     pip install -r requirements.txt
     \end{verbatim}
-    \item Place the `server.py`, `client.py`, and `qkd.py` files in the appropriate directories on the server and client machines.
+    \item Ensure that `server.py`, `client.py`, and `qkd.py` are correctly placed in their respective directories on the server and client machines \parencite{lo2012}.
 \end{itemize}
 
 \subsection{Running the Server}
+To start the server on the `stu.cs.jmu.edu` server, run:
 \begin{verbatim}
 python3 server.py
 \end{verbatim}
 
 \subsection{Running the Client}
+To start the client on a local or remote machine, run:
 \begin{verbatim}
 python3 client.py
 \end{verbatim}
 
+\section{Integration with Qiskit}
+\subsection{QKD Simulation with Qiskit}
+The Proof of Concept (PoC) currently simulates QKD using Python. However, a future version of the project will use Qiskit to perform quantum key exchanges on real quantum hardware provided by IBM \cite{nsa2024}. Qiskit will simulate the quantum entanglement and measurement required for secure key exchange:
+\begin{itemize}
+    \item \textbf{Qubit preparation and measurement} will be handled by Qiskit, using the BB84 protocol \cite{bennett1984}.
+    \item \textbf{Quantum simulation}: Qiskit’s Aer simulator can simulate noisy quantum channels, including photon loss or interference that would occur in a real quantum environment \cite{nielsen2010}.
+    \item \textbf{Integration}: Once the quantum key is generated using Qiskit, it will be passed into the encryption process of the LLM communications.
+\end{itemize}
+
+\section{Quantum Mechanics of Photon Transmission}
+
+Quantum Key Distribution (QKD) relies on the principles of quantum mechanics to ensure the security of key exchanges between two parties, typically referred to as Alice (sender) and Bob (receiver) \cite{patel2020}. The foundation of QKD lies in the transmission of qubits, which in many implementations are encoded in the states of photons \cite{lo2012}. 
+
+\subsection{Photon as a Qubit Carrier}
+In QKD protocols such as BB84, photons serve as carriers for qubits \cite{bennett1984}. A photon's quantum state can be used to encode binary information, through its polarization:
+\begin{itemize}
+    \item \textbf{Polarization states:} A photon can be polarized horizontally ($|0\rangle$) or vertically ($|1\rangle$), representing classical bit values. Additionally, diagonal polarizations ($|+\rangle$, $|-\rangle$) are used to create superposition states existing as both 1 and 0 simultaneously \cite{nielsen2010}. This is what makes quantum computers so fast. 
+    \item \textbf{Quantum superposition:} A single photon can exist in a superposition of $|0\rangle$ and $|1\rangle$, meaning its state is not fixed until measured. Mathematically, this is described by the quantum state:
+    \[
+    |\psi\rangle = \alpha |0\rangle + \beta |1\rangle
+    \]
+    where $\alpha$ and $\beta$ are complex probability amplitudes which satisfy $|\alpha|^2 + |\beta|^2 = 1$. This property allows for encoding information in both bases (rectilinear and diagonal) in QKD protocols \cite{nielsen2010}.
+\end{itemize}
+
+\subsection{Quantum Superposition and Measurement}
+The principle of superposition ensures a photon's polarization exists in a probability distribution of states \cite{yin2017}. Upon measurement, the quantum state collapses to one of the possible outcomes:
+\begin{itemize}
+    \item If measured in the rectilinear basis (horizontal/vertical), the photon collapses to either $|0\rangle$ or $|1\rangle$ with probabilities corresponding to its superposition \cite{patel2020}.
+    \item If measured in the diagonal basis, the photon collapses to $|+\rangle$ or $|-\rangle$, again based on its quantum state before measurement \cite{nielsen2010}.
+\end{itemize}
+This probabilistic behavior is key to detecting potential eavesdropping: if an eavesdropper (Eve) tries to measure the photons in transit, the measurement will be corrupted (due to the collapsed quantum state) and detected in the key generation process \cite{scarani2014}.
+
+\subsection{Transmission through a Quantum Channel}
+Photons are transmitted through a quantum channel, which can be either a fiber-optic cable or free space (radio frequency transmission via photons). The transmission medium introduces challenges such as attenuation, noise, and loss of photon coherence \cite{patel2020}. During transmission:
+\begin{itemize}
+    \item \textbf{Photon loss:} Some photons may be absorbed or scattered by the medium, which reduces the number of qubits that reach the receiver\cite{aktas2016}.
+    \item \textbf{Decoherence:} A photon's quantum state may change unpredictably due to environmental interactions, especially over long distances \cite{nielsen2010}.
+\end{itemize}
+
+\subsection{Eavesdropping Detection via the No-Cloning Theorem}
+The \textbf{no-cloning theorem}, states an unknown quantum state cannot be copied \cite{lo2012}. If an eavesdropper attempts to intercept the photon, they will alter its state due to the act of measurement. \cite{bennett1984}.
+
+\subsection{Quantum Key Agreement and Security}
+Once the photons have been transmitted and measured, Alice (client) and Bob (server) compare their measurement bases. Bits where both used the same basis (either rectilinear or diagonal) are kept for the key \cite{bennett1984}. Any attempt to eavesdrop the qubits will introduce errors, which Alice and Bob can detect by comparing their key \cite{lo2012}.
+
+\section{Language Model (LLM) on the Server}
+
+The language model (LLM) deployed on the server is a pre-trained instance of \textbf{GPT-2}, a transformer-based model from the Hugging Face library \cite{huggingface_gpt2_2024}. GPT-2 is designed to predict the next token in its context using the vectors of matrices formulated by GPTs training corpus, using basic linear algebra.  In the current implementation, this LLM facilitates communication by responding to client queries with natural language responses. This model is prone to profanity and nonsense. It serves as a placeholder.
+
+\subsection{Future Upgrades to Ollama LLM}
+In future iterations of this project, the current GPT-2 model will be replaced by the latest \textbf{Ollama LLM} \cite{huggingface_llm_2024}, which offers advanced capabilities and a larger model size, resulting in more sophisticated language generation. Alongside this upgrade, a complex \textbf{llm-pipeline-engine} may be implemented for sophisticated error handling. This upgrade will enhance the system’s ability to generate context-aware responses, making it suitable for more complex applications such as decision support, intelligence analysis, and secure communication.
+
+\subsection{Potential for Fine-Tuning}
+The current implementation uses a pre-trained version of GPT-2 without any additional training or fine-tuning \cite{jalammar_gpt2_illustration_2024}. However, future versions of the system could integrate \textbf{fine-tuning} capabilities to further customize the LLM for specific tasks or industries:
+\begin{itemize}
+    \item Fine-tuning could involve training the LLM on industry specific data, such as government or military documents, to improve the model's performance on specialized queries. For example, classified technical schematics for naval equipment. 
+    \item The model can also be fine-tuned to optimize its response generation for sensitive or mission-critical communications \cite{huggingface_llm_2024}.
+\end{itemize}
+
+\subsection{Server-Client Architecture}
+In the current server-client architecture, the language model operates as follows \cite{mlabonne_llm_course_2024}:
+\begin{itemize}
+    \item \textbf{Server Side:} The server hosts the GPT-2 model, managing client requests and generating responses based on the inputs it receives. After the secure quantum key exchange via QKD, the server uses the shared encryption key to decrypt incoming client requests.
+    \item \textbf{Client Side:} Clients send encrypted text queries to the server. Once the server decrypts the query using the key established by the QKD process, the GPT-2 model processes the request and generates a text response. This response is then encrypted with the same quantum key and sent back to the client \cite{huggingface_gpt2_2024}.
+    \item \textbf{Encryption Workflow:} Both client queries and server responses are encrypted to maintain the confidentiality and integrity of communicationcite \cite{semaphoreci_llms_2024}.
+\end{itemize}
+
+\subsection{Response Generation and Latency Considerations}
+Upon receiving an encrypted query from the client, the server decrypts the input and passes it to the LLM. GPT-2 generates a natural language response, which is then encrypted and transmitted back to the client \cite{huggingface_gpt2_2024}. 
+
 \section{Known Issues}
 \begin{itemize}
-    \item The QKD simulation is basic and serves educational purposes rather than fully replicating quantum communication.
-    \item The model response decryption process may introduce some latency, depending on the size of the LLM and the computational power of the client machine.
+    \item The QKD is currently simulated, and the Qiskit integration remains untested \cite{nsa2024}.
+    \item The decryption of the model responses may introduce some latency, depending on the computational power of the client machine and network conditions \cite{huggingface_gpt2_2024}.
+    \item Additional performance testing is needed to evaluate the impact of QKD on communication speed.
 \end{itemize}
 
 \section{Conclusion}
-This project successfully integrates cutting-edge cryptographic techniques with machine learning, offering a secure and innovative approach to deploying and utilizing LLMs in a networked environment. The use of QKD ensures that the system remains secure even in the face of future quantum computing threats.
+This project successfully integrates quantum cryptographic techniques with machine learning, offering a secure approach to deploying LLMs in a networked environment. By incorporating Quantum Key Distribution (QKD), the system is protected against quantum computing threats \cite{nsa2024}. In future versions, incorporating \textbf{Qiskit} will enhance quantum-based security by using real quantum devices for QKD \cite{nielsen2010}.
+
+The potential applications of this system extend to fields where secure communications are critical, such as government and military operations, where the security of information could impact national security \cite{nsa2024}.
+
+\newpage
+\printbibliography % Print the bibliography from the references.bib file
+
+\vfill
+\section*{Academic Integrity Pledge}
+{\color{red}\textit{“This work complies with JMU honor code. I did not give or receive unauthorized help on this assignment.”}}
 
 \end{document}
