@@ -6,6 +6,7 @@ from flask import Flask, request, jsonify
 from asgiref.wsgi import WsgiToAsgi
 import warnings
 import atexit
+import numpy as np
 
 from model import GPT2Model
 from qkd import QuantumProcessor
@@ -28,12 +29,18 @@ def qkd_exchange():
     print(f"Received data: {data}")  # Debugging line
     alice_bits = data.get("alice_bits")
     alice_bases = data.get("alice_bases")
+
     # Simulate Bob's process
-    bob_bases = "BobBases"  # Replace with actual logic
-    bob_results = "BobResults"  # Replace with actual logic
+    bob_bases = ["Z" if np.random.rand() > 0.5 else "X" for _ in alice_bits]
+    bob_results = [
+        qkd.measure_quantum_state(qkd.prepare_quantum_state(bit, basis), basis)
+        for bit, basis in zip(alice_bits, bob_bases)
+    ]
+
     qkd.shared_key = qkd.generate_shared_key(
         alice_bits, alice_bases, bob_bases, bob_results
     )
+    print(f"Shared key set: {qkd.shared_key}")  # Debugging line
     response = {"bob_bases": bob_bases, "bob_results": bob_results}
     print(f"Response data: {response}")  # Debugging line
     return jsonify(response)
@@ -70,6 +77,7 @@ def cleanup_resources():
 atexit.register(cleanup_resources)
 
 if __name__ == "__main__":
+    asgi_app = WsgiToAsgi(app)
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(asgi_app, host="0.0.0.0", port=8000)

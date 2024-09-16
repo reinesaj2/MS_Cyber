@@ -1,10 +1,12 @@
 import pytest
 from model import GPT2Model
 
+
 @pytest.fixture
 def gpt2_model():
     """Fixture to initialize the GPT2Model."""
     return GPT2Model()
+
 
 def test_generate_response(gpt2_model):
     prompt = "Once upon a time"

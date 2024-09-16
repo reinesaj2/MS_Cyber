@@ -21,7 +21,7 @@ cd Deliverable1-CS610
 ```
 
 ### 3. Set Up the Virtual Environment
-The dependencies for this project current require python3.10.12:
+The dependencies for this project currently require python3.10.12:
 ```bash
 pip install python3.10.12 && python3.10 -m venv QKD-LLM_env && source QKD-LLM_env/bin/activate && pip install -r requirements.txt
 requirements.txt
