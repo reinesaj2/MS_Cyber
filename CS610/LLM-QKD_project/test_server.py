@@ -10,7 +10,8 @@ def client():
         yield client
 
 def test_qkd_exchange(client):
-    with patch.object(qkd, 'generate_shared_key', return_value='10101010'):
+    # Use the correct method name from QuantumProcessor
+    with patch.object(qkd, 'generate_shared_key_server', return_value=None):
         response = client.post('/qkd', json={
             'alice_bits': ['1', '0', '0', '1', '1', '0', '0', '1', '1', '1'],
             'alice_bases': ['Z', 'X', 'Z', 'Z', 'X', 'Z', 'X', 'Z', 'Z', 'Z']
@@ -22,14 +23,17 @@ def test_qkd_exchange(client):
 
 def test_generate_response(client):
     # First, initiate QKD to set the shared key
-    with patch.object(qkd, 'generate_shared_key', return_value='10101010'):
+    with patch.object(qkd, 'generate_shared_key_server', return_value=None):
         client.post('/qkd', json={
             'alice_bits': ['1', '0', '0', '1', '1', '0', '0', '1', '1', '1'],
             'alice_bases': ['Z', 'X', 'Z', 'Z', 'X', 'Z', 'X', 'Z', 'Z', 'Z']
         })
     
     # Then, test the generate response endpoint
-    response = client.post('/generate', json={'text': 'Nnbd!tpno!` uhld.//!'})
+    response = client.post('/generate', json={
+        'text': 'Encrypted message here', 
+        'session_id': 'dummy_session_id'  # Provide a valid session_id
+    })
     assert response.status_code == 200
     data = response.get_json()
     assert 'response' in data

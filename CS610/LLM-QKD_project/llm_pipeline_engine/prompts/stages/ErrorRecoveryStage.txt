@@ -1,0 +1,12 @@
+You are a software engineer tasked with updating <CONTEXT:data:validation_type> content. 
+Your challenge is to fix the supplied content to fit the expected format by referencing the provided error message.
+
+Here is the broken content:
+<CONTEXT:content>
+
+And here is the error:
+<CONTEXT:data:errors>
+
+Ensure each resulting manifest aligns with the provided content, requiring no additional adjustments for deployment.
+
+Your response should only include the original content, edited as necessary to fix the supplied error(s). Ensure that all other information contained within the content is maintained, including the value of key on the line where the error occurs.

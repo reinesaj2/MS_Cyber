@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  15 SEP 2024 12:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.27)  15 SEP 2024 19:57
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -784,12 +784,19 @@ Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Deliverable1.bbl' found.
- (./Deliverable1.bbl)
+ (./Deliverable1.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                nsa_2024
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
 Package biblatex Info: Reference section=0 on input line 56.
 Package biblatex Info: Reference segment=0 on input line 56.
 \c@lstlisting=\count439
-
-(/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count440
 \scratchdimen=\dimen183
@@ -907,19 +914,30 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 7
-0.
+(./Deliverable1.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 7.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 7.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 7.
+)
+\tf@toc=\write5
+\openout5 = `Deliverable1.toc'.
 
-(/usr/local/texlive/2021/texmf-dist/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [1
+ [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 7
+0.
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+[2] (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 9
-5.
+8.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -927,22 +945,15 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 (./LLM-QKD_project/qkd.py
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 1.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 1.
- [2] [3]) (./LLM-QKD_project/model.py [4] [5])
-(./LLM-QKD_project/client.py [6] [7]) (./LLM-QKD_project/server.py [8] [9])
-[10]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 145.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 145.
- [11]
-Overfull \hbox (4.24522pt too wide) in paragraph at lines 176--177
+ [3] [4]) (./LLM-QKD_project/model.py [5] [6])
+(./LLM-QKD_project/client.py [7] [8]) (./LLM-QKD_project/server.py [9] [10])
+[11] [12] [13]
+Overfull \hbox (4.24522pt too wide) in paragraph at lines 179--180
 \T1/lmr/m/n/10 The lan-guage model (LLM) de-ployed on the server is a pre-train
 ed in-stance of \T1/lmr/bx/n/10 GPT-2\T1/lmr/m/n/10 , a transformer-
  []
 
-[12] [13] [14] [15] (./Deliverable1.aux)
+[14] [15] [16] (./Deliverable1.aux)
 Package rerunfilecheck Info: File `Deliverable1.out' has not changed.
 (rerunfilecheck)             Checksum: 488067595054F781F5C93374D5EC913E;5178.
 Package logreq Info: Writing requests to 'Deliverable1.run.xml'.
@@ -950,10 +961,10 @@ Package logreq Info: Writing requests to 'Deliverable1.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21225 strings out of 478994
- 347163 string characters out of 5858184
- 1661503 words of memory out of 5000000
- 37975 multiletter control sequences out of 15000+600000
+ 21232 strings out of 478994
+ 347239 string characters out of 5858184
+ 1661516 words of memory out of 5000000
+ 37977 multiletter control sequences out of 15000+600000
  464736 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,6n,74p,745b,4823s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -974,10 +985,10 @@ al/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive
 /2021/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2021/texmf
 -dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/public/lm/lmtt9.pfb>
-Output written on Deliverable1.pdf (15 pages, 327782 bytes).
+Output written on Deliverable1.pdf (16 pages, 333169 bytes).
 PDF statistics:
- 798 PDF objects out of 1000 (max. 8388607)
- 759 compressed objects within 8 object streams
- 425 named destinations out of 1000 (max. 500000)
+ 830 PDF objects out of 1000 (max. 8388607)
+ 790 compressed objects within 8 object streams
+ 427 named destinations out of 1000 (max. 500000)
  217 words of extra memory for PDF output out of 10000 (max. 10000000)
 
